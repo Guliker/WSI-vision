@@ -18,7 +18,7 @@ d to open debug windows and info
 """
 
 """ ----- IMPORTS ----- """
-#import gxipy as gx
+import gxipy as gx
 
 import math
 import numpy as np
