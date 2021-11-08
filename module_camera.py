@@ -6,7 +6,12 @@ API used from Daheng imaging SDK:
 Download path: https://www.get-cameras.com/customerdownloads?submissionGuid=3d8fbd3b-0ca4-4de2-b947-2480dd706c29
 API can only be used to Python 3.5
 """
+
+""" ----- IMPORTS ----- """
 import gxipy as gx
+import numpy as np
+import cv2
+""" ----- ----- ----- """
 
 """ ----- FUNCTION ----- """
 def init(cam, dev, exp, res, res_o, fps, gain, gain_rgb):
@@ -21,9 +26,8 @@ def init(cam, dev, exp, res, res_o, fps, gain, gain_rgb):
     :param      gain:       Gain all channels
     :param      gain_rgb:   Gain for each channel (red, green, blue)
     """
-
     # create a device manager
-    dev_num, dev_info_list = device_manager.update_device_list()
+    dev_num, dev_info_list = dev.update_device_list()
     if dev_num == 0:
         print("Number of enumerated devices is 0")
         return
@@ -66,7 +70,7 @@ def read(cam, scale):
     :brief      Read one frame from the camera
     :param      cam:        Camera Device
     :param      scale:      Factor to scale the image, 1 = normal
-    :return:    Numpy array of the image in BGR
+    :return     Numpy array of the image in BGR
     """
     # get raw image
     raw_image = cam.data_stream[0].get_image()
@@ -107,7 +111,7 @@ def read(cam, scale):
     dim = (width, height)
 
     #print(bgr_image[0][0])
-    #b, g, r = cv2.split(bgr_image)
+    #b, g, r = cv2.split(bgr_image)	
     #print(g)
     return cv2.resize(bgr_image, dim, interpolation = cv2.INTER_AREA)
 
