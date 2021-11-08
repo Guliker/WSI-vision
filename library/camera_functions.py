@@ -61,11 +61,12 @@ def init(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[]):
     # start data acquisition
     cam.stream_on()
 
-def cam_read(cam,scale):
+def cam_read(cam, scale):
     """
-    :brief      Starting the camera with all the right settings
-    :param      cam:        Camera Device, blue)
-    :return:    numpy array of the image in BGR
+    :brief      Read one frame from the camera
+    :param      cam:        Camera Device
+    :param      scale:      Factor to scale the image, 1 = normal
+    :return:    Numpy array of the image in BGR
     """
 	# get raw image
 	raw_image = cam.data_stream[0].get_image()
@@ -111,6 +112,10 @@ def cam_read(cam,scale):
 	return cv2.resize(bgr_image, dim, interpolation = cv2.INTER_AREA)
 
 def cam_exit(cam):
+    """
+    :brief      Closing the camera and disabling the streaming
+    :param      cam:        Camera Device
+    """
 	cam.stream_off()
 
 	# close device
@@ -120,6 +125,14 @@ def cam_exit(cam):
 # 0 1
 # 2 3
 def four_in_one_frame(four_frames,scale):
+    """
+    :brief      Combines four frames in this order
+                0 1
+                2 3
+    :param      four_frames:    Four numpy arrays of images [image0, image1, image2, image3]
+    :param      scale:          Factor to scale the image, 1 = normal
+    :return:    Numpy array of the combined image
+    """
 	#combine the four frames into one
 	ry_horiontal = np.hstack((four_frames[0], four_frames[1]))
 	bg_horiontal = np.hstack((four_frames[2], four_frames[3]))
