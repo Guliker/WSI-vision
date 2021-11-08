@@ -19,6 +19,7 @@ d to open debug windows and info
 
 """ ----- IMPORTS ----- """
 #import gxipy as gx
+import library.camera_functions as cf
 
 import math
 import numpy as np
@@ -94,12 +95,12 @@ def nothing(x):
 """ ----- MAIN LOOP FOR CALIBRATION ----- """
 """ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- """
 #(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[])
-init(camera, device_manager, cam_exposure, cam_resolution, cam_offset_resolution, cam_frame_rate, cam_gain, cam_gain_rgb)
+cf.init(camera, device_manager, cam_exposure, cam_resolution, cam_offset_resolution, cam_frame_rate, cam_gain, cam_gain_rgb)
 step_index = 0
 
 while(1):	
 	# get one frame of the camera
-	frame = cam_read(camera, cam_scale)
+	frame = cf.read(camera, cam_scale)
 	
 	# create copy of frame to show to user
 	final_frame = frame.copy()
@@ -175,7 +176,7 @@ for i,name in enumerate(color_name_table):
 mid_pos = 2
 while(1):
 	# get one frame of the camera
-	frame = cam_read(camera, cam_scale)
+	frame = cf.read(camera, cam_scale)
 	
 	# Convert the frame
 	# BGR(RGB color space) to 
@@ -310,7 +311,7 @@ while(1):
 """ ----- ----- ----- """
 
 """ ----- EXIT ----- """
-cam_exit(camera)
+cf.close(camera)
 cv2.destroyAllWindows()
 
 """ ----- ----- ----- """

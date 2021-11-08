@@ -9,7 +9,7 @@ API can only be used to Python 3.5
 import gxipy as gx
 
 """ ----- FUNCTION ----- """
-def init(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[]):
+def init(cam, dev, exp, res, res_o, fps, gain, gain_rgb):
     """
     :brief      Starting the camera with all the right settings
     :param      cam:        Camera Device
@@ -61,65 +61,65 @@ def init(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[]):
     # start data acquisition
     cam.stream_on()
 
-def cam_read(cam, scale):
+def read(cam, scale):
     """
     :brief      Read one frame from the camera
     :param      cam:        Camera Device
     :param      scale:      Factor to scale the image, 1 = normal
     :return:    Numpy array of the image in BGR
     """
-	# get raw image
-	raw_image = cam.data_stream[0].get_image()
-	if raw_image is None:
-		print("Getting image failed.")
-		
-	# get param of improving image quality
-	if cam.GammaParam.is_readable():
-		gamma_value = cam.GammaParam.get()
-		gamma_lut = gx.Utility.get_gamma_lut(gamma_value)
-	else:
-		gamma_lut = None
-	if cam.ContrastParam.is_readable():
-		contrast_value = cam.ContrastParam.get()
-		contrast_lut = gx.Utility.get_contrast_lut(contrast_value)
-	else:
-		contrast_lut = None
-	if cam.ColorCorrectionParam.is_readable():
-		color_correction_param = cam.ColorCorrectionParam.get()
-	else:
-		color_correction_param = 0
-		
-	
-	#rgbg_image = raw_image.get_numpy_array()
-	# get RGB image from raw image
-	inst_image = raw_image.convert("RGB")
-	# improve image quality
-	inst_image.image_improvement(color_correction_param, contrast_lut, gamma_lut)
-	# create numpy array with data from raw image
-	rgb_image = inst_image.get_numpy_array()
-	#r,g,b = cv2.split(rgb_image)
-	#rgb_image = np.dstack((r*2, g, b*2))
-	bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
-	
-	#rescale
-	width = int(bgr_image.shape[1] * scale)
-	height = int(bgr_image.shape[0] * scale)
-	dim = (width, height)
+    # get raw image
+    raw_image = cam.data_stream[0].get_image()
+    if raw_image is None:
+        print("Getting image failed.")
+        
+    # get param of improving image quality
+    if cam.GammaParam.is_readable():
+        gamma_value = cam.GammaParam.get()
+        gamma_lut = gx.Utility.get_gamma_lut(gamma_value)
+    else:
+        gamma_lut = None
+    if cam.ContrastParam.is_readable():
+        contrast_value = cam.ContrastParam.get()
+        contrast_lut = gx.Utility.get_contrast_lut(contrast_value)
+    else:
+        contrast_lut = None
+    if cam.ColorCorrectionParam.is_readable():
+        color_correction_param = cam.ColorCorrectionParam.get()
+    else:
+        color_correction_param = 0
+        
+    
+    #rgbg_image = raw_image.get_numpy_array()
+    # get RGB image from raw image
+    inst_image = raw_image.convert("RGB")
+    # improve image quality
+    inst_image.image_improvement(color_correction_param, contrast_lut, gamma_lut)
+    # create numpy array with data from raw image
+    rgb_image = inst_image.get_numpy_array()
+    #r,g,b = cv2.split(rgb_image)
+    #rgb_image = np.dstack((r*2, g, b*2))
+    bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
+    
+    #rescale
+    width = int(bgr_image.shape[1] * scale)
+    height = int(bgr_image.shape[0] * scale)
+    dim = (width, height)
 
-	#print(bgr_image[0][0])
-	#b, g, r = cv2.split(bgr_image)
-	#print(g)
-	return cv2.resize(bgr_image, dim, interpolation = cv2.INTER_AREA)
+    #print(bgr_image[0][0])
+    #b, g, r = cv2.split(bgr_image)
+    #print(g)
+    return cv2.resize(bgr_image, dim, interpolation = cv2.INTER_AREA)
 
-def cam_exit(cam):
+def close(cam):
     """
     :brief      Closing the camera and disabling the streaming
     :param      cam:        Camera Device
     """
-	cam.stream_off()
+    cam.stream_off()
 
-	# close device
-	cam.close_device()
+    # close device
+    cam.close_device()
     
 # combines four frames into one, using this order:
 # 0 1
@@ -133,14 +133,14 @@ def four_in_one_frame(four_frames,scale):
     :param      scale:          Factor to scale the image, 1 = normal
     :return:    Numpy array of the combined image
     """
-	#combine the four frames into one
-	ry_horiontal = np.hstack((four_frames[0], four_frames[1]))
-	bg_horiontal = np.hstack((four_frames[2], four_frames[3]))
-	rybg_frame = np.vstack((ry_horiontal, bg_horiontal))
-	width, height = rybg_frame.shape
-	
-	# rescaling image
-	width = int(rybg_frame.shape[1] * scale)
-	height = int(rybg_frame.shape[0] * scale)
-	dim = (width, height)
-	return cv2.resize(rybg_frame, dim, interpolation = cv2.INTER_AREA)
+    #combine the four frames into one
+    ry_horiontal = np.hstack((four_frames[0], four_frames[1]))
+    bg_horiontal = np.hstack((four_frames[2], four_frames[3]))
+    rybg_frame = np.vstack((ry_horiontal, bg_horiontal))
+    width, height = rybg_frame.shape
+    
+    # rescaling image
+    width = int(rybg_frame.shape[1] * scale)
+    height = int(rybg_frame.shape[0] * scale)
+    dim = (width, height)
+    return cv2.resize(rybg_frame, dim, interpolation = cv2.INTER_AREA)
