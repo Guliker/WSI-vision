@@ -107,7 +107,7 @@ def mask_color(kernal, image, min_max_array, scale=1):
     dim = (width, height)
 
     # inerpolation default = cv2.INTER_AREA
-    return cv2.resize(color_mask, dim, interpolation = cv2.INTER_NEAREST)
+    return cv2.resize(color_mask, dim, interpolation = cv2.INTER_LINEAR)
 
     
 """ ----- ----- CONTOURS ----- ----- """
@@ -132,7 +132,7 @@ def create_contour(image, min_area, method=cv2.CHAIN_APPROX_SIMPLE):
 
     return contours
 
-def split_contour(image, contour, height, offset):
+def split_contour(image, contour, height, offset, cut_size):
     """
     :brief      Spits contours that are too high
     :param      image:      Image to draw lines on to split
@@ -145,7 +145,7 @@ def split_contour(image, contour, height, offset):
     for index in range(1, stack_height):
         left_cut = np.array([x, y + (h*(index/float(stack_height)))], dtype='int')
         right_cut = np.array([x + w, y + (h*(index/float(stack_height)))], dtype='int')
-        cv2.line(image, tuple(left_cut), tuple(right_cut), (0, 0, 0), 3)
+        cv2.line(image, tuple(left_cut), tuple(right_cut), (0, 0, 0), cut_size)
         #print("cutting" + str(index) + "    pos: " + str(left_cut) + ":" + str(right_cut))
         #print(str(stack_height) + "    num: " + str(index/float(stack_height)))
             
@@ -189,10 +189,11 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
     :param      scale:      Factor to scale the image, 1 = normal
     :return     Four points of the designated workspace
     """
-    width /= 2
-    height /= 2
-    
     scale = int(1/scale)
+    offset /= scale
+    width /= scale*2
+    height /= scale*2
+    
     if(contours):
         # find biggest contour to work with
         big_contour = max(contours, key=cv2.contourArea)
@@ -206,7 +207,7 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
         most_right = ext_index
         for i, y in enumerate (big_contour[:, :, 1]):
             x = big_contour[:, :, 0][i]
-            if((x < ext_bottom[0] + offset and x > ext_bottom[0] - offset*2)
+            if((x < ext_bottom[0] + (offset*2) and x > ext_bottom[0] - (offset*2))
             and (y < ext_bottom[1] + offset and y > ext_bottom[1] - offset)):
                 # more right
                 if(x > big_contour[most_left][0][0]):

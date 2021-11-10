@@ -37,13 +37,13 @@ cam_resolution = (1600, 900)
 cam_offset_resolution = (744, 560)
 #resolution = (3088, 2048)
 #offset_resolution = (0, 0)
-cam_gain_rgb = (1.6 , 1.0, 2.5)
+cam_gain_rgb = (1.4 , 1.0, 2.3)
 cam_frame_rate = 20
 
 device_manager = gx.DeviceManager()
 camera = device_manager.open_device_by_index(1)
 cam_scale = 0.5
-mask_scale = 0.5
+mask_scale = float(1)/4
 
 cam_exposure = 8000
 cam_gain = 8
@@ -51,8 +51,8 @@ cam_gain = 8
 # settings for the calibration window
 x_offset = 0
 y_offset = 0
-search_height = 450
-search_width = 60
+search_height = 350
+search_width = 50
 
 # lab offsets for the color finder, each value is an hard value, order is:
 # 0 = lum
@@ -61,18 +61,18 @@ search_width = 60
 lab_offset_table = [50,5,5]
 
 # hard values of block information, !!!!! should be added to calibration mode !!!!!
-block_small_area = 500
-block_width_big = 50
-block_height = 20
-block_height_offset = 5
+block_small_area = 800
+block_width_big = 55
+block_height = 25
+block_height_offset = 20
 
 
 # line size to split blocks
-cut_size = 10     
+cut_size = 10
 # distance to check rotation
-workspace_height = block_height * 10
-workspace_width = int(block_width_big * 2.5)
-off_orr = int(block_height*0.5)
+workspace_height = block_height * 12
+workspace_width = int(block_width_big * 3)
+off_orr = int(block_width_big/4)
 
 # type of color space used, many possibilities
 # https://learnopencv.com/color-spaces-in-opencv-cpp-python/
@@ -184,9 +184,9 @@ while(1):
     # lab(hue-saturation-value)
     lab_frame = cv2.cvtColor(frame, color_space)
     
-    kernal = np.array( [[0,1,0]    ,
+    kernal = np.array( [[1,1,1]    ,
                         [1,1,1]    ,
-                        [0,1,0]    ,], "uint8")
+                        [1,1,1]    ,], "uint8")
     
     # create masks for each color, and check rotation of the masks
     for i, name in enumerate(color_name_table):
@@ -197,9 +197,9 @@ while(1):
         else:
             color_mask_combine = color_mask_table[i]
     
-    color_mask_combine = cv2.dilate(color_mask_combine, kernal, iterations=1)
+    #color_mask_combine = cv2.dilate(color_mask_combine, kernal, iterations=1)
     #color_mask_combine = cv2.erode(color_mask_combine, kernal, iterations=2)
-    contours_combined = mf.create_contour(color_mask_combine, block_small_area, method=cv2.CHAIN_APPROX_NONE)
+    contours_combined = mf.create_contour(color_mask_combine, block_small_area*mask_scale, method=cv2.CHAIN_APPROX_NONE)
     
     if(contours_combined):
         workspace = mf.get_workspace(frame, contours_combined, workspace_width, workspace_height, off_orr, debug, mask_scale)
@@ -222,7 +222,7 @@ while(1):
             for contour in color_contour_table[i]:
                 if(debug):
                     mf.draw_contour(work_frame, contour, color_bgr_table[i], debug)
-                mf.split_contour(color_mask_table[i], contour, block_height, block_height_offset)
+                mf.split_contour(color_mask_table[i], contour, block_height, block_height_offset, cut_size)
             
             color_contour_table[i] = mf.create_contour(color_mask_table[i], block_small_area)
             for contour in color_contour_table[i]:

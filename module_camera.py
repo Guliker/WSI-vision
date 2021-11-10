@@ -107,7 +107,7 @@ def read(cam, scale):
     
     # rotate, 1 = cw, 0 = ccw
     rotated_image=cv2.transpose(bgr_image)
-    rotated_image=cv2.flip(rotated_image,flipCode=1)
+    rotated_image=cv2.flip(rotated_image,flipCode=0)
 	
     #rescale
     width = int(rotated_image.shape[1] * scale)
