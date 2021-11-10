@@ -216,7 +216,7 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
         # find biggest contour to work with
         big_contour = max(contours, key=cv2.contourArea)
         
-        angle = contour_angle(big_contour, offset*2, offset, image, debug)
+        angle = contour_angle(big_contour, offset*2, offset, image, scale, debug)
 
         #angle, idx = min([(abs(val), idx) for (idx, val) in enumerate([angle_r, angle_l])])
                         
