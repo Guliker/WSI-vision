@@ -52,12 +52,12 @@ lab_offset_table = [50,5,5]
 # hard values of block information, !!!!! should be added to calibration mode !!!!!
 block_small_area = 700
 block_width_big = 55
-block_height = 23
-block_height_offset = 8
+block_height = 26
+block_height_offset = 2
 
 
 # line size to split blocks
-cut_size = 10
+cut_size = 12
 erode_dilate = 2
 # distance to check rotation
 workspace_height = block_height * 12

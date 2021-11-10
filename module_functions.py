@@ -141,31 +141,14 @@ def split_contour(image, contour, height, offset, cut_size):
     :param      offset:     Offset the height can be
     """
     x, y, w, h = cv2.boundingRect(contour)
-    stack_height = int(round((h - offset)/height))
-    for index in range(1, stack_height):
-        left_cut = np.array([x, y + (h*(index/float(stack_height)))], dtype='int')
-        right_cut = np.array([x + w, y + (h*(index/float(stack_height)))], dtype='int')
-        cv2.line(image, tuple(left_cut), tuple(right_cut), (0, 0, 0), cut_size)
-        #print("cutting" + str(index) + "    pos: " + str(left_cut) + ":" + str(right_cut))
-        #print(str(stack_height) + "    num: " + str(index/float(stack_height)))
-
-def split_contour2(image, contour, height, offset, cut_size):
-    """
-    :brief      Spits contours that are too high
-    :param      image:      Image to draw lines on to split
-    :param      contour:    Array of contours in the image
-    :param      height:     Maximum height of a contour
-    :param      offset:     Offset the height can be
-    """
-    x, y, w, h = cv2.boundingRect(contour)
     # calculate amount of blocks: (height contour) / (height block)
     stack_height = int(h/height)
     for index in range(1, stack_height):
-        new_y = y + h - (height * index)
+        new_y = (y + h) - ((height * index) + offset)
         split_cut(image, x, new_y, w, cut_size)
 
 def split_cut(image, x , y, w, t):
-    cv2.line(image, tuple(x, y), tuple(x + w, y), (0, 0, 0), t)
+    cv2.line(image, (x, y), (x + w, y), (0, 0, 0), t)
 
 def draw_contour(image, contour, color, debug):
     """
