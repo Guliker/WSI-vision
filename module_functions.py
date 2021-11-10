@@ -78,7 +78,7 @@ def lab_save(color_index, lab_min, lab_max, min_max_table):
     min_max_table[color_index][1] = lab_max
 
 """ ----- ----- COLOR MASK ----- ----- """
-def mask_color(kernal, image, min_max_array, scale=1):
+def mask_color(kernal, image, min_max_array, erode, dilate, scale=1):
     """
     :brief      creates a mask for one color
     :param      kernal:         kernal used for dilation/erosion
@@ -97,9 +97,9 @@ def mask_color(kernal, image, min_max_array, scale=1):
     color_mask = cv2.inRange(image, bound_lower, bound_upper)
     
     # erode to remove little white noise
-    color_mask = cv2.erode(color_mask, kernal, iterations=2)
+    color_mask = cv2.erode(color_mask, kernal, iterations= erode)
     # dilate to increase back to original size
-    color_mask = cv2.dilate(color_mask, kernal, iterations=4)
+    color_mask = cv2.dilate(color_mask, kernal, iterations= dilate)
     
     # rescale image for the mask
     width = int(color_mask.shape[1] * scale)
@@ -223,7 +223,20 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
         angle_r = angle_between(ext_bottom, ext_right)
         angle_l = angle_between(ext_bottom, ext_left) -3.1415
         
-        if(abs(angle_l) > abs(angle_r)):
+        angle_diff = difference(angle_l, angle_r)
+        
+        '''
+        if (1.3 < angle_diff):
+            angle_r_available = True
+            cv2.putText(image, "good", (40,100),
+                        font, 1,
+                        (0, 0, 255))   
+        else:
+            angle_r_available = False
+        '''
+        
+        
+        if((abs(angle_l) > abs(angle_r))):
             angle = angle_r
         else:
             angle = angle_l
@@ -246,11 +259,7 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
         box[1] = [int(midright[0] - (height * np.sin(angle)))*scale, int(midright[1] - (height * np.cos(angle)))*scale]        # topright
         box[2] = [int(midright[0] + (height * np.sin(angle)))*scale, int(midright[1] + (height * np.cos(angle)))*scale]        # bottomright
         box[3] = [int(midleft[0] + (height * np.sin(angle)))*scale, int(midleft[1] + (height * np.cos(angle)))*scale]        # bottomleft
-        
-        if((angle_r - angle_l)>1.5 or (angle_r - angle_l)<-1.64):
-            cv2.putText(image, "good", (40,100),
-                        font, 1,
-                        (0, 0, 255))   
+       
         
         if(debug):
             # draw lowest, left and right points
@@ -304,6 +313,11 @@ def angle_between(p1, p2):
     angle = np.arctan2(p1[1] - p2[1], p2[0] - p1[0])
     return angle
 
+def difference(x,y):
+    if x >= y:
+        return x-y
+    else:
+        return y-x
 """ ----- ----- COUNTING ----- ----- """
 def sort_contours(cnts, clr):
     """

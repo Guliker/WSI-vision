@@ -43,7 +43,7 @@ cam_frame_rate = 20
 device_manager = gx.DeviceManager()
 camera = device_manager.open_device_by_index(1)
 cam_scale = 0.5
-mask_scale = float(1)/4
+mask_scale = float(1)/2
 
 cam_exposure = 8000
 cam_gain = 8
@@ -61,14 +61,15 @@ search_width = 50
 lab_offset_table = [50,5,5]
 
 # hard values of block information, !!!!! should be added to calibration mode !!!!!
-block_small_area = 800
+block_small_area = 700
 block_width_big = 55
-block_height = 25
-block_height_offset = 20
+block_height = 23
+block_height_offset = 8
 
 
 # line size to split blocks
 cut_size = 10
+erode_dilate = 2
 # distance to check rotation
 workspace_height = block_height * 12
 workspace_width = int(block_width_big * 3)
@@ -184,14 +185,13 @@ while(1):
     # lab(hue-saturation-value)
     lab_frame = cv2.cvtColor(frame, color_space)
     
-    kernal = np.array( [[1,1,1]    ,
-                        [1,1,1]    ,
-                        [1,1,1]    ,], "uint8")
+    kernal = np.array( [[1,1]    ,
+                        [1,1]   ,], "uint8")
     
     # create masks for each color, and check rotation of the masks
     for i, name in enumerate(color_name_table):
         #creates a color mask
-        color_mask_table[i] = mf.mask_color(kernal, lab_frame, lab_min_max_table[i], mask_scale)
+        color_mask_table[i] = mf.mask_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1, mask_scale)
         if (i):
             color_mask_combine = cv2.bitwise_or(color_mask_combine, color_mask_table[i])
         else:
@@ -212,7 +212,7 @@ while(1):
         # loop through all the colors and make for each color an mask and contours
         for i, name in enumerate(color_name_table):
             #creates a color mask
-            color_mask_table[i] = mf.mask_color(kernal, lab_frame, lab_min_max_table[i])
+            color_mask_table[i] = mf.mask_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1)
             
             # creates contours of the created mask
             # contour = create_contour(color_mask_table[i])
@@ -282,11 +282,11 @@ while(1):
                     font, 1,
                     (255, 255, 255))    
                 
-    # in debug mode: show the mask frames of each color
-    if(debug):
-        debug_frame = mc.four_in_one_frame(color_mask_table, 0.8)
-        cv2.imshow("rybg_frame", debug_frame)
-        cv2.imshow("color_mask_combine", color_mask_combine)
+        # in debug mode: show the mask frames of each color
+        if(debug):
+            debug_frame = mc.four_in_one_frame(color_mask_table, 0.8)
+            cv2.imshow("rybg_frame", debug_frame)
+            cv2.imshow("color_mask_combine", color_mask_combine)
 
     # show normal view + bounding boxes    
     cv2.imshow("Video", frame)
