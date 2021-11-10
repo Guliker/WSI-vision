@@ -105,15 +105,16 @@ def read(cam, scale):
     #rgb_image = np.dstack((r*2, g, b*2))
     bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
     
+    # rotate, 1 = cw, 0 = ccw
+    rotated_image=cv2.transpose(bgr_image)
+    rotated_image=cv2.flip(rotated_image,flipCode=1)
+	
     #rescale
-    width = int(bgr_image.shape[1] * scale)
-    height = int(bgr_image.shape[0] * scale)
+    width = int(rotated_image.shape[1] * scale)
+    height = int(rotated_image.shape[0] * scale)
     dim = (width, height)
 
-    #print(bgr_image[0][0])
-    #b, g, r = cv2.split(bgr_image)	
-    #print(g)
-    return cv2.resize(bgr_image, dim, interpolation = cv2.INTER_AREA)
+    return cv2.resize(rotated_image, dim, interpolation = cv2.INTER_AREA)
 
 def close(cam):
     """
