@@ -33,8 +33,8 @@ config = True
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 # 0,1 for webcam, 1,0 for droidcam
-cam_resolution = (1000, 1600)
-cam_offset_resolution = (1040, 200)
+cam_resolution = (1600, 900)
+cam_offset_resolution = (744, 560)
 #resolution = (3088, 2048)
 #offset_resolution = (0, 0)
 cam_gain_rgb = (1.6 , 1.0, 2.5)
@@ -252,7 +252,7 @@ while(1):
 
         # sort all blocks from bottom-top and print
         contours,colors = mf.sort_contours(all_contours,all_colors)
-        
+
         all_pos = []
         
         # place mid line
