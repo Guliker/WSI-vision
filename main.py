@@ -32,21 +32,10 @@ debug = False
 config = True
 font = cv2.FONT_HERSHEY_SIMPLEX
 
-# 0,1 for webcam, 1,0 for droidcam
-cam_resolution = (1600, 900)
-cam_offset_resolution = (744, 560)
-#resolution = (3088, 2048)
-#offset_resolution = (0, 0)
-cam_gain_rgb = (1.4 , 1.0, 2.3)
-cam_frame_rate = 20
-
 device_manager = gx.DeviceManager()
 camera = device_manager.open_device_by_index(1)
 cam_scale = 0.5
 mask_scale = float(1)/2
-
-cam_exposure = 8000
-cam_gain = 8
 
 # settings for the calibration window
 x_offset = 0
@@ -97,7 +86,7 @@ def nothing(x):
 """ ----- MAIN LOOP FOR CALIBRATION ----- """
 """ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- """
 #(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[])
-mc.init(camera, device_manager, cam_exposure, cam_resolution, cam_offset_resolution, cam_frame_rate, cam_gain, cam_gain_rgb)
+mc.init(camera, device_manager)
 step_index = 0
 
 while(1):    
@@ -136,10 +125,10 @@ while(1):
         cv2.imshow('img_crop', img_crop)
     
     # show operator instructions
-    cv2.putText(final_frame, "Calibration mode", (150,50),
+    cv2.putText(final_frame, "Calibration mode", (10,150),
                 font, 1,
                 (255,255,255))
-    cv2.putText(final_frame, "press space to save", (150,100),
+    cv2.putText(final_frame, "press space to save", (10,200),
                 font, 1,
                 (255,255,255))
 

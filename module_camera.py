@@ -12,19 +12,23 @@ import gxipy as gx
 import numpy as np
 import cv2
 """ ----- ----- ----- """
+cam_resolution = (1600, 900)
+cam_offset_resolution = (744, 560)
+#resolution = (3088, 2048)
+#offset_resolution = (0, 0)
+
+cam_gain_rgb = (1.4 , 1.0, 2.3)
+cam_frame_rate = 20
+
+cam_exposure = 8000
+cam_gain = 8
 
 """ ----- FUNCTION ----- """
-def init(cam, dev, exp, res, res_o, fps, gain, gain_rgb):
+def init(cam, dev):
     """
     :brief      Starting the camera with all the right settings
     :param      cam:        Camera Device
     :param      dev:        Device Manager
-    :param      exp:        Exposure
-    :param      res:        Resolution (width, height)
-    :param      res_o:      Resolution offset (x, y)
-    :param      fps:        Framerate
-    :param      gain:       Gain all channels
-    :param      gain_rgb:   Gain for each channel (red, green, blue)
     """
     # create a device manager
     dev_num, dev_info_list = dev.update_device_list()
@@ -38,6 +42,23 @@ def init(cam, dev, exp, res, res_o, fps, gain, gain_rgb):
         cam.close_device()
         return
 
+    config(cam, cam_exposure, cam_resolution, cam_offset_resolution, cam_frame_rate, cam_gain, cam_gain_rgb)
+
+    # start data acquisition
+    cam.stream_on()
+
+def config(cam,exp, res, res_o, fps, gain, gain_rgb):
+    """
+    :brief      Changing settings of the camera
+    :param      cam:        Camera Device
+    :param      dev:        Device Manager
+    :param      exp:        Exposure
+    :param      res:        Resolution (width, height)
+    :param      res_o:      Resolution offset (x, y)
+    :param      fps:        Framerate
+    :param      gain:       Gain all channels
+    :param      gain_rgb:   Gain for each channel (red, green, blue)
+    """
     # set default values
     cam.TriggerMode.set(gx.GxSwitchEntry.OFF)
     cam.ExposureTime.set(exp)
@@ -61,10 +82,7 @@ def init(cam, dev, exp, res, res_o, fps, gain, gain_rgb):
     cam.BalanceRatio.set(gain_rgb[1])
     cam.BalanceRatioSelector.set(gx.GxBalanceRatioSelectorEntry.BLUE)
     cam.BalanceRatio.set(gain_rgb[2])
-
-    # start data acquisition
-    cam.stream_on()
-
+    
 def read(cam, scale):
     """
     :brief      Read one frame from the camera

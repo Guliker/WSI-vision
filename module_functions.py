@@ -148,7 +148,25 @@ def split_contour(image, contour, height, offset, cut_size):
         cv2.line(image, tuple(left_cut), tuple(right_cut), (0, 0, 0), cut_size)
         #print("cutting" + str(index) + "    pos: " + str(left_cut) + ":" + str(right_cut))
         #print(str(stack_height) + "    num: " + str(index/float(stack_height)))
-            
+
+def split_contour2(image, contour, height, offset, cut_size):
+    """
+    :brief      Spits contours that are too high
+    :param      image:      Image to draw lines on to split
+    :param      contour:    Array of contours in the image
+    :param      height:     Maximum height of a contour
+    :param      offset:     Offset the height can be
+    """
+    x, y, w, h = cv2.boundingRect(contour)
+    # calculate amount of blocks: (height contour) / (height block)
+    stack_height = int(h/height)
+    for index in range(1, stack_height):
+        new_y = y + h - (height * index)
+        split_cut(image, x, new_y, w, cut_size)
+
+def split_cut(image, x , y, w, t):
+    cv2.line(image, tuple(x, y), tuple(x + w, y), (0, 0, 0), t)
+
 def draw_contour(image, contour, color, debug):
     """
     :brief      Show contours on the main display
@@ -198,48 +216,8 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
         # find biggest contour to work with
         big_contour = max(contours, key=cv2.contourArea)
         
-        #find lowset point
-        ext_index = big_contour[:, :, 1].argmax()
-        ext_bottom = tuple(big_contour[ext_index][0])
-        
-        # find left and right points that are close to the bottom
-        most_left = ext_index
-        most_right = ext_index
-        for i, y in enumerate (big_contour[:, :, 1]):
-            x = big_contour[:, :, 0][i]
-            if((x < ext_bottom[0] + (offset*2) and x > ext_bottom[0] - (offset*2))
-            and (y < ext_bottom[1] + offset and y > ext_bottom[1] - offset)):
-                # more right
-                if(x > big_contour[most_left][0][0]):
-                    most_right = i
-                # more left
-                if(x < big_contour[most_left][0][0]):
-                    most_left = i
-            
-        ext_left = tuple(big_contour[most_left][0])
-        ext_right = tuple(big_contour[most_right][0])
-        
-        # calculate angle of bottom to left and bottom to right
-        angle_r = angle_between(ext_bottom, ext_right)
-        angle_l = angle_between(ext_bottom, ext_left) -3.1415
-        
-        angle_diff = difference(angle_l, angle_r)
-        
-        '''
-        if (1.3 < angle_diff):
-            angle_r_available = True
-            cv2.putText(image, "good", (40,100),
-                        font, 1,
-                        (0, 0, 255))   
-        else:
-            angle_r_available = False
-        '''
-        
-        
-        if((abs(angle_l) > abs(angle_r))):
-            angle = angle_r
-        else:
-            angle = angle_l
+        angle = contour_angle(big_contour, offset*2, offset, image, debug)
+
         #angle, idx = min([(abs(val), idx) for (idx, val) in enumerate([angle_r, angle_l])])
                         
         # create corner points of the workspace
@@ -262,18 +240,6 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
        
         
         if(debug):
-            # draw lowest, left and right points
-            cv2.circle(image, tuple(np.array(ext_bottom)*scale), 4, (255,255,255), -1)
-            cv2.circle(image, tuple(np.array(ext_left)*scale), 4, (255,0,0), -1)
-            cv2.circle(image, tuple(np.array(ext_right)*scale), 4, (0,0,255), -1)
-            
-            # write radiant angle of the workspace
-            cv2.putText(image, "R: " + str(angle_r), (20,180),
-                        font, 1,
-                        (255, 255, 255))
-            cv2.putText(image, "L: " + str(angle_l), (20,250),
-                        font, 1,
-                        (255, 255, 255))
             cv2.putText(image, "b0: " + str(box[0]), (20,300),
                         font, 1,
                         (255, 255, 255))
@@ -286,6 +252,69 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
             cv2.circle(image, tuple(box[3]), 4, (255,0,255), -1)
         
         return np.array(box)
+
+def contour_angle(contour, search_w, search_h, image, scale, debug):
+    """
+    :brief      Returns the angle of a contour
+    :param      contour:    Contour with no approx
+    :param      search_w:   Search area width
+    :param      search_h:   Search area height
+    :return     The closest angle to make te contour flat
+    """
+    #find lowset point
+    ext_index = contour[:, :, 1].argmax()
+    ext_bottom = tuple(contour[ext_index][0])
+    
+    # find left and right points that are close to the bottom
+    most_left = ext_index
+    most_right = ext_index
+    for i, y in enumerate (contour[:, :, 1]):
+        x = contour[:, :, 0][i]
+        if((x < ext_bottom[0] + (search_w) and x > ext_bottom[0] - (search_w))
+        and (y < ext_bottom[1] + search_h and y > ext_bottom[1] - search_h)):
+            # more right
+            if(x > contour[most_left][0][0]):
+                most_right = i
+            # more left
+            if(x < contour[most_left][0][0]):
+                most_left = i
+        
+    ext_left = tuple(contour[most_left][0])
+    ext_right = tuple(contour[most_right][0])
+    
+    # calculate angle of bottom to left and bottom to right
+    angle_r = angle_between(ext_bottom, ext_right)
+    angle_l = angle_between(ext_bottom, ext_left) -3.1415
+    
+    '''
+    angle_diff = difference(angle_l, angle_r)
+    
+    if (1.3 < angle_diff):
+        angle_r_available = True
+        cv2.putText(image, "good", (40,100),
+                    font, 1,
+                    (0, 0, 255))   
+    else:
+        angle_r_available = False
+    '''
+    if(debug):
+        # draw lowest, left and right points
+        cv2.circle(image, tuple(np.array(ext_bottom)*scale), 4, (255,255,255), -1)
+        cv2.circle(image, tuple(np.array(ext_left)*scale), 4, (255,0,0), -1)
+        cv2.circle(image, tuple(np.array(ext_right)*scale), 4, (0,0,255), -1)
+        
+        # write radiant angle of the workspace
+        cv2.putText(image, "R: " + str(angle_r), (20,180),
+                    font, 1,
+                    (255, 255, 255))
+        cv2.putText(image, "L: " + str(angle_l), (20,250),
+                    font, 1,
+                    (255, 255, 255))
+    
+    if((abs(angle_l) > abs(angle_r))):
+        return angle_r
+    else:
+        return angle_l
 
 def transform(image, workspace, width, height):
     """
