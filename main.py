@@ -50,7 +50,7 @@ search_width = 50
 lab_offset_table = [50,5,5]
 
 # hard values of block information, !!!!! should be added to calibration mode !!!!!
-block_small_area = 700
+block_small_area = 500
 block_width_big = 55
 block_height = 26
 block_height_offset = 2
@@ -86,8 +86,10 @@ def nothing(x):
 """ ----- MAIN LOOP FOR CALIBRATION ----- """
 """ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- """
 #(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[])
+print("initialisation ... "),
 mc.init(camera, device_manager)
 step_index = 0
+print("complete")
 
 while(1):    
     # get one frame of the camera
@@ -155,6 +157,7 @@ while(1):
 
 # print all the saved LAB min and max values
 # cv2.destroyAllWindows()
+print("\n-----values saved: ")
 if(debug):
     cv2.destroyWindow("img_crop")
 for i,name in enumerate(color_name_table):
