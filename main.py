@@ -21,6 +21,7 @@ d to open debug windows and info
 import gxipy as gx
 import module_camera as mc
 import module_functions as mf
+import module_socket as ms
 
 #import math
 import numpy as np
@@ -78,6 +79,7 @@ lab_min_max_table = [       [[],[]],        [[],[]],        [[],[]],        [[],
 color_mask_table = [        [],             [],             [],             []          ]   # here are the bit masks stored for each color
 color_contour_table = [     [],             [],             [],             []          ]   # here are the contours of each block stored for each color
 color_mask_combine = []
+full_product = []
 """ ----- ----- ----- """
 
 # trackbar callback fucntion does nothing but required for trackbar
@@ -100,6 +102,7 @@ def get_time(name, start):
 #(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[])
 print("initialisation ... "),
 mc.init(camera, device_manager)
+socket = ms.init()
 step_index = 0
 print("complete")
 
@@ -191,18 +194,25 @@ for i,name in enumerate(color_name_table):
 """ ----- MAIN LOOP BLOCK FINDER ----- """
 mid_pos = 2
 while(1):
-    #time to get frame
-    get_time("process time", start_time)
+
+    if (not full_product):
+        full_product = print(ms.ask_for_data(socket))
+        print(full_product)
+
+    if(debug):
+        #time to get frame
+        get_time("process time", start_time)
     
     # get one frame of the camera
     frame = mc.read(camera, cam_scale)
-    
-    #time to get frame
-    get_time("frame time", start_time)
-    
-    print("")
-    # get start time
-    start_time = datetime.datetime.now()
+
+    if(debug):
+        #time to get frame
+        get_time("frame time", start_time)
+        
+        print("")
+        # get start time
+        start_time = datetime.datetime.now()
     
     # Convert the frame
     # BGR(RGB color space) to 
