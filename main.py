@@ -196,7 +196,7 @@ mid_pos = 2
 while(1):
 
     if (not full_product):
-        full_product = print(ms.ask_for_data(socket))
+        full_product = ms.ask_for_data(socket)
         print(full_product)
 
     if(debug):
