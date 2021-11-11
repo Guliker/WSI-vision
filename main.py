@@ -352,9 +352,6 @@ while(1):
         mid_pos -= 1
     if key == ord('='):
         mid_pos += 1
-    # simulate cobot
-    if key == ord('c'):
-        ms.ask_for_data_cobot()
 
 """ ----- ----- ----- """
 
