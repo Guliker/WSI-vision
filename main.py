@@ -102,23 +102,24 @@ def get_time(name, start):
 #(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[])
 print("initialisation ... "),
 mc.init(camera, device_manager)
-socket = ms.init()
 step_index = 0
 print("complete")
 
 while(1):    
-    #time to get frame
-    get_time("process time", start_time)
+    if(debug):
+        #time to get frame
+        get_time("process time", start_time)
     
     # get one frame of the camera
     frame = mc.read(camera, cam_scale)
-    
-    #time to get frame
-    get_time("frame time", start_time)
-    
-    print("")
-    # get start time
-    start_time = datetime.datetime.now()
+
+    if(debug):
+        #time to get frame
+        get_time("frame time", start_time)
+        
+        print("")
+        # get start time
+        start_time = datetime.datetime.now()
 
     # create copy of frame to show to user
     final_frame = frame.copy()
@@ -196,7 +197,7 @@ mid_pos = 2
 while(1):
 
     if (not full_product):
-        full_product = ms.ask_for_data(socket)
+        full_product = ms.ask_for_data()
         print(full_product)
 
     if(debug):
@@ -351,6 +352,9 @@ while(1):
         mid_pos -= 1
     if key == ord('='):
         mid_pos += 1
+    # simulate cobot
+    if key == ord('c'):
+        ms.ask_for_data_cobot()
 
 """ ----- ----- ----- """
 
