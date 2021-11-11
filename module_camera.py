@@ -18,7 +18,9 @@ cam_offset_resolution = (744, 560)
 #offset_resolution = (0, 0)
 
 cam_gain_rgb = (1.4 , 1.0, 2.3)
-cam_frame_rate = 20
+# good values for 50hz lighting
+# 25; 20; 16.67; 12.5
+cam_frame_rate = 12.5
 
 cam_exposure = 8000
 cam_gain = 8

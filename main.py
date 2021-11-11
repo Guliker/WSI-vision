@@ -25,6 +25,7 @@ import module_functions as mf
 #import math
 import numpy as np
 import cv2
+import datetime
 """ ----- ----- ----- """
 
 """ ----- DEFINE ----- """
@@ -82,6 +83,17 @@ color_mask_combine = []
 # trackbar callback fucntion does nothing but required for trackbar
 def nothing(x):
     pass
+    
+start_time = datetime.datetime.now()
+def get_time(name, start):
+    now = datetime.datetime.now()
+    delta = now - start
+    print("-----"),
+    print(name),
+    print(": "),    
+    print(int(delta.total_seconds() * 1000)),
+    print("ms "),
+
 """ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- """
 """ ----- MAIN LOOP FOR CALIBRATION ----- """
 """ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- """
@@ -92,8 +104,18 @@ step_index = 0
 print("complete")
 
 while(1):    
+    #time to get frame
+    get_time("process time", start_time)
+    
     # get one frame of the camera
     frame = mc.read(camera, cam_scale)
+    
+    #time to get frame
+    get_time("frame time", start_time)
+    
+    print("")
+    # get start time
+    start_time = datetime.datetime.now()
 
     # create copy of frame to show to user
     final_frame = frame.copy()
@@ -169,8 +191,18 @@ for i,name in enumerate(color_name_table):
 """ ----- MAIN LOOP BLOCK FINDER ----- """
 mid_pos = 2
 while(1):
+    #time to get frame
+    get_time("process time", start_time)
+    
     # get one frame of the camera
     frame = mc.read(camera, cam_scale)
+    
+    #time to get frame
+    get_time("frame time", start_time)
+    
+    print("")
+    # get start time
+    start_time = datetime.datetime.now()
     
     # Convert the frame
     # BGR(RGB color space) to 
@@ -193,10 +225,16 @@ while(1):
     #color_mask_combine = cv2.erode(color_mask_combine, kernal, iterations=2)
     contours_combined = mf.create_contour(color_mask_combine, block_small_area*mask_scale, method=cv2.CHAIN_APPROX_NONE)
     
+    #time to get contour
+    #get_time(start_time)
+    
     if(contours_combined):
         workspace = mf.get_workspace(frame, contours_combined, workspace_width, workspace_height, off_orr, debug, mask_scale)
         work_frame = mf.transform(frame, workspace, workspace_width, workspace_height)
         lab_frame = cv2.cvtColor(work_frame, color_space)
+        
+        # time to get workplace
+        #get_time(start_time)
         
         #cv.drawContours(frame, contours, 3, (0,255,0), 3)
         # after rotated make contours of the mask
@@ -233,7 +271,10 @@ while(1):
             cv2.putText(color_mask_table[i], str(lab_min_max_table[i][1]), (10,60),
                         font, 0.5,
                         (255, 255, 255))
-            
+        
+        # time to get all colors
+        #get_time(start_time)
+        
         # combine all the colors for sorting
         all_contours = color_contour_table[0] + color_contour_table[1] + color_contour_table[2] + color_contour_table[3]
         
@@ -284,6 +325,7 @@ while(1):
     cv2.imshow("Video", frame)
     cv2.imshow("Raw Frame", work_frame)
 
+    #get_time(start_time)
 
     key = cv2.waitKey(10) & 0xFF 
     # check spacebar to exit
