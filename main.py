@@ -199,6 +199,8 @@ while(1):
     if (not full_product):
         full_product = ms.ask_for_data()
         print(full_product)
+    else:
+        print("product is:", full_product)
 
     if(debug):
         #time to get frame
