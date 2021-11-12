@@ -34,18 +34,18 @@ def draw_calibration_box(image, x, y, w, h, text, color):
                 cv2.FONT_HERSHEY_SIMPLEX, line_width/4, 
                 color)  
 
-def min_max_calculate(value, offset):
+def find_min_max_array(value, offset=0):
     """
     :brief      Finds the min and max value of an array and corrects with the offset
     :param      value:      Array of values that will be checked
-    :param      offset:     Amount the real values will be changed
+    :param      offset:     Amount the real values will be changed, default = 0
     :return     minimum,    maximum
     """
     min_value = np.amin(value) - offset
     max_value = np.amax(value) + offset
     return [min_value, max_value]
 
-def lab_min_max_calculate(image, color_space, offset_table):
+def find_min_max_color(image, color_space, offset_table):
     """
     :brief      Finds the min and max value of an image
     :param      image:          Array of values that will be checked
@@ -58,15 +58,15 @@ def lab_min_max_calculate(image, color_space, offset_table):
     l, a, b = cv2.split(lab_image)
     
     # lum
-    l_min, l_max = min_max_calculate(l, offset_table[0])
+    l_min, l_max = find_min_max_array(l, offset_table[0])
     # a
-    a_min, a_max = min_max_calculate(a, offset_table[1])
+    a_min, a_max = find_min_max_array(a, offset_table[1])
     # b
-    b_min, b_max = min_max_calculate(b, offset_table[2])
+    b_min, b_max = find_min_max_array(b, offset_table[2])
     
     return[[l_min, a_min, b_min],[l_max, a_max, b_max]] 
 
-def lab_save(color_index, lab_min, lab_max, min_max_table):
+def save_min_max_color(color_index, lab_min, lab_max, min_max_table):
     """
     :brief      Save the lab values for a specific color
     :param      color_index:    Color to save
@@ -78,7 +78,7 @@ def lab_save(color_index, lab_min, lab_max, min_max_table):
     min_max_table[color_index][1] = lab_max
 
 """ ----- ----- COLOR MASK ----- ----- """
-def mask_color(kernal, image, min_max_array, erode, dilate, scale=1):
+def create_bit_mask_for_color(kernal, image, min_max_array, erode, dilate, scale=1):
     """
     :brief      creates a mask for one color
     :param      kernal:         kernal used for dilation/erosion
@@ -132,9 +132,9 @@ def create_contour(image, min_area, method=cv2.CHAIN_APPROX_SIMPLE):
 
     return contours
 
-def split_contour(image, contour, height, offset, cut_size):
+def split_contour_on_height(image, contour, height, offset, cut_size):
     """
-    :brief      Spits contours that are too high
+    :brief      Splits contours that are too high
     :param      image:      Image to draw lines on to split
     :param      contour:    Array of contours in the image
     :param      height:     Maximum height of a contour
@@ -145,9 +145,17 @@ def split_contour(image, contour, height, offset, cut_size):
     stack_height = int(h/height)
     for index in range(1, stack_height):
         new_y = (y + h) - ((height * index) + offset)
-        split_cut(image, x, new_y, w, cut_size)
+        draw_horizontal_line(image, x, new_y, w, cut_size)
 
-def split_cut(image, x , y, w, t):
+def draw_horizontal_line(image, x , y, w, t):
+    """
+    :brief      Makes a black horizontal line on (x,y) with a width to the right
+    :param      image:  Image to draw lines on
+    :param      x:      X position for the left point of the line
+    :param      y:      Y position for the left point of the line
+    :param      w:      Width the line will be to the right
+    :param      t:      Thickness of the line
+    """
     cv2.line(image, (x, y), (x + w, y), (0, 0, 0), t)
 
 def draw_contour(image, contour, color, debug):
@@ -178,7 +186,7 @@ def draw_contour(image, contour, color, debug):
                     (255,255,255))
 
 """----- ----- WORKSPACE ----- -----"""
-def get_workspace(image, contours, width, height, offset, debug, scale=1):
+def create_workspace(image, contours, width, height, offset, debug, scale=1):
     """
     :brief      Makes a workspace centred on the biggest contour
     :param      image:      Image to draw on in debug mode
@@ -199,7 +207,7 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
         # find biggest contour to work with
         big_contour = max(contours, key=cv2.contourArea)
         
-        angle = contour_angle(big_contour, offset*2, offset, image, scale, debug)
+        angle = find_contour_angle(big_contour, offset*2, offset, image, scale, debug)
 
         #angle, idx = min([(abs(val), idx) for (idx, val) in enumerate([angle_r, angle_l])])
                         
@@ -236,7 +244,7 @@ def get_workspace(image, contours, width, height, offset, debug, scale=1):
         
         return np.array(box)
 
-def contour_angle(contour, search_w, search_h, image, scale, debug):
+def find_contour_angle(contour, search_w, search_h, image, scale, debug):
     """
     :brief      Returns the angle of a contour
     :param      contour:    Contour with no approx
@@ -266,8 +274,8 @@ def contour_angle(contour, search_w, search_h, image, scale, debug):
     ext_right = tuple(contour[most_right][0])
     
     # calculate angle of bottom to left and bottom to right
-    angle_r = angle_between(ext_bottom, ext_right)
-    angle_l = angle_between(ext_bottom, ext_left) -3.1415
+    angle_r = find_angle_between(ext_bottom, ext_right)
+    angle_l = find_angle_between(ext_bottom, ext_left) -3.1415
     
     '''
     angle_diff = difference(angle_l, angle_r)
@@ -299,7 +307,7 @@ def contour_angle(contour, search_w, search_h, image, scale, debug):
     else:
         return angle_l
 
-def transform(image, workspace, width, height):
+def transform_workspace(image, workspace, width, height):
     """
     :brief      Rotates and resizes an section off the image
     :param      image:      Original image where the workspace is in
@@ -315,7 +323,7 @@ def transform(image, workspace, width, height):
     m = cv2.getPerspectiveTransform(workspace.astype(np.float32),h)
     return cv2.warpPerspective(image,m,(width, height))
     
-def angle_between(p1, p2):
+def find_angle_between(p1, p2):
     """
     :brief      Calculates smallest angle between two points, always under 180
     :param      p1:     Point 1 of the line
@@ -325,13 +333,15 @@ def angle_between(p1, p2):
     angle = np.arctan2(p1[1] - p2[1], p2[0] - p1[0])
     return angle
 
+'''
 def difference(x,y):
     if x >= y:
         return x-y
     else:
         return y-x
+'''
 """ ----- ----- COUNTING ----- ----- """
-def sort_contours(cnts, clr):
+def sort_contours_on_height(cnts, clr):
     """
     :brief      Sort a contour array in the Y-axis
     :param      cnts:   Array of contours to be sorted
@@ -360,6 +370,18 @@ def block_color_fill(fill_array, cnt_array, color_index, block_width):
     :param      cnt_array:      Array of contours to get the width from
     :param      color_index:    Type of color to fill the array with
     :param      block_width:    Width of a big block to check against
+
+    Examples:
+        fill_array = []
+
+        block_color_fill(cnt_array = [1,2,3,4,5], color_index = 1)
+        fill_array = [2,2,2,2,2]
+
+        block_color_fill(cnt_array = [6,7,8], color_index = 2)
+        fill_array = [2,2,2,2,2,3,3,3]
+
+        block_color_fill(cnt_array = [9,10], color_index = 0)
+        fill_array = [2,2,2,2,2,3,3,3,1,1]
     """
     for i in range(0,len(cnt_array)):
         x, y, w, h = cv2.boundingRect(cnt_array[i])

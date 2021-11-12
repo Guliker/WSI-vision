@@ -1,0 +1,165 @@
+\hypertarget{classgxipy_1_1gxiapi_1_1_raw_image}{}\doxysection{gxipy.\+gxiapi.\+Raw\+Image Class Reference}
+\label{classgxipy_1_1gxiapi_1_1_raw_image}\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_aec0012f58db85e544d098f083dee82fe}\label{classgxipy_1_1gxiapi_1_1_raw_image_aec0012f58db85e544d098f083dee82fe}} 
+def {\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, frame\+\_\+data)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_a6e6524c568ee255ba3b9911df5259478}{convert}} (self, mode, flip=False, valid\+\_\+bits=Dx\+Valid\+Bit.\+BIT4\+\_\+11, convert\+\_\+type=Dx\+Bayer\+Convert\+Type.\+NEIGHBOUR)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_a79ab05177fa905b846c030a7027aead1}{defective\+\_\+pixel\+\_\+correct}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_aae2486102361455490c1f42ccc5f1750}{get\+\_\+numpy\+\_\+array}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_a05852cfb9368231b6ed558362749e13f}{get\+\_\+data}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_ae4d768f227913866b885a619cc1a8ab5}{save\+\_\+raw}} (self, file\+\_\+path)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_ab94735c704ce8aa2c0b53f0782c14204}{get\+\_\+status}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_a1d0d3f05c840c569e8b44dc26a1eae4e}{get\+\_\+width}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_ae6ac5f953454b595aba1a97483f2fba1}{get\+\_\+height}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_a4308f0c22e8fde3f2352b810fc4ec0e0}{get\+\_\+pixel\+\_\+format}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_ab28e35c15a0f7fb2247dea357e24da84}{get\+\_\+image\+\_\+size}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_a6c72de17932ea2a8eb04e3432b19ad19}{get\+\_\+frame\+\_\+id}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_raw_image_a79a0613ae9e0345fa26c0190e49c6702}{get\+\_\+timestamp}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_a75306530ab5914ef82ac0fd13f83c83c}\label{classgxipy_1_1gxiapi_1_1_raw_image_a75306530ab5914ef82ac0fd13f83c83c}} 
+{\bfseries frame\+\_\+data}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_a6e6524c568ee255ba3b9911df5259478}\label{classgxipy_1_1gxiapi_1_1_raw_image_a6e6524c568ee255ba3b9911df5259478}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!convert@{convert}}
+\index{convert@{convert}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{convert()}{convert()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+convert (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{mode,  }\item[{}]{flip = {\ttfamily False},  }\item[{}]{valid\+\_\+bits = {\ttfamily DxValidBit.BIT4\+\_\+11},  }\item[{}]{convert\+\_\+type = {\ttfamily DxBayerConvertType.NEIGHBOUR} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Image format convert
+:param      mode:           "RAW8":     convert raw16 RAWImage object to raw8 RAWImage object
+                            "RGB":   convert raw8 RAWImage object to RGBImage object
+:param      flip:           Output image flip flag
+                            True: turn the image upside down
+                            False: do not flip
+:param      valid_bits:     Data valid digit, See detail in DxValidBit, raw8 don't this param
+:param      convert_type:   Bayer convert type, See detail in DxBayerConvertType
+:return:    return image object according to mode parameter
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_a79ab05177fa905b846c030a7027aead1}\label{classgxipy_1_1gxiapi_1_1_raw_image_a79ab05177fa905b846c030a7027aead1}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!defective\_pixel\_correct@{defective\_pixel\_correct}}
+\index{defective\_pixel\_correct@{defective\_pixel\_correct}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{defective\_pixel\_correct()}{defective\_pixel\_correct()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+defective\+\_\+pixel\+\_\+correct (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Auto raw defective pixel correct,Support image from Raw8 to Raw16, the bit number is actual
+            bit number, when it is more than 8, the actual bit can be every number between 9 to 16.
+            And if image format is packed, you need convert it to Raw16.
+            This function should be used in each frame.
+:return:    None
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_a05852cfb9368231b6ed558362749e13f}\label{classgxipy_1_1gxiapi_1_1_raw_image_a05852cfb9368231b6ed558362749e13f}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!get\_data@{get\_data}}
+\index{get\_data@{get\_data}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{get\_data()}{get\_data()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+get\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      get Raw data
+:return:    raw data[string]
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_a6c72de17932ea2a8eb04e3432b19ad19}\label{classgxipy_1_1gxiapi_1_1_raw_image_a6c72de17932ea2a8eb04e3432b19ad19}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!get\_frame\_id@{get\_frame\_id}}
+\index{get\_frame\_id@{get\_frame\_id}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{get\_frame\_id()}{get\_frame\_id()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+get\+\_\+frame\+\_\+id (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Get  frame id of raw data
+:return:    frame id
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_ae6ac5f953454b595aba1a97483f2fba1}\label{classgxipy_1_1gxiapi_1_1_raw_image_ae6ac5f953454b595aba1a97483f2fba1}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!get\_height@{get\_height}}
+\index{get\_height@{get\_height}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{get\_height()}{get\_height()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+get\+\_\+height (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief     get height of raw data
+:return:
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_ab28e35c15a0f7fb2247dea357e24da84}\label{classgxipy_1_1gxiapi_1_1_raw_image_ab28e35c15a0f7fb2247dea357e24da84}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!get\_image\_size@{get\_image\_size}}
+\index{get\_image\_size@{get\_image\_size}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{get\_image\_size()}{get\_image\_size()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+get\+\_\+image\+\_\+size (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Get raw data size
+:return:    size
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_aae2486102361455490c1f42ccc5f1750}\label{classgxipy_1_1gxiapi_1_1_raw_image_aae2486102361455490c1f42ccc5f1750}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!get\_numpy\_array@{get\_numpy\_array}}
+\index{get\_numpy\_array@{get\_numpy\_array}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{get\_numpy\_array()}{get\_numpy\_array()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+get\+\_\+numpy\+\_\+array (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Return data as a numpy.Array type with dimension Image.height * Image.width
+:return:    numpy.Array objects
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_a4308f0c22e8fde3f2352b810fc4ec0e0}\label{classgxipy_1_1gxiapi_1_1_raw_image_a4308f0c22e8fde3f2352b810fc4ec0e0}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!get\_pixel\_format@{get\_pixel\_format}}
+\index{get\_pixel\_format@{get\_pixel\_format}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{get\_pixel\_format()}{get\_pixel\_format()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+get\+\_\+pixel\+\_\+format (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Get image pixel format
+:return:    pixel format
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_ab94735c704ce8aa2c0b53f0782c14204}\label{classgxipy_1_1gxiapi_1_1_raw_image_ab94735c704ce8aa2c0b53f0782c14204}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!get\_status@{get\_status}}
+\index{get\_status@{get\_status}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{get\_status()}{get\_status()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+get\+\_\+status (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      get raw data status
+:return:    status
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_a79a0613ae9e0345fa26c0190e49c6702}\label{classgxipy_1_1gxiapi_1_1_raw_image_a79a0613ae9e0345fa26c0190e49c6702}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!get\_timestamp@{get\_timestamp}}
+\index{get\_timestamp@{get\_timestamp}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{get\_timestamp()}{get\_timestamp()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+get\+\_\+timestamp (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Get timestamp of raw data
+:return:    timestamp
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_a1d0d3f05c840c569e8b44dc26a1eae4e}\label{classgxipy_1_1gxiapi_1_1_raw_image_a1d0d3f05c840c569e8b44dc26a1eae4e}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!get\_width@{get\_width}}
+\index{get\_width@{get\_width}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{get\_width()}{get\_width()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+get\+\_\+width (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      get width of raw data
+:return:    width
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_raw_image_ae4d768f227913866b885a619cc1a8ab5}\label{classgxipy_1_1gxiapi_1_1_raw_image_ae4d768f227913866b885a619cc1a8ab5}} 
+\index{gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}!save\_raw@{save\_raw}}
+\index{save\_raw@{save\_raw}!gxipy.gxiapi.RawImage@{gxipy.gxiapi.RawImage}}
+\doxysubsubsection{\texorpdfstring{save\_raw()}{save\_raw()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Raw\+Image.\+save\+\_\+raw (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      save raw data
+:param      file_path:      file path
+:return:    None
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cxcg/\+Documents/\+Git\+Hub/\+WSI-\/vision/gxipy/gxiapi.\+py\end{DoxyCompactItemize}

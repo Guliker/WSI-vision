@@ -1,0 +1,109 @@
+\hypertarget{namespacemodule__camera}{}\doxysection{module\+\_\+camera Namespace Reference}
+\label{namespacemodule__camera}\index{module\_camera@{module\_camera}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemodule__camera_ab6bdfa9d1641b0097336ca818255a303}{init}} (cam, dev)
+\item 
+def \mbox{\hyperlink{namespacemodule__camera_aab8087e81af463ac3d6e431ee75ce0d6}{config}} (cam, exp, res, res\+\_\+o, fps, gain, gain\+\_\+rgb)
+\item 
+def \mbox{\hyperlink{namespacemodule__camera_a8276248d8f0226d3d338fd3ff4b680f7}{read}} (cam, scale)
+\item 
+def \mbox{\hyperlink{namespacemodule__camera_a3f2abb51f8ae9fd9c7df7ae5a4b60d4c}{close}} (cam)
+\item 
+def \mbox{\hyperlink{namespacemodule__camera_aa20b9f12ce6311b027f28c927201199b}{four\+\_\+in\+\_\+one\+\_\+frame}} (four\+\_\+frames, scale)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacemodule__camera_a8684218428f8c7c412b28b84d624a1c6}\label{namespacemodule__camera_a8684218428f8c7c412b28b84d624a1c6}} 
+tuple {\bfseries cam\+\_\+resolution} = (1600, 900)
+\item 
+\mbox{\Hypertarget{namespacemodule__camera_ab1ccf03d80f8b651ffc39655bc2c447c}\label{namespacemodule__camera_ab1ccf03d80f8b651ffc39655bc2c447c}} 
+tuple {\bfseries cam\+\_\+offset\+\_\+resolution} = (744, 560)
+\item 
+\mbox{\Hypertarget{namespacemodule__camera_a346492a06d8c752277c3cc9c7b1674ae}\label{namespacemodule__camera_a346492a06d8c752277c3cc9c7b1674ae}} 
+tuple {\bfseries cam\+\_\+gain\+\_\+rgb} = (1.\+4 , 1.\+0, 2.\+3)
+\item 
+\mbox{\Hypertarget{namespacemodule__camera_ad6501aef3675b3604feb113a796e82bc}\label{namespacemodule__camera_ad6501aef3675b3604feb113a796e82bc}} 
+float {\bfseries cam\+\_\+frame\+\_\+rate} = 12.\+5
+\item 
+\mbox{\Hypertarget{namespacemodule__camera_a1143d98c3e4756560a3fc1159b81a0b8}\label{namespacemodule__camera_a1143d98c3e4756560a3fc1159b81a0b8}} 
+int {\bfseries cam\+\_\+exposure} = 8000
+\item 
+\mbox{\Hypertarget{namespacemodule__camera_a86ffd795849f30912d38e6afe321e148}\label{namespacemodule__camera_a86ffd795849f30912d38e6afe321e148}} 
+int {\bfseries cam\+\_\+gain} = 8
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Used to get each frame from 'Daheng Imaging' type camera's
+This code has only been tested with the MER2-630-60U3C
+
+API used from Daheng imaging SDK:
+Download path: https://www.get-cameras.com/customerdownloads?submissionGuid=3d8fbd3b-0ca4-4de2-b947-2480dd706c29
+API can only be used to Python 3.5
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemodule__camera_a3f2abb51f8ae9fd9c7df7ae5a4b60d4c}\label{namespacemodule__camera_a3f2abb51f8ae9fd9c7df7ae5a4b60d4c}} 
+\index{module\_camera@{module\_camera}!close@{close}}
+\index{close@{close}!module\_camera@{module\_camera}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily def module\+\_\+camera.\+close (\begin{DoxyParamCaption}\item[{}]{cam }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Closing the camera and disabling the streaming
+:param      cam:        Camera Device
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__camera_aab8087e81af463ac3d6e431ee75ce0d6}\label{namespacemodule__camera_aab8087e81af463ac3d6e431ee75ce0d6}} 
+\index{module\_camera@{module\_camera}!config@{config}}
+\index{config@{config}!module\_camera@{module\_camera}}
+\doxysubsubsection{\texorpdfstring{config()}{config()}}
+{\footnotesize\ttfamily def module\+\_\+camera.\+config (\begin{DoxyParamCaption}\item[{}]{cam,  }\item[{}]{exp,  }\item[{}]{res,  }\item[{}]{res\+\_\+o,  }\item[{}]{fps,  }\item[{}]{gain,  }\item[{}]{gain\+\_\+rgb }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Changing settings of the camera
+:param      cam:        Camera Device
+:param      dev:        Device Manager
+:param      exp:        Exposure
+:param      res:        Resolution (width, height)
+:param      res_o:      Resolution offset (x, y)
+:param      fps:        Framerate
+:param      gain:       Gain all channels
+:param      gain_rgb:   Gain for each channel (red, green, blue)
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__camera_aa20b9f12ce6311b027f28c927201199b}\label{namespacemodule__camera_aa20b9f12ce6311b027f28c927201199b}} 
+\index{module\_camera@{module\_camera}!four\_in\_one\_frame@{four\_in\_one\_frame}}
+\index{four\_in\_one\_frame@{four\_in\_one\_frame}!module\_camera@{module\_camera}}
+\doxysubsubsection{\texorpdfstring{four\_in\_one\_frame()}{four\_in\_one\_frame()}}
+{\footnotesize\ttfamily def module\+\_\+camera.\+four\+\_\+in\+\_\+one\+\_\+frame (\begin{DoxyParamCaption}\item[{}]{four\+\_\+frames,  }\item[{}]{scale }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Combines four frames in this order
+            0 1
+            2 3
+:param      four_frames:    Four numpy arrays of images [image0, image1, image2, image3]
+:param      scale:          Factor to scale the image, 1 = normal
+:return:    Numpy array of the combined image
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__camera_ab6bdfa9d1641b0097336ca818255a303}\label{namespacemodule__camera_ab6bdfa9d1641b0097336ca818255a303}} 
+\index{module\_camera@{module\_camera}!init@{init}}
+\index{init@{init}!module\_camera@{module\_camera}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily def module\+\_\+camera.\+init (\begin{DoxyParamCaption}\item[{}]{cam,  }\item[{}]{dev }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Starting the camera with all the right settings
+:param      cam:        Camera Device
+:param      dev:        Device Manager
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__camera_a8276248d8f0226d3d338fd3ff4b680f7}\label{namespacemodule__camera_a8276248d8f0226d3d338fd3ff4b680f7}} 
+\index{module\_camera@{module\_camera}!read@{read}}
+\index{read@{read}!module\_camera@{module\_camera}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily def module\+\_\+camera.\+read (\begin{DoxyParamCaption}\item[{}]{cam,  }\item[{}]{scale }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Read one frame from the camera
+:param      cam:        Camera Device
+:param      scale:      Factor to scale the image, 1 = normal
+:return     Numpy array of the image in BGR
+\end{DoxyVerb}
+ 

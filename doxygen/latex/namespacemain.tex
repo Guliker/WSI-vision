@@ -1,0 +1,213 @@
+\hypertarget{namespacemain}{}\doxysection{main Namespace Reference}
+\label{namespacemain}\index{main@{main}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacemain_a4fc2f57bb4b5963d3a7eacd5a1f55d4a}\label{namespacemain_a4fc2f57bb4b5963d3a7eacd5a1f55d4a}} 
+def {\bfseries nothing} (x)
+\item 
+\mbox{\Hypertarget{namespacemain_a1c9c575c38a61fb05c89fd70c85f00f3}\label{namespacemain_a1c9c575c38a61fb05c89fd70c85f00f3}} 
+def {\bfseries get\+\_\+time} (name, start)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacemain_a7e1ddce5792139e2174735e6619ae428}\label{namespacemain_a7e1ddce5792139e2174735e6619ae428}} 
+bool {\bfseries debug} = False
+\begin{DoxyCompactList}\small\item\em state of the debug mode \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_a9a4a3b1df97805f201ed1f830e887a53}\label{namespacemain_a9a4a3b1df97805f201ed1f830e887a53}} 
+{\bfseries font} = cv2.\+FONT\+\_\+\+HERSHEY\+\_\+\+SIMPLEX
+\begin{DoxyCompactList}\small\item\em font used in all the drawn text \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_addc5d10618ff0519f51ff581ebc3cee9}\label{namespacemain_addc5d10618ff0519f51ff581ebc3cee9}} 
+{\bfseries device\+\_\+manager} = gx.\+Device\+Manager()
+\item 
+\mbox{\Hypertarget{namespacemain_a6bdf8be06356a4842cde1e2400630bfc}\label{namespacemain_a6bdf8be06356a4842cde1e2400630bfc}} 
+{\bfseries camera} = device\+\_\+manager.\+open\+\_\+device\+\_\+by\+\_\+index(1)
+\item 
+\mbox{\Hypertarget{namespacemain_a97eca30fbe558abee9f90e65bf47f3c6}\label{namespacemain_a97eca30fbe558abee9f90e65bf47f3c6}} 
+float {\bfseries cam\+\_\+scale} = 0.\+5
+\item 
+\mbox{\Hypertarget{namespacemain_a7e45bcb5552ef02fdee70ec872564df6}\label{namespacemain_a7e45bcb5552ef02fdee70ec872564df6}} 
+int {\bfseries mask\+\_\+scale\+\_\+rotation} = float(1)/2
+\item 
+\mbox{\Hypertarget{namespacemain_abd2c2ae5293e033745aead2ccfc46206}\label{namespacemain_abd2c2ae5293e033745aead2ccfc46206}} 
+int {\bfseries calibration\+\_\+search\+\_\+height} = 350
+\begin{DoxyCompactList}\small\item\em settings for the calibration window \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_abb17bdd9ea378f3a1acb2fd858c02c2d}\label{namespacemain_abb17bdd9ea378f3a1acb2fd858c02c2d}} 
+int {\bfseries calibration\+\_\+search\+\_\+width} = 50
+\begin{DoxyCompactList}\small\item\em settings for the calibration window \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_abd106cc927e30c390c959e6d0107498a}\label{namespacemain_abd106cc927e30c390c959e6d0107498a}} 
+list {\bfseries lab\+\_\+offset\+\_\+table} = \mbox{[}50,5,5\mbox{]}
+\begin{DoxyCompactList}\small\item\em lab offsets for the color finder, each value is an hard value, order is\+: 0 = lum 1 = a; green -\/ magenta 2 = b; blue -\/ yellow \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_a0fd1c744b6add516f1ee985c5fd30eb6}\label{namespacemain_a0fd1c744b6add516f1ee985c5fd30eb6}} 
+int {\bfseries block\+\_\+small\+\_\+area} = 500
+\begin{DoxyCompactList}\small\item\em values of a block information \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_a7fc0792e7de33d674ea5e40bc21c19c2}\label{namespacemain_a7fc0792e7de33d674ea5e40bc21c19c2}} 
+int {\bfseries block\+\_\+width\+\_\+big} = 55
+\item 
+\mbox{\Hypertarget{namespacemain_a209a0c709014f1f9272ee8d4177fbbd6}\label{namespacemain_a209a0c709014f1f9272ee8d4177fbbd6}} 
+int {\bfseries block\+\_\+height} = 26
+\item 
+\mbox{\Hypertarget{namespacemain_a3918840e3e99a3d21164a68064831af3}\label{namespacemain_a3918840e3e99a3d21164a68064831af3}} 
+int {\bfseries block\+\_\+height\+\_\+offset} = 2
+\item 
+\mbox{\Hypertarget{namespacemain_a16056d89a0defac71901de0eb612b450}\label{namespacemain_a16056d89a0defac71901de0eb612b450}} 
+int {\bfseries block\+\_\+split\+\_\+cut\+\_\+size} = 12
+\begin{DoxyCompactList}\small\item\em line size to split blocks \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_aaa41289fcadc63f422e62cebe9a76157}\label{namespacemain_aaa41289fcadc63f422e62cebe9a76157}} 
+int {\bfseries erode\+\_\+dilate} = 2
+\begin{DoxyCompactList}\small\item\em ammount of erosion and dilation applied to the color masks \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_a308950ee87da20aa2843fe273a91a023}\label{namespacemain_a308950ee87da20aa2843fe273a91a023}} 
+int {\bfseries workspace\+\_\+height} = block\+\_\+height $\ast$ 12
+\begin{DoxyCompactList}\small\item\em distance to check rotation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_ae09abea099fd0629413ca1bba67fd748}\label{namespacemain_ae09abea099fd0629413ca1bba67fd748}} 
+{\bfseries workspace\+\_\+width} = int(block\+\_\+width\+\_\+big $\ast$ 3)
+\item 
+\mbox{\Hypertarget{namespacemain_a3129989a6dd834db92563db3b5947c28}\label{namespacemain_a3129989a6dd834db92563db3b5947c28}} 
+{\bfseries contour\+\_\+rotation\+\_\+search\+\_\+area} = int(block\+\_\+width\+\_\+big/4)
+\item 
+\mbox{\Hypertarget{namespacemain_ad85f2075474fba5d346d3e9f413e2be6}\label{namespacemain_ad85f2075474fba5d346d3e9f413e2be6}} 
+{\bfseries color\+\_\+space} = cv2.\+COLOR\+\_\+\+BGR2\+LAB
+\begin{DoxyCompactList}\small\item\em type of color space used, many possibilities \href{https://learnopencv.com/color-spaces-in-opencv-cpp-python/}{\texttt{ https\+://learnopencv.\+com/color-\/spaces-\/in-\/opencv-\/cpp-\/python/}} COLOR\+\_\+\+BGR2\+RGB, COLOR\+\_\+\+BGR2\+LAB, COLOR\+\_\+\+BGR2\+YCr\+Cb, COLOR\+\_\+\+BGR2\+HSV, COLOR\+\_\+\+BGR2\+HSL \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_ab70ab73e9fecc7bf59c365e96999ddeb}\label{namespacemain_ab70ab73e9fecc7bf59c365e96999ddeb}} 
+tuple {\bfseries color\+\_\+name\+\_\+table} = ( \char`\"{}green\char`\"{}, \char`\"{}yellow\char`\"{}, \char`\"{}blue\char`\"{}, \char`\"{}red\char`\"{} )
+\begin{DoxyCompactList}\small\item\em all logic tables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_a15587b085eecfde6a59bcd6863ef5d22}\label{namespacemain_a15587b085eecfde6a59bcd6863ef5d22}} 
+tuple {\bfseries color\+\_\+bgr\+\_\+table} = ( (0,200,0), (0,190,255), (255,70,0), (0,0,255) )
+\item 
+\mbox{\Hypertarget{namespacemain_acb9e45e66f19224d202f290bfb431f5e}\label{namespacemain_acb9e45e66f19224d202f290bfb431f5e}} 
+list {\bfseries lab\+\_\+min\+\_\+max\+\_\+table} = \mbox{[} \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]}, \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]}, \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]}, \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]} \mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_abab05689259e38a7c5f4dd9e83106e99}\label{namespacemain_abab05689259e38a7c5f4dd9e83106e99}} 
+list {\bfseries color\+\_\+mask\+\_\+table} = \mbox{[} \mbox{[}$\,$\mbox{]}, \mbox{[}$\,$\mbox{]}, \mbox{[}$\,$\mbox{]}, \mbox{[}$\,$\mbox{]} \mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_a2ad9a2b6aa531fb2a848f935c817fd02}\label{namespacemain_a2ad9a2b6aa531fb2a848f935c817fd02}} 
+list {\bfseries color\+\_\+contour\+\_\+table} = \mbox{[} \mbox{[}$\,$\mbox{]}, \mbox{[}$\,$\mbox{]}, \mbox{[}$\,$\mbox{]}, \mbox{[}$\,$\mbox{]} \mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_ad3074c9eadaf085032839d2409b34857}\label{namespacemain_ad3074c9eadaf085032839d2409b34857}} 
+list {\bfseries color\+\_\+mask\+\_\+combine} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_a1090b3509955c0d153284833a5d33874}\label{namespacemain_a1090b3509955c0d153284833a5d33874}} 
+list {\bfseries full\+\_\+product} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_ae57958345b17f9ca8597330ba07e1a1c}\label{namespacemain_ae57958345b17f9ca8597330ba07e1a1c}} 
+{\bfseries start\+\_\+time} = datetime.\+datetime.\+now()
+\item 
+\mbox{\Hypertarget{namespacemain_ad9747c7855b9a13a1eb7154adf31061f}\label{namespacemain_ad9747c7855b9a13a1eb7154adf31061f}} 
+int {\bfseries step\+\_\+index} = 0
+\item 
+\mbox{\Hypertarget{namespacemain_add977d49531fd983e5bc8c1175977340}\label{namespacemain_add977d49531fd983e5bc8c1175977340}} 
+{\bfseries frame} = mc.\+read(camera, cam\+\_\+scale)
+\item 
+\mbox{\Hypertarget{namespacemain_a1a9c5d2d76da980da40df302b6dcce88}\label{namespacemain_a1a9c5d2d76da980da40df302b6dcce88}} 
+{\bfseries final\+\_\+frame} = frame.\+copy()
+\item 
+\mbox{\Hypertarget{namespacemain_a2b0bdd8320e857b9483772aae538352a}\label{namespacemain_a2b0bdd8320e857b9483772aae538352a}} 
+{\bfseries height}
+\item 
+\mbox{\Hypertarget{namespacemain_a1ab2814363702aa04da32dd0ace34cd8}\label{namespacemain_a1ab2814363702aa04da32dd0ace34cd8}} 
+{\bfseries width}
+\item 
+\mbox{\Hypertarget{namespacemain_ac7b933db3f3efb10dba64181f4901c84}\label{namespacemain_ac7b933db3f3efb10dba64181f4901c84}} 
+{\bfseries depth}
+\item 
+\mbox{\Hypertarget{namespacemain_a8d216d76ebd2f897ab8010e2890ee21e}\label{namespacemain_a8d216d76ebd2f897ab8010e2890ee21e}} 
+{\bfseries x} = int((width -\/ \mbox{\hyperlink{namespacemain_abb17bdd9ea378f3a1acb2fd858c02c2d}{calibration\+\_\+search\+\_\+width}})/2)
+\item 
+\mbox{\Hypertarget{namespacemain_acbd21618d99e2b00619047e85ee9fca6}\label{namespacemain_acbd21618d99e2b00619047e85ee9fca6}} 
+{\bfseries y} = int((height -\/ \mbox{\hyperlink{namespacemain_abd2c2ae5293e033745aead2ccfc46206}{calibration\+\_\+search\+\_\+height}})/2)
+\item 
+\mbox{\Hypertarget{namespacemain_ad0aec75ea8fe83d778b9cff761669eb8}\label{namespacemain_ad0aec75ea8fe83d778b9cff761669eb8}} 
+{\bfseries img\+\_\+crop} = frame\mbox{[}y\+:y+\mbox{\hyperlink{namespacemain_abd2c2ae5293e033745aead2ccfc46206}{calibration\+\_\+search\+\_\+height}}, x\+:x+\mbox{\hyperlink{namespacemain_abb17bdd9ea378f3a1acb2fd858c02c2d}{calibration\+\_\+search\+\_\+width}}\mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_a6fc4350efaa253eea2fe784116405687}\label{namespacemain_a6fc4350efaa253eea2fe784116405687}} 
+{\bfseries lab\+\_\+min}
+\item 
+\mbox{\Hypertarget{namespacemain_acdaad83b821594482f9d3852948fc9df}\label{namespacemain_acdaad83b821594482f9d3852948fc9df}} 
+{\bfseries lab\+\_\+max}
+\item 
+\mbox{\Hypertarget{namespacemain_af2a62cef4d385954460aa940a4d29e5f}\label{namespacemain_af2a62cef4d385954460aa940a4d29e5f}} 
+int {\bfseries key} = cv2.\+wait\+Key(10) \& 0x\+FF
+\item 
+\mbox{\Hypertarget{namespacemain_a82b83fbd8690057b3c546be7a920884c}\label{namespacemain_a82b83fbd8690057b3c546be7a920884c}} 
+int {\bfseries mid\+\_\+pos} = 2
+\item 
+\mbox{\Hypertarget{namespacemain_ab7172c82558b2b177c27deb9e1ce6de9}\label{namespacemain_ab7172c82558b2b177c27deb9e1ce6de9}} 
+{\bfseries lab\+\_\+frame} = cv2.\+cvt\+Color(frame, \mbox{\hyperlink{namespacemain_ad85f2075474fba5d346d3e9f413e2be6}{color\+\_\+space}})
+\item 
+\mbox{\hyperlink{namespacemain_aa35b6f2aa80b399eb966fc5d6d916504}{kernal}}
+\item 
+\mbox{\Hypertarget{namespacemain_ade385e5fe8ddbfd3589c9fd5bc404dbb}\label{namespacemain_ade385e5fe8ddbfd3589c9fd5bc404dbb}} 
+{\bfseries contours\+\_\+combined} = mf.\+create\+\_\+contour(color\+\_\+mask\+\_\+combine, \mbox{\hyperlink{namespacemain_a0fd1c744b6add516f1ee985c5fd30eb6}{block\+\_\+small\+\_\+area}}$\ast$mask\+\_\+scale\+\_\+rotation, method=cv2.\+CHAIN\+\_\+\+APPROX\+\_\+\+NONE)
+\item 
+\mbox{\Hypertarget{namespacemain_ab581b55123a485174473bac676e37fff}\label{namespacemain_ab581b55123a485174473bac676e37fff}} 
+{\bfseries workspace} = mf.\+create\+\_\+workspace(frame, contours\+\_\+combined, workspace\+\_\+width, \mbox{\hyperlink{namespacemain_a308950ee87da20aa2843fe273a91a023}{workspace\+\_\+height}}, contour\+\_\+rotation\+\_\+search\+\_\+area, \mbox{\hyperlink{namespacemain_a7e1ddce5792139e2174735e6619ae428}{debug}}, mask\+\_\+scale\+\_\+rotation)
+\item 
+\mbox{\Hypertarget{namespacemain_abf57f22dee7ffb08b6faa67baf1a0092}\label{namespacemain_abf57f22dee7ffb08b6faa67baf1a0092}} 
+{\bfseries work\+\_\+frame} = mf.\+transform\+\_\+workspace(frame, workspace, workspace\+\_\+width, \mbox{\hyperlink{namespacemain_a308950ee87da20aa2843fe273a91a023}{workspace\+\_\+height}})
+\item 
+\mbox{\Hypertarget{namespacemain_a2702f4e55fadc8fe7d3abd9431b6b00f}\label{namespacemain_a2702f4e55fadc8fe7d3abd9431b6b00f}} 
+list {\bfseries all\+\_\+contours} = color\+\_\+contour\+\_\+table\mbox{[}0\mbox{]} + color\+\_\+contour\+\_\+table\mbox{[}1\mbox{]} + color\+\_\+contour\+\_\+table\mbox{[}2\mbox{]} + color\+\_\+contour\+\_\+table\mbox{[}3\mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_ad869b4e038adc8de99299b99f5647951}\label{namespacemain_ad869b4e038adc8de99299b99f5647951}} 
+list {\bfseries all\+\_\+colors} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_a10e52c461f8c7e3c210ee8a0b1b34b25}\label{namespacemain_a10e52c461f8c7e3c210ee8a0b1b34b25}} 
+{\bfseries contours}
+\item 
+\mbox{\Hypertarget{namespacemain_a67b9a3a235dbab4a6b57bb5152c350c1}\label{namespacemain_a67b9a3a235dbab4a6b57bb5152c350c1}} 
+{\bfseries colors}
+\item 
+\mbox{\Hypertarget{namespacemain_a993118f39026271080746db4a91ec394}\label{namespacemain_a993118f39026271080746db4a91ec394}} 
+list {\bfseries all\+\_\+pos} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_ad5edd0eaeeddc018050504eb108c6eed}\label{namespacemain_ad5edd0eaeeddc018050504eb108c6eed}} 
+{\bfseries w}
+\item 
+\mbox{\Hypertarget{namespacemain_a000f2a1e9067a79452cb985555e196d5}\label{namespacemain_a000f2a1e9067a79452cb985555e196d5}} 
+{\bfseries h}
+\item 
+\mbox{\Hypertarget{namespacemain_a7f44262494a45d0ed43dd7db92161c4d}\label{namespacemain_a7f44262494a45d0ed43dd7db92161c4d}} 
+{\bfseries compare\+\_\+x} = x
+\item 
+\mbox{\Hypertarget{namespacemain_a6799c67cae5a57276bb3a34be40f9511}\label{namespacemain_a6799c67cae5a57276bb3a34be40f9511}} 
+{\bfseries mid\+\_\+x} = int(x + 0.\+5$\ast$w)
+\item 
+\mbox{\Hypertarget{namespacemain_a40a78efa4faaf58ce9d70b2461f5fede}\label{namespacemain_a40a78efa4faaf58ce9d70b2461f5fede}} 
+{\bfseries debug\+\_\+frame} = mc.\+four\+\_\+in\+\_\+one\+\_\+frame(color\+\_\+mask\+\_\+table, 0.\+8)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Based on python code for Multiple Color Detection:
+https://www.geeksforgeeks.org/multiple-color-detection-in-real-time-using-python-opencv/
+
+    to run:
+install python 2.17.18
+pip2 install numpy
+pip2 install opencv-contrib-python
+
+cd "Windesheim Office365\O365-Fabriek van de Toekomst 21-22 sem1 - IJsseltechnologie\3 realiseren\Camera Python"
+python2
+then run this file with python
+
+controls:
+- to shift mid offset to the left
++ to shift mid offset to the right
+d to open debug windows and info
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacemain_aa35b6f2aa80b399eb966fc5d6d916504}\label{namespacemain_aa35b6f2aa80b399eb966fc5d6d916504}} 
+\index{main@{main}!kernal@{kernal}}
+\index{kernal@{kernal}!main@{main}}
+\doxysubsubsection{\texorpdfstring{kernal}{kernal}}
+{\footnotesize\ttfamily main.\+kernal}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  np.array( [[1,1]    ,}
+\DoxyCodeLine{2                         [1,1]   ,], \textcolor{stringliteral}{"{}uint8"{}})}
+
+\end{DoxyCode}

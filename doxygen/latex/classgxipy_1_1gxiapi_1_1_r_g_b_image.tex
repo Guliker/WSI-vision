@@ -1,0 +1,83 @@
+\hypertarget{classgxipy_1_1gxiapi_1_1_r_g_b_image}{}\doxysection{gxipy.\+gxiapi.\+RGBImage Class Reference}
+\label{classgxipy_1_1gxiapi_1_1_r_g_b_image}\index{gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_r_g_b_image_af5ba9d401a3cc574ed42f9ea56f01b3b}\label{classgxipy_1_1gxiapi_1_1_r_g_b_image_af5ba9d401a3cc574ed42f9ea56f01b3b}} 
+def {\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, frame\+\_\+data)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_r_g_b_image_af24ad79050115a6f712f4e1d5252d562}{image\+\_\+improvement}} (self, color\+\_\+correction\+\_\+param=0, contrast\+\_\+lut=None, gamma\+\_\+lut=None)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_r_g_b_image_a19768ca305179c7f0abcc9a6b89a81c9}{saturation}} (self, factor)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_r_g_b_image_a8d473d8796606ddf3de8191b9a9b8914}{sharpen}} (self, factor)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_r_g_b_image_a369b631e2b4f49de0d2ad3bc766311ff}{get\+\_\+numpy\+\_\+array}} (self)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_r_g_b_image_a7a0430e17a11986af10a50770103a8ec}{get\+\_\+image\+\_\+size}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_r_g_b_image_a445360aac0c2764b5f3289184a9ae278}\label{classgxipy_1_1gxiapi_1_1_r_g_b_image_a445360aac0c2764b5f3289184a9ae278}} 
+{\bfseries frame\+\_\+data}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_r_g_b_image_a7a0430e17a11986af10a50770103a8ec}\label{classgxipy_1_1gxiapi_1_1_r_g_b_image_a7a0430e17a11986af10a50770103a8ec}} 
+\index{gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}!get\_image\_size@{get\_image\_size}}
+\index{get\_image\_size@{get\_image\_size}!gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}}
+\doxysubsubsection{\texorpdfstring{get\_image\_size()}{get\_image\_size()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+RGBImage.\+get\+\_\+image\+\_\+size (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Get RGB data size
+:return:    size
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_r_g_b_image_a369b631e2b4f49de0d2ad3bc766311ff}\label{classgxipy_1_1gxiapi_1_1_r_g_b_image_a369b631e2b4f49de0d2ad3bc766311ff}} 
+\index{gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}!get\_numpy\_array@{get\_numpy\_array}}
+\index{get\_numpy\_array@{get\_numpy\_array}!gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}}
+\doxysubsubsection{\texorpdfstring{get\_numpy\_array()}{get\_numpy\_array()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+RGBImage.\+get\+\_\+numpy\+\_\+array (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief:     Return data as a numpy.Array type with dimension Image.height * Image.width * 3
+:return:    numpy.Array objects
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_r_g_b_image_af24ad79050115a6f712f4e1d5252d562}\label{classgxipy_1_1gxiapi_1_1_r_g_b_image_af24ad79050115a6f712f4e1d5252d562}} 
+\index{gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}!image\_improvement@{image\_improvement}}
+\index{image\_improvement@{image\_improvement}!gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}}
+\doxysubsubsection{\texorpdfstring{image\_improvement()}{image\_improvement()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+RGBImage.\+image\+\_\+improvement (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{color\+\_\+correction\+\_\+param = {\ttfamily 0},  }\item[{}]{contrast\+\_\+lut = {\ttfamily None},  }\item[{}]{gamma\+\_\+lut = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief:     Improve image quality of the object itself
+:param      color_correction_param:     color correction param address
+                                        (get from Device.ColorCorrectionParam.get_int())
+:param      contrast_lut:               contrast lut
+:param      gamma_lut:                  gamma lut
+:return:    None
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_r_g_b_image_a19768ca305179c7f0abcc9a6b89a81c9}\label{classgxipy_1_1gxiapi_1_1_r_g_b_image_a19768ca305179c7f0abcc9a6b89a81c9}} 
+\index{gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}!saturation@{saturation}}
+\index{saturation@{saturation}!gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}}
+\doxysubsubsection{\texorpdfstring{saturation()}{saturation()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+RGBImage.\+saturation (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{factor }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Saturation adjustment (RGB24)
+:param      factor:                 saturation factor,range(0 ~ 128)
+:return:    RGBImage object
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_r_g_b_image_a8d473d8796606ddf3de8191b9a9b8914}\label{classgxipy_1_1gxiapi_1_1_r_g_b_image_a8d473d8796606ddf3de8191b9a9b8914}} 
+\index{gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}!sharpen@{sharpen}}
+\index{sharpen@{sharpen}!gxipy.gxiapi.RGBImage@{gxipy.gxiapi.RGBImage}}
+\doxysubsubsection{\texorpdfstring{sharpen()}{sharpen()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+RGBImage.\+sharpen (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{factor }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief       Sharpen adjustment (RGB24)
+:param      factor:                 sharpen factor, range(0.1 ~ 5.0)
+:return:    None
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cxcg/\+Documents/\+Git\+Hub/\+WSI-\/vision/gxipy/gxiapi.\+py\end{DoxyCompactItemize}

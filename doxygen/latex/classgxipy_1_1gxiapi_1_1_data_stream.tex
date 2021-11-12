@@ -1,0 +1,75 @@
+\hypertarget{classgxipy_1_1gxiapi_1_1_data_stream}{}\doxysection{gxipy.\+gxiapi.\+Data\+Stream Class Reference}
+\label{classgxipy_1_1gxiapi_1_1_data_stream}\index{gxipy.gxiapi.DataStream@{gxipy.gxiapi.DataStream}}
+Inheritance diagram for gxipy.\+gxiapi.\+Data\+Stream\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgxipy_1_1gxiapi_1_1_data_stream}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_a6324220b12541a3cfd2ce1f4d1a870a6}\label{classgxipy_1_1gxiapi_1_1_data_stream_a6324220b12541a3cfd2ce1f4d1a870a6}} 
+def {\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, handle)
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_a8f3b0f01eef11b6436f9e6d1ce0c18be}\label{classgxipy_1_1gxiapi_1_1_data_stream_a8f3b0f01eef11b6436f9e6d1ce0c18be}} 
+def {\bfseries set\+\_\+payload\+\_\+size} (self, payload\+\_\+size)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_data_stream_a88bcbe384302c0d50d57a340f659a491}{set\+\_\+acquisition\+\_\+buffer\+\_\+number}} (self, buf\+\_\+num)
+\item 
+def \mbox{\hyperlink{classgxipy_1_1gxiapi_1_1_data_stream_ae6953628e86291c0c442e01c1c2ddc55}{get\+\_\+image}} (self, timeout=1000)
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_a784fbf4d7862fa27879dca2c375833cf}\label{classgxipy_1_1gxiapi_1_1_data_stream_a784fbf4d7862fa27879dca2c375833cf}} 
+def {\bfseries flush\+\_\+queue} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_adc7a718748f878ec0721acf11824be24}\label{classgxipy_1_1gxiapi_1_1_data_stream_adc7a718748f878ec0721acf11824be24}} 
+{\bfseries Stream\+Announced\+Buffer\+Count}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_abd7cab18671b7743de1767e95869879c}\label{classgxipy_1_1gxiapi_1_1_data_stream_abd7cab18671b7743de1767e95869879c}} 
+{\bfseries Stream\+Delivered\+Frame\+Count}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_afbf9beddbc65a998affed590b8e77ea5}\label{classgxipy_1_1gxiapi_1_1_data_stream_afbf9beddbc65a998affed590b8e77ea5}} 
+{\bfseries Stream\+Lost\+Frame\+Count}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_aec4f0b44819e84413d545f9e00eb882f}\label{classgxipy_1_1gxiapi_1_1_data_stream_aec4f0b44819e84413d545f9e00eb882f}} 
+{\bfseries Stream\+Incomplete\+Frame\+Count}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_a21d4e5e00bb62cfc795f65aef6b9fb50}\label{classgxipy_1_1gxiapi_1_1_data_stream_a21d4e5e00bb62cfc795f65aef6b9fb50}} 
+{\bfseries Stream\+Delivered\+Packet\+Count}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_a13be8623e129c4c38d7a67ddb58b216c}\label{classgxipy_1_1gxiapi_1_1_data_stream_a13be8623e129c4c38d7a67ddb58b216c}} 
+{\bfseries payload\+\_\+size}
+\item 
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_a732272636deb728f774f9026004ae17f}\label{classgxipy_1_1gxiapi_1_1_data_stream_a732272636deb728f774f9026004ae17f}} 
+{\bfseries acquisition\+\_\+flag}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_ae6953628e86291c0c442e01c1c2ddc55}\label{classgxipy_1_1gxiapi_1_1_data_stream_ae6953628e86291c0c442e01c1c2ddc55}} 
+\index{gxipy.gxiapi.DataStream@{gxipy.gxiapi.DataStream}!get\_image@{get\_image}}
+\index{get\_image@{get\_image}!gxipy.gxiapi.DataStream@{gxipy.gxiapi.DataStream}}
+\doxysubsubsection{\texorpdfstring{get\_image()}{get\_image()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Data\+Stream.\+get\+\_\+image (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{timeout = {\ttfamily 1000} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief          Get an image, get successfully create image class object
+:param          timeout:    Acquisition timeout, range:[0, 0xFFFFFFFF]
+:return:        image object
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classgxipy_1_1gxiapi_1_1_data_stream_a88bcbe384302c0d50d57a340f659a491}\label{classgxipy_1_1gxiapi_1_1_data_stream_a88bcbe384302c0d50d57a340f659a491}} 
+\index{gxipy.gxiapi.DataStream@{gxipy.gxiapi.DataStream}!set\_acquisition\_buffer\_number@{set\_acquisition\_buffer\_number}}
+\index{set\_acquisition\_buffer\_number@{set\_acquisition\_buffer\_number}!gxipy.gxiapi.DataStream@{gxipy.gxiapi.DataStream}}
+\doxysubsubsection{\texorpdfstring{set\_acquisition\_buffer\_number()}{set\_acquisition\_buffer\_number()}}
+{\footnotesize\ttfamily def gxipy.\+gxiapi.\+Data\+Stream.\+set\+\_\+acquisition\+\_\+buffer\+\_\+number (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{buf\+\_\+num }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      set the number of acquisition buffer
+:param      buf_num:   the number of acquisition buffer, range:[1, 0xFFFFFFFF]
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cxcg/\+Documents/\+Git\+Hub/\+WSI-\/vision/gxipy/gxiapi.\+py\end{DoxyCompactItemize}

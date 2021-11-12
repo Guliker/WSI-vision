@@ -30,49 +30,51 @@ import datetime
 """ ----- ----- ----- """
 
 """ ----- DEFINE ----- """
+## state of the debug mode
 debug = False
-config = True
-font = cv2.FONT_HERSHEY_SIMPLEX
+## font used in all the drawn text
+font = cv2.FONT_HERSHEY_SIMPLEX     
 
-device_manager = gx.DeviceManager()
-camera = device_manager.open_device_by_index(1)
-cam_scale = 0.5
-mask_scale = float(1)/2
+device_manager = gx.DeviceManager()     ## device manager for the Daheng Imaging camera
+camera = device_manager.open_device_by_index(1) ## device opened on index one, the first camera
+cam_scale = 0.5     ## scaling of the camera image to the filters
+mask_scale_rotation = float(1)/2     ## scaling for the rotation mask
 
-# settings for the calibration window
-x_offset = 0
-y_offset = 0
-search_height = 350
-search_width = 50
+## settings for the calibration window
+calibration_search_height = 350
+## settings for the calibration window
+calibration_search_width = 50
 
-# lab offsets for the color finder, each value is an hard value, order is:
+## lab offsets for the color finder, each value is an hard value, order is:
 # 0 = lum
 # 1 = a; green - magenta
 # 2 = b; blue - yellow
 lab_offset_table = [50,5,5]
 
-# hard values of block information, !!!!! should be added to calibration mode !!!!!
+## values of a block information
 block_small_area = 500
 block_width_big = 55
 block_height = 26
 block_height_offset = 2
 
 
-# line size to split blocks
-cut_size = 12
+## line size to split blocks
+block_split_cut_size = 12
+## ammount of erosion and dilation applied to the color masks
 erode_dilate = 2
-# distance to check rotation
+
+## distance to check rotation
 workspace_height = block_height * 12
 workspace_width = int(block_width_big * 3)
-off_orr = int(block_width_big/4)
+contour_rotation_search_area = int(block_width_big/4)
 
-# type of color space used, many possibilities
+## type of color space used, many possibilities
 # https://learnopencv.com/color-spaces-in-opencv-cpp-python/
 # COLOR_BGR2RGB, COLOR_BGR2LAB, COLOR_BGR2YCrCb, COLOR_BGR2HSV, COLOR_BGR2HSL
 color_space = cv2.COLOR_BGR2LAB
 #color_space = cv2.COLOR_BGR2YCrCb
 
-# all logic tables
+## all logic tables
 color_name_table = (        "green",        "yellow",       "blue",         "red"       )   # name of each color
 color_bgr_table = (         (0,200,0),     (0,190,255),    (255,70,0),     (0,0,255)    )   # colors used to display on screen text and boxes
 lab_min_max_table = [       [[],[]],        [[],[]],        [[],[]],        [[],[]]     ]   # here are the min and max LAB values stored for each color
@@ -128,15 +130,15 @@ while(1):
     height, width, depth = frame.shape
 
     # crop image to centre
-    x = int((width - search_width)/2) + x_offset
-    y = int((height - search_height)/2) + y_offset
-    img_crop = frame[y:y+search_height, x:x+search_width]
+    x = int((width - calibration_search_width)/2)
+    y = int((height - calibration_search_height)/2)
+    img_crop = frame[y:y+calibration_search_height, x:x+calibration_search_width]
     # show the box that shows where the crop is
-    mf.draw_calibration_box(final_frame, x, y, search_width, search_height,
+    mf.draw_calibration_box(final_frame, x, y, calibration_search_width, calibration_search_height,
                             color_name_table[step_index], color_bgr_table[step_index])
   
     # convert cropped image to min and max LAB values
-    lab_min,lab_max = mf.lab_min_max_calculate(img_crop, color_space, lab_offset_table)
+    lab_min,lab_max = mf.find_min_max_color(img_crop, color_space, lab_offset_table)
 
     # in debug mode: display the lab min and max values
     # and display the cropped image
@@ -167,7 +169,7 @@ while(1):
     # check for spacebar to go to next step
     if key == ord(' '):
         # save the found lab values
-        mf.lab_save(step_index, lab_min, lab_max, lab_min_max_table)
+        mf.save_min_max_color(step_index, lab_min, lab_max, lab_min_max_table)
         # go to the next color
         step_index += 1
         # test if there is a next color
@@ -228,7 +230,7 @@ while(1):
     # create masks for each color, and check rotation of the masks
     for i, name in enumerate(color_name_table):
         #creates a color mask
-        color_mask_table[i] = mf.mask_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1, mask_scale)
+        color_mask_table[i] = mf.create_bit_mask_for_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1, mask_scale_rotation)
         if (i):
             color_mask_combine = cv2.bitwise_or(color_mask_combine, color_mask_table[i])
         else:
@@ -236,14 +238,14 @@ while(1):
     
     #color_mask_combine = cv2.dilate(color_mask_combine, kernal, iterations=1)
     #color_mask_combine = cv2.erode(color_mask_combine, kernal, iterations=2)
-    contours_combined = mf.create_contour(color_mask_combine, block_small_area*mask_scale, method=cv2.CHAIN_APPROX_NONE)
+    contours_combined = mf.create_contour(color_mask_combine, block_small_area*mask_scale_rotation, method=cv2.CHAIN_APPROX_NONE)
     
     #time to get contour
     #get_time(start_time)
     
     if(contours_combined):
-        workspace = mf.get_workspace(frame, contours_combined, workspace_width, workspace_height, off_orr, debug, mask_scale)
-        work_frame = mf.transform(frame, workspace, workspace_width, workspace_height)
+        workspace = mf.create_workspace(frame, contours_combined, workspace_width, workspace_height, contour_rotation_search_area, debug, mask_scale_rotation)
+        work_frame = mf.transform_workspace(frame, workspace, workspace_width, workspace_height)
         lab_frame = cv2.cvtColor(work_frame, color_space)
         
         # time to get workplace
@@ -255,7 +257,7 @@ while(1):
         # loop through all the colors and make for each color an mask and contours
         for i, name in enumerate(color_name_table):
             #creates a color mask
-            color_mask_table[i] = mf.mask_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1)
+            color_mask_table[i] = mf.create_bit_mask_for_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1)
             
             # creates contours of the created mask
             # contour = create_contour(color_mask_table[i])
@@ -265,7 +267,7 @@ while(1):
             for contour in color_contour_table[i]:
                 if(debug):
                     mf.draw_contour(work_frame, contour, color_bgr_table[i], debug)
-                mf.split_contour(color_mask_table[i], contour, block_height, block_height_offset, cut_size)
+                mf.split_contour_on_height(color_mask_table[i], contour, block_height, block_height_offset, block_split_cut_size)
             
             color_contour_table[i] = mf.create_contour(color_mask_table[i], block_small_area)
             for contour in color_contour_table[i]:
@@ -297,7 +299,7 @@ while(1):
            mf.block_color_fill(all_colors, color_contour_table[i], i, block_width_big)
 
         # sort all blocks from bottom-top and print
-        contours,colors = mf.sort_contours(all_contours,all_colors)
+        contours,colors = mf.sort_contours_on_height(all_contours,all_colors)
 
         all_pos = []
         
