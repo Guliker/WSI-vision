@@ -195,13 +195,13 @@ for i,name in enumerate(color_name_table):
 """ ----- MAIN LOOP BLOCK FINDER ----- """
 mid_pos = 2
 while(1):
-
+    '''
     if (not full_product):
         full_product = ms.ask_for_data()
         print(full_product)
     else:
         print("product is:", full_product)
-
+    '''
     if(debug):
         #time to get frame
         get_time("process time", start_time)
@@ -330,9 +330,10 @@ while(1):
                 
         # in debug mode: show the mask frames of each color
         if(debug):
-            debug_frame = mc.four_in_one_frame(color_mask_table, 0.8)
-            cv2.imshow("rybg_frame", debug_frame)
             cv2.imshow("color_mask_combine", color_mask_combine)
+            
+        debug_frame = mc.four_in_one_frame(color_mask_table, 0.8)
+        cv2.imshow("rybg_frame", debug_frame)
 
     # show normal view + bounding boxes    
     cv2.imshow("Video", frame)
