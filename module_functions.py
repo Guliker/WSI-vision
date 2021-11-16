@@ -421,7 +421,7 @@ def create_block_pos_array(image, contours, lowest_block_pos, offset_width):
     return all_pos
 
 
-def overlay_image(l_img, s_img, position):
+def overlay_image(l_img, s_img, position = (0,0)):
     """
     :brief      Overlays an smaller image(s_img) over an lager image(l_img)
     :param      l_img:      The large image that is the base
@@ -429,6 +429,12 @@ def overlay_image(l_img, s_img, position):
     :param      position:   Position of the small image
     """
     x_offset,y_offset= position
+    if(s_img.ndim == 2):  # gray scale image
+        s_img = cv2.cvtColor(s_img,cv2.COLOR_GRAY2RGB)
+    
     l_img[y_offset:y_offset+s_img.shape[0], x_offset:x_offset+s_img.shape[1]] = s_img
 
+def pos_shift(pos, shift_pos):
+    return(pos[0] + shift_pos[0], pos[1] + shift_pos[1])
+    
 """ ----- ----- ----- """

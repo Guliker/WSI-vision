@@ -55,7 +55,7 @@ lab_offset_table = [50,5,5]
 block_small_area = 500
 block_width_big = 55
 block_height = 24
-block_height_offset = 2
+block_height_offset = 8
 
 
 ## line size to split blocks
@@ -76,7 +76,7 @@ color_space = cv2.COLOR_BGR2LAB
 
 ## all logic tables
 color_name_table = (        "green",        "yellow",       "blue",         "red"       )   # name of each color
-color_bgr_table = (         (0,200,0),     (0,190,255),    (255,70,0),     (0,0,255)    )   # colors used to display on screen text and boxes
+color_bgr_table = (         (0,200,0),     (0,255,255),    (255,70,0),     (0,0,255)    )   # colors used to display on screen text and boxes
 lab_min_max_table = [       [[],[]],        [[],[]],        [[],[]],        [[],[]]     ]   # here are the min and max LAB values stored for each color
 color_mask_table = [        [],             [],             [],             []          ]   # here are the bit masks stored for each color
 color_contour_table = [     [],             [],             [],             []          ]   # here are the contours of each block stored for each color
@@ -84,7 +84,13 @@ color_mask_combine = []
 full_product = []
 
 ## empty window to place frames in
-window_vision = np.zeros((1920, 1080), np.uint8)
+window_blank = np.zeros((1080, 1920,3), np.uint8)
+
+pos_raw_image = (1380,250)
+pos_img_crop = (1300,250)
+pos_four_filters = (1380,10)
+pos_corrected_image = (400,0)
+pos_work_frame = (850,100)
 """ ----- ----- ----- """
 
 # trackbar callback fucntion does nothing but required for trackbar
@@ -110,7 +116,9 @@ mc.init(camera, device_manager)
 step_index = 0
 print("complete")
 
-while(1):    
+while(1):
+    window_vision = window_blank.copy()
+    
     if(debug):
         #time to get frame
         get_time("process time", start_time)
@@ -147,27 +155,33 @@ while(1):
     # and display the cropped image
     if(debug):
         #min
-        cv2.putText(final_frame, str(lab_min), (20,20),
+        cv2.putText(window_vision, str(lab_min), mf.pos_shift(pos_img_crop,(0,-40)),
                     font, 0.4,
                     color_bgr_table[step_index])   
         # max
-        cv2.putText(final_frame, str(lab_max), (20,40),
+        cv2.putText(window_vision, str(lab_max), mf.pos_shift(pos_img_crop,(0,-20)),
                     font, 0.4,
                     color_bgr_table[step_index])
         # show the cropped image
-        cv2.imshow('img_crop', img_crop)
+        mf.overlay_image(window_vision, img_crop, pos_img_crop)
     
     # show operator instructions
-    cv2.putText(final_frame, "Calibration mode", (10,150),
-                font, 1,
+    cv2.putText(window_vision, "Calibration mode", (10,450),
+                font, 5,
                 (255,255,255))
-    cv2.putText(final_frame, "press space to save", (10,200),
-                font, 1,
+    cv2.putText(window_vision, "press space", (50,700),
+                font, 5,
+                (255,255,255))
+    cv2.putText(window_vision, "to save", (50,900),
+                font, 5,
                 (255,255,255))
 
     # show the video with the calibration box
-    cv2.imshow("Video", final_frame)
+    
+    mf.overlay_image(window_vision, final_frame, pos_raw_image)
+    #cv2.imshow("Video", final_frame)
     cv2.imshow("window vision", window_vision)
+    
     
     key = cv2.waitKey(10) & 0xFF 
     # check for spacebar to go to next step
@@ -201,6 +215,8 @@ for i,name in enumerate(color_name_table):
 """ ----- MAIN LOOP BLOCK FINDER ----- """
 mid_pos = 2
 while(1):
+    window_vision = window_blank.copy()
+    
     if (not len(full_product)):
         full_product = ms.ask_for_data(0.01)
 
@@ -305,11 +321,11 @@ while(1):
 
         color_pos = np.stack((colors, all_pos), axis=1)
 
-        cv2.putText(frame, str(color_pos), (20,40),
+        cv2.putText(window_vision, str(color_pos), (20,40),
                     font, 1,
                     (255, 255, 255))
 
-        cv2.putText(frame, str(full_product), (20,80),
+        cv2.putText(window_vision, str(full_product), (20,80),
                     font, 1,
                     (255, 255, 255))
                 
@@ -317,12 +333,25 @@ while(1):
         if(debug):
             cv2.imshow("color_mask_combine", color_mask_combine)
             
-        debug_frame = mc.four_in_one_frame(color_mask_table, 0.8)
-        cv2.imshow("rybg_frame", debug_frame)
+        four_filters = mc.four_in_one_frame(color_mask_table, 0.8)
+        #cv2.imshow("rybg_frame", four_filters)
+        #four_filters = cv2.cvtColor(four_filters,cv2.COLOR_GRAY2RGB)
+        mf.overlay_image(window_vision, four_filters, pos_four_filters)
+        # resize workframe
+        width = int(work_frame.shape[1] * 3)
+        height = int(work_frame.shape[0] * 3)
+        dim = (width, height)
+        work_frame = cv2.resize(work_frame, dim, interpolation = cv2.INTER_AREA)
+        mf.overlay_image(window_vision, work_frame, pos_work_frame)
+        
 
     # show normal view + bounding boxes    
-    cv2.imshow("Video", frame)
-    cv2.imshow("Raw Frame", work_frame)
+    #cv2.imshow("Video", frame)
+    #cv2.imshow("Raw Frame", work_frame)
+    
+    
+    mf.overlay_image(window_vision, frame, pos_raw_image)
+    cv2.imshow("window vision", window_vision)
 
     #get_time(start_time)
 

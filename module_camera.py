@@ -164,7 +164,7 @@ def four_in_one_frame(four_frames,scale):
     #combine the four frames into one
     ry_horiontal = np.hstack((four_frames[0], four_frames[1]))
     bg_horiontal = np.hstack((four_frames[2], four_frames[3]))
-    rybg_frame = np.vstack((ry_horiontal, bg_horiontal))
+    rybg_frame = np.hstack((ry_horiontal, bg_horiontal))
     width, height = rybg_frame.shape
     
     # rescaling image
@@ -172,3 +172,4 @@ def four_in_one_frame(four_frames,scale):
     height = int(rybg_frame.shape[0] * scale)
     dim = (width, height)
     return cv2.resize(rybg_frame, dim, interpolation = cv2.INTER_AREA)
+    
