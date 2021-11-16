@@ -82,6 +82,9 @@ color_mask_table = [        [],             [],             [],             []  
 color_contour_table = [     [],             [],             [],             []          ]   # here are the contours of each block stored for each color
 color_mask_combine = []
 full_product = []
+
+## empty window to place frames in
+window_vision = np.zeros((1920, 1080), np.uint8)
 """ ----- ----- ----- """
 
 # trackbar callback fucntion does nothing but required for trackbar
@@ -164,6 +167,7 @@ while(1):
 
     # show the video with the calibration box
     cv2.imshow("Video", final_frame)
+    cv2.imshow("window vision", window_vision)
     
     key = cv2.waitKey(10) & 0xFF 
     # check for spacebar to go to next step
@@ -199,9 +203,6 @@ mid_pos = 2
 while(1):
     if (not len(full_product)):
         full_product = ms.ask_for_data(0.01)
-        print("product is:", full_product)
-    else:
-        print("product still is:", full_product)
 
     if(debug):
         #time to get frame
