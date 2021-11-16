@@ -22,6 +22,7 @@ import gxipy as gx
 import module_camera as mc
 import module_functions as mf
 import module_socket as ms
+import module_recept_result as mrr
 
 #import math
 import numpy as np
@@ -33,7 +34,7 @@ import datetime
 ## state of the debug mode
 debug = False
 ## font used in all the drawn text
-font = cv2.FONT_HERSHEY_SIMPLEX     
+font = cv2.FONT_HERSHEY_SIMPLEX
 
 device_manager = gx.DeviceManager()     ## device manager for the Daheng Imaging camera
 camera = device_manager.open_device_by_index(1) ## device opened on index one, the first camera
@@ -89,8 +90,8 @@ window_blank = np.zeros((1080, 1920,3), np.uint8)
 pos_raw_image = (1380,250)
 pos_img_crop = (1300,250)
 pos_four_filters = (1380,10)
-pos_corrected_image = (400,0)
-pos_work_frame = (850,100)
+pos_corrected_image = (850,100)
+pos_recept_result = (400,0)
 """ ----- ----- ----- """
 
 # trackbar callback fucntion does nothing but required for trackbar
@@ -320,14 +321,6 @@ while(1):
         all_pos = mf.create_block_pos_array(work_frame, contours, mid_pos, block_width_big/4)
 
         color_pos = np.stack((colors, all_pos), axis=1)
-
-        cv2.putText(window_vision, str(color_pos), (20,40),
-                    font, 1,
-                    (255, 255, 255))
-
-        cv2.putText(window_vision, str(full_product), (20,80),
-                    font, 1,
-                    (255, 255, 255))
                 
         # in debug mode: show the mask frames of each color
         if(debug):
@@ -342,7 +335,7 @@ while(1):
         height = int(work_frame.shape[0] * 3)
         dim = (width, height)
         work_frame = cv2.resize(work_frame, dim, interpolation = cv2.INTER_AREA)
-        mf.overlay_image(window_vision, work_frame, pos_work_frame)
+        mf.overlay_image(window_vision, work_frame, pos_corrected_image)
         
 
     # show normal view + bounding boxes    
@@ -351,6 +344,8 @@ while(1):
     
     
     mf.overlay_image(window_vision, frame, pos_raw_image)
+    rr_frame = mrr.draw_recept_result(full_product, color_pos)
+    mf.overlay_image(window_vision, rr_frame, pos_recept_result)
     cv2.imshow("window vision", window_vision)
 
     #get_time(start_time)
