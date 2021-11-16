@@ -54,7 +54,7 @@ lab_offset_table = [50,5,5]
 ## values of a block information
 block_small_area = 500
 block_width_big = 55
-block_height = 26
+block_height = 24
 block_height_offset = 2
 
 
@@ -197,8 +197,8 @@ for i,name in enumerate(color_name_table):
 """ ----- MAIN LOOP BLOCK FINDER ----- """
 mid_pos = 2
 while(1):
-    if (len(full_product)):
-        full_product = ms.ask_for_data(0.1)
+    if (not len(full_product)):
+        full_product = ms.ask_for_data(0.01)
         print("product is:", full_product)
     else:
         print("product still is:", full_product)

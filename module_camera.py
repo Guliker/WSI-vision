@@ -12,10 +12,12 @@ import gxipy as gx
 import numpy as np
 import cv2
 """ ----- ----- ----- """
-cam_resolution = (1600, 900)
-cam_offset_resolution = (744, 560)
+#cam_resolution = (1600, 900)
+#cam_offset_resolution = (744, 560)
 #resolution = (3088, 2048)
 #offset_resolution = (0, 0)
+cam_resolution = (904,1600)
+cam_offset_resolution = (1096, 224)
 
 cam_gain_rgb = (1.4 , 1.0, 2.3)
 # good values for 50hz lighting
@@ -126,9 +128,10 @@ def read(cam, scale):
     bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
     
     # rotate, 1 = cw, 0 = ccw
-    rotated_image=cv2.transpose(bgr_image)
-    rotated_image=cv2.flip(rotated_image,flipCode=0)
-	
+    #rotated_image=cv2.transpose(bgr_image)
+    #rotated_image=cv2.flip(rotated_image,flipCode=0)
+    rotated_image = bgr_image
+    
     #rescale
     width = int(rotated_image.shape[1] * scale)
     height = int(rotated_image.shape[0] * scale)
