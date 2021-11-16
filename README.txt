@@ -35,6 +35,8 @@ Python2.7(3.5) gxipy installation
 		
 		pip install pillow
 		
+		pip install paho-mqtt
+		
 		pip install opencv-python==4.2.0.32
 
 			Red error messages are fine here

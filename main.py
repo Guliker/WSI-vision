@@ -197,13 +197,12 @@ for i,name in enumerate(color_name_table):
 """ ----- MAIN LOOP BLOCK FINDER ----- """
 mid_pos = 2
 while(1):
-    '''
-    if (not full_product):
-        full_product = ms.ask_for_data()
-        print(full_product)
-    else:
+    if (len(full_product)):
+        full_product = ms.ask_for_data(0.1)
         print("product is:", full_product)
-    '''
+    else:
+        print("product still is:", full_product)
+
     if(debug):
         #time to get frame
         get_time("process time", start_time)
@@ -300,35 +299,18 @@ while(1):
 
         # sort all blocks from bottom-top and print
         contours,colors = mf.sort_contours_on_height(all_contours,all_colors)
-
-        all_pos = []
         
-        # place mid line
-        if(len(contours)):
-            x, y, w, h = cv2.boundingRect(contours[0])
-            x = int(x + (mid_pos/float(4))*w)
-            y = int(y + 0.5*h)
-            cv2.circle(work_frame, (x,y), 5, (255,255,255), -1)
-            
-            compare_x = x
-            for contour in contours:
-                x, y, w, h = cv2.boundingRect(contour)
-                mid_x = int(x + 0.5*w)
-                if (mid_x > compare_x + 10):    # right side
-                    all_pos.append(3)
-                elif (mid_x < compare_x - 10):  # left side
-                    all_pos.append(1)
-                else:                           # middle
-                    all_pos.append(2)
-                    
-        
-        cv2.putText(frame, str(colors), (20,40),
-                    font, 1,
-                    (255, 255, 255))    
+        all_pos = mf.create_block_pos_array(work_frame, contours, mid_pos, block_width_big/4)
 
-        cv2.putText(frame, str(all_pos), (20,100),
+        color_pos = np.stack((colors, all_pos), axis=1)
+
+        cv2.putText(frame, str(color_pos), (20,40),
                     font, 1,
-                    (255, 255, 255))    
+                    (255, 255, 255))
+
+        cv2.putText(frame, str(full_product), (20,80),
+                    font, 1,
+                    (255, 255, 255))
                 
         # in debug mode: show the mask frames of each color
         if(debug):

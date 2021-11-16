@@ -391,4 +391,44 @@ def block_color_fill(fill_array, cnt_array, color_index, block_width):
         else:
             fill_array.append(color_index + 1)
 
+def create_block_pos_array(image, contours, lowest_block_pos, offset_width):
+    """
+    :brief      Creates an array that shows if the block is positioned in the left(1), middle(2), right(3)
+    :param      image:              Image to draw the mid position on
+    :param      contours:           Array of contours sorted in height
+    :param      lowest_block_pos:   Position of the lowest block
+    :return     An array of the position from the bottom block to the top block
+    """
+    all_pos = []
+
+    # place mid line
+    if(len(contours)):
+        x, y, w, h = cv2.boundingRect(contours[0])
+        x = int(x + (lowest_block_pos/float(4))*w)
+        y = int(y + 0.5*h)
+        cv2.circle(image, (x,y), 5, (255,255,255), -1)
+
+        compare_x = x
+        for contour in contours:
+            x, y, w, h = cv2.boundingRect(contour)
+            mid_x = int(x + 0.5*w)
+            if (mid_x > compare_x + offset_width):    # right side
+                all_pos.append(3)
+            elif (mid_x < compare_x - offset_width):  # left side
+                all_pos.append(1)
+            else:                           # middle
+                all_pos.append(2)
+    return all_pos
+
+
+def overlay_image(l_img, s_img, position):
+    """
+    :brief      Overlays an smaller image(s_img) over an lager image(l_img)
+    :param      l_img:      The large image that is the base
+    :param      s_img:      The small image that will be inserted
+    :param      position:   Position of the small image
+    """
+    x_offset,y_offset= position
+    l_img[y_offset:y_offset+s_img.shape[0], x_offset:x_offset+s_img.shape[1]] = s_img
+
 """ ----- ----- ----- """
