@@ -117,7 +117,7 @@ mc.init(camera, device_manager)
 step_index = 0
 print("complete")
 
-while(1):
+while(step_index < len(color_name_table)):
     window_vision = window_blank.copy()
     
     if(debug):
@@ -191,9 +191,6 @@ while(1):
         mf.save_min_max_color(step_index, lab_min, lab_max, lab_min_max_table)
         # go to the next color
         step_index += 1
-        # test if there is a next color
-        if step_index >= len(color_name_table):
-            break
     # check d key to toggle debug mode
     if key == ord('d'):
         if(debug):
