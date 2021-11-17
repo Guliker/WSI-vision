@@ -186,7 +186,7 @@ def draw_contour(image, contour, color, debug):
                     (255,255,255))
 
 """----- ----- WORKSPACE ----- -----"""
-def create_workspace(image, contours, width, height, offset, debug, scale=1):
+def create_workspace(image, debug_image, contours, width, height, offset, debug, scale=1):
     """
     :brief      Makes a workspace centred on the biggest contour
     :param      image:      Image to draw on in debug mode
@@ -207,7 +207,7 @@ def create_workspace(image, contours, width, height, offset, debug, scale=1):
         # find biggest contour to work with
         big_contour = max(contours, key=cv2.contourArea)
         
-        angle = find_contour_angle(big_contour, offset*2, offset, image, scale, debug)
+        angle = find_contour_angle(big_contour, offset*2, offset, debug_image, scale, debug)
 
         #angle, idx = min([(abs(val), idx) for (idx, val) in enumerate([angle_r, angle_l])])
                         
