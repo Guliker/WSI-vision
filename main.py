@@ -359,17 +359,19 @@ while(1):
     mf.overlay_image(window_vision, rr_frame, pos_recept_result)
     
     # quick debug to show variables
-    test_var = progress
-    cv2.putText(window_vision, str(test_var), (50,50), font, 0.5, (255, 255, 255))
+    #test_var = progress
+    #cv2.putText(window_vision, str(test_var), (50,50), font, 0.5, (255, 255, 255))
     
     cv2.imshow("window vision", window_vision)
     
     if(progress == 1):
         completed_flag = 1
         
-    if(not progress and completed_flag):
-        full_product = []
-        completed_flag = 0
+    if(completed_flag):
+        cv2.putText(window_vision, "Product completed", (300,50), font, 1, (255, 255, 255))
+        if(not progress):
+            full_product = []
+            completed_flag = 0
     
     # show normal view + bounding boxes    
     #cv2.imshow("Video", frame)
