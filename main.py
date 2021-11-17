@@ -55,12 +55,12 @@ lab_offset_table = [50,5,5]
 ## values of a block information
 block_small_area = 500
 block_width_big = 55
-block_height = 24
-block_height_offset = 8
+block_height = 26
+block_height_offset = 4
 
 
 ## line size to split blocks
-block_split_cut_size = 12
+block_split_cut_size = 4 #12
 ## ammount of erosion and dilation applied to the color masks
 erode_dilate = 2
 
@@ -167,8 +167,8 @@ while(step_index < len(color_name_table)):
         mf.overlay_image(window_vision, img_crop, pos_img_crop)
     
     # show operator instructions
-    cv2.putText(window_vision, "Calibration mode", (10,450),
-                font, 5,
+    cv2.putText(window_vision, "Calibration mode", (50,450),
+                font, 4,
                 (255,255,255))
     cv2.putText(window_vision, "press space", (50,700),
                 font, 5,
@@ -196,6 +196,8 @@ while(step_index < len(color_name_table)):
         if(debug):
             cv2.destroyWindow("img_crop")
         debug = not debug
+    if (key == 27):
+        exit()
 
 """ ----- EXIT ----- """
 
@@ -238,8 +240,9 @@ while(1):
     # lab(hue-saturation-value)
     lab_frame = cv2.cvtColor(frame, color_space)
     
-    kernal = np.array( [[1,1]    ,
-                        [1,1]   ,], "uint8")
+    kernal = np.array([ [1,1,1],
+                        [1,1,1],
+                        [1,1,1]     ], "uint8")
     
     # create masks for each color, and check rotation of the masks
     for i, name in enumerate(color_name_table):
@@ -258,7 +261,7 @@ while(1):
     #get_time(start_time)
     
     if(contours_combined):
-        workspace = mf.create_workspace(frame, contours_combined, workspace_width, workspace_height, contour_rotation_search_area, debug, mask_scale_rotation)
+        workspace = mf.create_workspace(frame, window_vision, contours_combined, workspace_width, workspace_height, contour_rotation_search_area, debug, mask_scale_rotation)
         work_frame = mf.transform_workspace(frame, workspace, workspace_width, workspace_height)
         lab_frame = cv2.cvtColor(work_frame, color_space)
         
@@ -282,6 +285,12 @@ while(1):
                 if(debug):
                     mf.draw_contour(work_frame, contour, color_bgr_table[i], debug)
                 mf.split_contour_on_height(color_mask_table[i], contour, block_height, block_height_offset, block_split_cut_size)
+            
+            
+            # erode to remove little white noise
+            color_mask_table[i] = cv2.erode(color_mask_table[i], kernal, iterations= 4)
+            # dilate to increase back to original size
+            color_mask_table[i] = cv2.dilate(color_mask_table[i], kernal, iterations= 2)
             
             color_contour_table[i] = mf.create_contour(color_mask_table[i], block_small_area)
             for contour in color_contour_table[i]:
@@ -348,8 +357,8 @@ while(1):
     #get_time(start_time)
 
     key = cv2.waitKey(10) & 0xFF 
-    # check spacebar to exit
-    if key == ord(' '):
+    # check esc to exit
+    if (key == 27):
         break
     # check d key to toggle debug mode
     if key == ord('d'):
