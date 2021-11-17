@@ -20,7 +20,8 @@ def draw_recept_result(recept_array, result_array):
     window_recept_result = np.zeros(window_size, np.uint8)
 
     draw_array_vertical(recept_array, window_recept_result, colom1)
-    draw_array_vertical(result_array, window_recept_result, colom2)
+    if(len(result_array) <= 8):
+        draw_array_vertical(result_array, window_recept_result, colom2)
 
     return window_recept_result
 
