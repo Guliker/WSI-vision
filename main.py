@@ -92,6 +92,8 @@ pos_img_crop = (1300,250)
 pos_four_filters = (1380,10)
 pos_corrected_image = (850,100)
 pos_recept_result = (400,0)
+
+completed_flag = 0
 """ ----- ----- ----- """
 
 # trackbar callback fucntion does nothing but required for trackbar
@@ -214,11 +216,19 @@ for i,name in enumerate(color_name_table):
 
 """ ----- MAIN LOOP BLOCK FINDER ----- """
 mid_pos = 2
+
+# test code
+#full_product = [ [7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]
+
+
 while(1):
     window_vision = window_blank.copy()
+    color_pos = []
     
     if (not len(full_product)):
         full_product = ms.ask_for_data(0.01)
+    else:
+        mid_pos = full_product[0][1]
 
     if(debug):
         #time to get frame
@@ -288,9 +298,9 @@ while(1):
             
             
             # erode to remove little white noise
-            color_mask_table[i] = cv2.erode(color_mask_table[i], kernal, iterations= 4)
+            color_mask_table[i] = cv2.erode(color_mask_table[i], kernal, iterations= 6)
             # dilate to increase back to original size
-            color_mask_table[i] = cv2.dilate(color_mask_table[i], kernal, iterations= 2)
+            color_mask_table[i] = cv2.dilate(color_mask_table[i], kernal, iterations= 4)
             
             color_contour_table[i] = mf.create_contour(color_mask_table[i], block_small_area)
             for contour in color_contour_table[i]:
@@ -342,18 +352,30 @@ while(1):
         dim = (width, height)
         work_frame = cv2.resize(work_frame, dim, interpolation = cv2.INTER_AREA)
         mf.overlay_image(window_vision, work_frame, pos_corrected_image)
+          
+    # create raw image and recipe overlays
+    mf.overlay_image(window_vision, frame, pos_raw_image)
+    rr_frame, progress = mrr.draw_recept_result(full_product, color_pos)
+    mf.overlay_image(window_vision, rr_frame, pos_recept_result)
+    
+    # quick debug to show variables
+    test_var = progress
+    cv2.putText(window_vision, str(test_var), (50,50), font, 0.5, (255, 255, 255))
+    
+    cv2.imshow("window vision", window_vision)
+    
+    if(progress == 1):
+        completed_flag = 1
         
-
+    if(not progress and completed_flag):
+        full_product = []
+        completed_flag = 0
+    
     # show normal view + bounding boxes    
     #cv2.imshow("Video", frame)
     #cv2.imshow("Raw Frame", work_frame)
+    #cv2.imshow("rr", rr_frame)
     
-    
-    mf.overlay_image(window_vision, frame, pos_raw_image)
-    rr_frame = mrr.draw_recept_result(full_product, color_pos)
-    mf.overlay_image(window_vision, rr_frame, pos_recept_result)
-    cv2.imshow("window vision", window_vision)
-
     #get_time(start_time)
 
     key = cv2.waitKey(10) & 0xFF 
@@ -367,9 +389,9 @@ while(1):
             cv2.destroyWindow("color_mask_combine")
         debug = not debug
     if key == ord('-'):
-        mid_pos -= 1
-    if key == ord('='):
         mid_pos += 1
+    if key == ord('='):
+        mid_pos -= 1
 
 """ ----- ----- ----- """
 

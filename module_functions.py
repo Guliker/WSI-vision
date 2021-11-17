@@ -404,7 +404,7 @@ def create_block_pos_array(image, contours, lowest_block_pos, offset_width):
     # place mid line
     if(len(contours)):
         x, y, w, h = cv2.boundingRect(contours[0])
-        x = int(x + (lowest_block_pos/float(4))*w)
+        x = int((x + w) - ((lowest_block_pos/float(4))*w))
         y = int(y + 0.5*h)
         cv2.circle(image, (x,y), 5, (255,255,255), -1)
 
