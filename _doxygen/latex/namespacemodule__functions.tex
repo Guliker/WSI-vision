@@ -32,6 +32,13 @@ def \mbox{\hyperlink{namespacemodule__functions_a7b1acafebdc5cc0ef48f7202a12ad05
 def \mbox{\hyperlink{namespacemodule__functions_ac39d58ae949a0f0b8b37dbfed508c114}{sort\+\_\+contours\+\_\+on\+\_\+height}} (cnts, clr)
 \item 
 def \mbox{\hyperlink{namespacemodule__functions_afea944d7c79ea128e4b5de777b84808b}{block\+\_\+color\+\_\+fill}} (fill\+\_\+array, cnt\+\_\+array, color\+\_\+index, block\+\_\+width)
+\item 
+def \mbox{\hyperlink{namespacemodule__functions_a68b59d76c84726096c32dea4b8b298f5}{create\+\_\+block\+\_\+pos\+\_\+array}} (image, contours, lowest\+\_\+block\+\_\+pos, offset\+\_\+width)
+\item 
+def \mbox{\hyperlink{namespacemodule__functions_a6540211e362aa55494e7c7bc8be1a9ee}{overlay\+\_\+image}} (l\+\_\+img, s\+\_\+img, position=(0, 0))
+\item 
+\mbox{\Hypertarget{namespacemodule__functions_abcfe323ae398d341c9a64fdacf55e73f}\label{namespacemodule__functions_abcfe323ae398d341c9a64fdacf55e73f}} 
+def {\bfseries pos\+\_\+shift} (pos, shift\+\_\+pos)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -87,6 +94,18 @@ Examples:
 :param      min_max_array:  Min and max values [[l,a,b],[l,a,b]]
 :param      scale:          Factor to scale the image, 1 = normal
 :return     bit mask of the image where the lab values are within the min and max
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__functions_a68b59d76c84726096c32dea4b8b298f5}\label{namespacemodule__functions_a68b59d76c84726096c32dea4b8b298f5}} 
+\index{module\_functions@{module\_functions}!create\_block\_pos\_array@{create\_block\_pos\_array}}
+\index{create\_block\_pos\_array@{create\_block\_pos\_array}!module\_functions@{module\_functions}}
+\doxysubsubsection{\texorpdfstring{create\_block\_pos\_array()}{create\_block\_pos\_array()}}
+{\footnotesize\ttfamily def module\+\_\+functions.\+create\+\_\+block\+\_\+pos\+\_\+array (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{contours,  }\item[{}]{lowest\+\_\+block\+\_\+pos,  }\item[{}]{offset\+\_\+width }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Creates an array that shows if the block is positioned in the left(1), middle(2), right(3)
+:param      image:              Image to draw the mid position on
+:param      contours:           Array of contours sorted in height
+:param      lowest_block_pos:   Position of the lowest block
+:return     An array of the position from the bottom block to the top block
 \end{DoxyVerb}
  \mbox{\Hypertarget{namespacemodule__functions_aa96152cc4a4572f7b29a330a49cb2d76}\label{namespacemodule__functions_aa96152cc4a4572f7b29a330a49cb2d76}} 
 \index{module\_functions@{module\_functions}!create\_contour@{create\_contour}}
@@ -201,6 +220,17 @@ Examples:
 :param      color_space:    Color space the image will be transformed to
 :param      offset_table:   Amount the first second and third values will be changed [l,a,b]
 :return     minimum array,  maximum array (size = 3)
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__functions_a6540211e362aa55494e7c7bc8be1a9ee}\label{namespacemodule__functions_a6540211e362aa55494e7c7bc8be1a9ee}} 
+\index{module\_functions@{module\_functions}!overlay\_image@{overlay\_image}}
+\index{overlay\_image@{overlay\_image}!module\_functions@{module\_functions}}
+\doxysubsubsection{\texorpdfstring{overlay\_image()}{overlay\_image()}}
+{\footnotesize\ttfamily def module\+\_\+functions.\+overlay\+\_\+image (\begin{DoxyParamCaption}\item[{}]{l\+\_\+img,  }\item[{}]{s\+\_\+img,  }\item[{}]{position = {\ttfamily (0,0)} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Overlays an smaller image(s_img) over an lager image(l_img)
+:param      l_img:      The large image that is the base
+:param      s_img:      The small image that will be inserted
+:param      position:   Position of the small image
 \end{DoxyVerb}
  \mbox{\Hypertarget{namespacemodule__functions_a46b932fe69bf77eb90f5ab2b1e0dc4f8}\label{namespacemodule__functions_a46b932fe69bf77eb90f5ab2b1e0dc4f8}} 
 \index{module\_functions@{module\_functions}!save\_min\_max\_color@{save\_min\_max\_color}}

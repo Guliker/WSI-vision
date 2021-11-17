@@ -101,6 +101,13 @@ Functions</h2></td></tr>
 <tr class="separator:ac39d58ae949a0f0b8b37dbfed508c114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afea944d7c79ea128e4b5de777b84808b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#afea944d7c79ea128e4b5de777b84808b">block_color_fill</a> (fill_array, cnt_array, color_index, block_width)</td></tr>
 <tr class="separator:afea944d7c79ea128e4b5de777b84808b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68b59d76c84726096c32dea4b8b298f5"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#a68b59d76c84726096c32dea4b8b298f5">create_block_pos_array</a> (image, contours, lowest_block_pos, offset_width)</td></tr>
+<tr class="separator:a68b59d76c84726096c32dea4b8b298f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6540211e362aa55494e7c7bc8be1a9ee"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#a6540211e362aa55494e7c7bc8be1a9ee">overlay_image</a> (l_img, s_img, position=(0, 0))</td></tr>
+<tr class="separator:a6540211e362aa55494e7c7bc8be1a9ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcfe323ae398d341c9a64fdacf55e73f"><td class="memItemLeft" align="right" valign="top"><a id="abcfe323ae398d341c9a64fdacf55e73f" name="abcfe323ae398d341c9a64fdacf55e73f"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>pos_shift</b> (pos, shift_pos)</td></tr>
+<tr class="separator:abcfe323ae398d341c9a64fdacf55e73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -227,6 +234,51 @@ Examples:
 :param      min_max_array:  Min and max values [[l,a,b],[l,a,b]]
 :param      scale:          Factor to scale the image, 1 = normal
 :return     bit mask of the image where the lab values are within the min and max
+</pre> 
+</div>
+</div>
+<a id="a68b59d76c84726096c32dea4b8b298f5" name="a68b59d76c84726096c32dea4b8b298f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68b59d76c84726096c32dea4b8b298f5">&#9670;&nbsp;</a></span>create_block_pos_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def module_functions.create_block_pos_array </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>contours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>lowest_block_pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>offset_width</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">:brief      Creates an array that shows if the block is positioned in the left(1), middle(2), right(3)
+:param      image:              Image to draw the mid position on
+:param      contours:           Array of contours sorted in height
+:param      lowest_block_pos:   Position of the lowest block
+:return     An array of the position from the bottom block to the top block
 </pre> 
 </div>
 </div>
@@ -656,6 +708,44 @@ Examples:
 :param      color_space:    Color space the image will be transformed to
 :param      offset_table:   Amount the first second and third values will be changed [l,a,b]
 :return     minimum array,  maximum array (size = 3)
+</pre> 
+</div>
+</div>
+<a id="a6540211e362aa55494e7c7bc8be1a9ee" name="a6540211e362aa55494e7c7bc8be1a9ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6540211e362aa55494e7c7bc8be1a9ee">&#9670;&nbsp;</a></span>overlay_image()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def module_functions.overlay_image </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>l_img</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>s_img</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>position</em> = <code>(0,0)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">:brief      Overlays an smaller image(s_img) over an lager image(l_img)
+:param      l_img:      The large image that is the base
+:param      s_img:      The small image that will be inserted
+:param      position:   Position of the small image
 </pre> 
 </div>
 </div>

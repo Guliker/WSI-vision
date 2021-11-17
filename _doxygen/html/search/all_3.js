@@ -10,6 +10,7 @@ var searchData=
   ['config_7',['config',['../namespacemodule__camera.html#aab8087e81af463ac3d6e431ee75ce0d6',1,'module_camera']]],
   ['convert_8',['convert',['../classgxipy_1_1gxiapi_1_1_raw_image.html#a6e6524c568ee255ba3b9911df5259478',1,'gxipy::gxiapi::RawImage']]],
   ['create_5fbit_5fmask_5ffor_5fcolor_9',['create_bit_mask_for_color',['../namespacemodule__functions.html#a5944e9f9cb7cd5fe753df84013c2adfe',1,'module_functions']]],
-  ['create_5fcontour_10',['create_contour',['../namespacemodule__functions.html#aa96152cc4a4572f7b29a330a49cb2d76',1,'module_functions']]],
-  ['create_5fworkspace_11',['create_workspace',['../namespacemodule__functions.html#a9e3a4bece3737a760f53343ed73ce1a2',1,'module_functions']]]
+  ['create_5fblock_5fpos_5farray_10',['create_block_pos_array',['../namespacemodule__functions.html#a68b59d76c84726096c32dea4b8b298f5',1,'module_functions']]],
+  ['create_5fcontour_11',['create_contour',['../namespacemodule__functions.html#aa96152cc4a4572f7b29a330a49cb2d76',1,'module_functions']]],
+  ['create_5fworkspace_12',['create_workspace',['../namespacemodule__functions.html#a9e3a4bece3737a760f53343ed73ce1a2',1,'module_functions']]]
 ];

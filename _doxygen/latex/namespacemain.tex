@@ -46,10 +46,10 @@ int {\bfseries block\+\_\+small\+\_\+area} = 500
 int {\bfseries block\+\_\+width\+\_\+big} = 55
 \item 
 \mbox{\Hypertarget{namespacemain_a209a0c709014f1f9272ee8d4177fbbd6}\label{namespacemain_a209a0c709014f1f9272ee8d4177fbbd6}} 
-int {\bfseries block\+\_\+height} = 26
+int {\bfseries block\+\_\+height} = 24
 \item 
 \mbox{\Hypertarget{namespacemain_a3918840e3e99a3d21164a68064831af3}\label{namespacemain_a3918840e3e99a3d21164a68064831af3}} 
-int {\bfseries block\+\_\+height\+\_\+offset} = 2
+int {\bfseries block\+\_\+height\+\_\+offset} = 8
 \item 
 \mbox{\Hypertarget{namespacemain_a16056d89a0defac71901de0eb612b450}\label{namespacemain_a16056d89a0defac71901de0eb612b450}} 
 int {\bfseries block\+\_\+split\+\_\+cut\+\_\+size} = 12
@@ -73,7 +73,7 @@ int {\bfseries workspace\+\_\+height} = block\+\_\+height $\ast$ 12
 tuple {\bfseries color\+\_\+name\+\_\+table} = ( \char`\"{}green\char`\"{}, \char`\"{}yellow\char`\"{}, \char`\"{}blue\char`\"{}, \char`\"{}red\char`\"{} )
 \begin{DoxyCompactList}\small\item\em all logic tables \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacemain_a15587b085eecfde6a59bcd6863ef5d22}\label{namespacemain_a15587b085eecfde6a59bcd6863ef5d22}} 
-tuple {\bfseries color\+\_\+bgr\+\_\+table} = ( (0,200,0), (0,190,255), (255,70,0), (0,0,255) )
+tuple {\bfseries color\+\_\+bgr\+\_\+table} = ( (0,200,0), (0,255,255), (255,70,0), (0,0,255) )
 \item 
 \mbox{\Hypertarget{namespacemain_acb9e45e66f19224d202f290bfb431f5e}\label{namespacemain_acb9e45e66f19224d202f290bfb431f5e}} 
 list {\bfseries lab\+\_\+min\+\_\+max\+\_\+table} = \mbox{[} \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]}, \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]}, \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]}, \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]} \mbox{]}
@@ -87,14 +87,35 @@ list {\bfseries color\+\_\+contour\+\_\+table} = \mbox{[} \mbox{[}$\,$\mbox{]}, 
 \mbox{\Hypertarget{namespacemain_ad3074c9eadaf085032839d2409b34857}\label{namespacemain_ad3074c9eadaf085032839d2409b34857}} 
 list {\bfseries color\+\_\+mask\+\_\+combine} = \mbox{[}$\,$\mbox{]}
 \item 
-\mbox{\Hypertarget{namespacemain_a1090b3509955c0d153284833a5d33874}\label{namespacemain_a1090b3509955c0d153284833a5d33874}} 
+\mbox{\Hypertarget{namespacemain_a091f556c640a388a25777f6de23c612a}\label{namespacemain_a091f556c640a388a25777f6de23c612a}} 
 list {\bfseries full\+\_\+product} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_acc1497759e02ae9cae6ab3be2aff3848}\label{namespacemain_acc1497759e02ae9cae6ab3be2aff3848}} 
+{\bfseries window\+\_\+blank} = np.\+zeros((1080, 1920,3), np.\+uint8)
+\begin{DoxyCompactList}\small\item\em empty window to place frames in \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacemain_ae76e05aedf01c238e2f0245268aea01c}\label{namespacemain_ae76e05aedf01c238e2f0245268aea01c}} 
+tuple {\bfseries pos\+\_\+raw\+\_\+image} = (1380,250)
+\item 
+\mbox{\Hypertarget{namespacemain_a920861fafc1972db6458bd4ef8771828}\label{namespacemain_a920861fafc1972db6458bd4ef8771828}} 
+tuple {\bfseries pos\+\_\+img\+\_\+crop} = (1300,250)
+\item 
+\mbox{\Hypertarget{namespacemain_a5500416408ce647f26ba0a8858a44f38}\label{namespacemain_a5500416408ce647f26ba0a8858a44f38}} 
+tuple {\bfseries pos\+\_\+four\+\_\+filters} = (1380,10)
+\item 
+\mbox{\Hypertarget{namespacemain_a7d915cf4694a7ab9e7a4e31a9bdd4725}\label{namespacemain_a7d915cf4694a7ab9e7a4e31a9bdd4725}} 
+tuple {\bfseries pos\+\_\+corrected\+\_\+image} = (850,100)
+\item 
+\mbox{\Hypertarget{namespacemain_a7c7abcee2a15a26683fd4f0f0bb0244d}\label{namespacemain_a7c7abcee2a15a26683fd4f0f0bb0244d}} 
+tuple {\bfseries pos\+\_\+recept\+\_\+result} = (400,0)
 \item 
 \mbox{\Hypertarget{namespacemain_ae57958345b17f9ca8597330ba07e1a1c}\label{namespacemain_ae57958345b17f9ca8597330ba07e1a1c}} 
 {\bfseries start\+\_\+time} = datetime.\+datetime.\+now()
 \item 
 \mbox{\Hypertarget{namespacemain_ad9747c7855b9a13a1eb7154adf31061f}\label{namespacemain_ad9747c7855b9a13a1eb7154adf31061f}} 
 int {\bfseries step\+\_\+index} = 0
+\item 
+\mbox{\Hypertarget{namespacemain_a7103a74ed1d9221c3f4dc3d87c4d3143}\label{namespacemain_a7103a74ed1d9221c3f4dc3d87c4d3143}} 
+{\bfseries window\+\_\+vision} = window\+\_\+blank.\+copy()
 \item 
 \mbox{\Hypertarget{namespacemain_add977d49531fd983e5bc8c1175977340}\label{namespacemain_add977d49531fd983e5bc8c1175977340}} 
 {\bfseries frame} = mc.\+read(camera, cam\+\_\+scale)
@@ -103,10 +124,10 @@ int {\bfseries step\+\_\+index} = 0
 {\bfseries final\+\_\+frame} = frame.\+copy()
 \item 
 \mbox{\Hypertarget{namespacemain_a2b0bdd8320e857b9483772aae538352a}\label{namespacemain_a2b0bdd8320e857b9483772aae538352a}} 
-{\bfseries height}
+{\bfseries height} = int(work\+\_\+frame.\+shape\mbox{[}0\mbox{]} $\ast$ 3)
 \item 
 \mbox{\Hypertarget{namespacemain_a1ab2814363702aa04da32dd0ace34cd8}\label{namespacemain_a1ab2814363702aa04da32dd0ace34cd8}} 
-{\bfseries width}
+{\bfseries width} = int(work\+\_\+frame.\+shape\mbox{[}1\mbox{]} $\ast$ 3)
 \item 
 \mbox{\Hypertarget{namespacemain_ac7b933db3f3efb10dba64181f4901c84}\label{namespacemain_ac7b933db3f3efb10dba64181f4901c84}} 
 {\bfseries depth}
@@ -158,23 +179,20 @@ list {\bfseries all\+\_\+colors} = \mbox{[}$\,$\mbox{]}
 \mbox{\Hypertarget{namespacemain_a67b9a3a235dbab4a6b57bb5152c350c1}\label{namespacemain_a67b9a3a235dbab4a6b57bb5152c350c1}} 
 {\bfseries colors}
 \item 
-\mbox{\Hypertarget{namespacemain_a993118f39026271080746db4a91ec394}\label{namespacemain_a993118f39026271080746db4a91ec394}} 
-list {\bfseries all\+\_\+pos} = \mbox{[}$\,$\mbox{]}
+\mbox{\Hypertarget{namespacemain_a4bdf1565bed38064d8b20e36f17cf7e3}\label{namespacemain_a4bdf1565bed38064d8b20e36f17cf7e3}} 
+{\bfseries all\+\_\+pos} = mf.\+create\+\_\+block\+\_\+pos\+\_\+array(work\+\_\+frame, contours, mid\+\_\+pos, block\+\_\+width\+\_\+big/4)
 \item 
-\mbox{\Hypertarget{namespacemain_ad5edd0eaeeddc018050504eb108c6eed}\label{namespacemain_ad5edd0eaeeddc018050504eb108c6eed}} 
-{\bfseries w}
+\mbox{\Hypertarget{namespacemain_ae8692cc6a55d796a52c983929f11028f}\label{namespacemain_ae8692cc6a55d796a52c983929f11028f}} 
+{\bfseries color\+\_\+pos} = np.\+stack((colors, all\+\_\+pos), axis=1)
 \item 
-\mbox{\Hypertarget{namespacemain_a000f2a1e9067a79452cb985555e196d5}\label{namespacemain_a000f2a1e9067a79452cb985555e196d5}} 
-{\bfseries h}
+\mbox{\Hypertarget{namespacemain_acbb74da65311a806a7910717b75c717a}\label{namespacemain_acbb74da65311a806a7910717b75c717a}} 
+{\bfseries four\+\_\+filters} = mc.\+four\+\_\+in\+\_\+one\+\_\+frame(color\+\_\+mask\+\_\+table, 0.\+8)
 \item 
-\mbox{\Hypertarget{namespacemain_a7f44262494a45d0ed43dd7db92161c4d}\label{namespacemain_a7f44262494a45d0ed43dd7db92161c4d}} 
-{\bfseries compare\+\_\+x} = x
+\mbox{\Hypertarget{namespacemain_abe8459b03c2384497513080d0af7023b}\label{namespacemain_abe8459b03c2384497513080d0af7023b}} 
+tuple {\bfseries dim} = (width, height)
 \item 
-\mbox{\Hypertarget{namespacemain_a6799c67cae5a57276bb3a34be40f9511}\label{namespacemain_a6799c67cae5a57276bb3a34be40f9511}} 
-{\bfseries mid\+\_\+x} = int(x + 0.\+5$\ast$w)
-\item 
-\mbox{\Hypertarget{namespacemain_a40a78efa4faaf58ce9d70b2461f5fede}\label{namespacemain_a40a78efa4faaf58ce9d70b2461f5fede}} 
-{\bfseries debug\+\_\+frame} = mc.\+four\+\_\+in\+\_\+one\+\_\+frame(color\+\_\+mask\+\_\+table, 0.\+8)
+\mbox{\Hypertarget{namespacemain_a68bb901891c9dff4a485f4a7039197d8}\label{namespacemain_a68bb901891c9dff4a485f4a7039197d8}} 
+{\bfseries rr\+\_\+frame} = mrr.\+draw\+\_\+recept\+\_\+result(full\+\_\+product, color\+\_\+pos)
 \end{DoxyCompactItemize}
 
 
