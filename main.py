@@ -226,10 +226,10 @@ while(1):
     window_vision = window_blank.copy()
     color_pos = []
     
-    if(frame_count > 30):
+    if(frame_count > 10):
         frame_count = 0
         if (not len(full_product)):
-            full_product = ms.ask_for_data(0.3)
+            full_product = ms.ask_for_data(0.01)
         else:
             mid_pos = full_product[0][1]
 
