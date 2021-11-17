@@ -19,14 +19,19 @@ def draw_recept_result(recept_array, result_array):
     """
     window_recept_result = np.zeros(window_size, np.uint8)
 
-    
-    for i,recept in enumerate(recept_array):
-        cv2.putText(window_recept_result, recept, (colom1,50 + spacing*i),
-                            font, size,
-                            (255, 255, 255))
-        cv2.putText(window_recept_result, result_array[i], (colom2,50 + spacing*i),
-                            font, size,
-                            (255, 255, 255))
+    draw_array_vertical(recept_array, window_recept_result, colom1)
+    draw_array_vertical(result_array, window_recept_result, colom2)
+
     return window_recept_result
 
-
+def draw_array_vertical(array, image, colom_pos):
+    """
+    :brief      
+    :return     
+    """
+    for i,item in enumerate(array):
+        item = np.array(item, "uint8")
+        cv2.putText(image, item, (colom_pos,50 + spacing*i),
+                            font, size,
+                            (255, 255, 255))
+    
