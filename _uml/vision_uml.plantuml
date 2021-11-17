@@ -1,0 +1,48 @@
+@startuml
+start
+:Configure camera;
+while (more colors?)
+  :Read frame;
+  :Get color of middle;
+  if (Spacebar) then (Pressed)
+    :Save color;
+    :Go to next color;
+  endif
+endwhile
+->no;
+
+:Print four found colors;
+
+while (esc not pressed?)
+:Create blank window
+(1920x1080);
+if (Recipe) then (empty)
+    :Get recipe;
+endif
+:Read frame;
+:Create mask of every color;
+:Find the biggest contour in mask,
+the whole product;
+if (Biggest contour) then (not empty)
+  :Find angle of product;
+  :Create workspace around product;
+  repeat
+    :Create mask for color;
+    :Create contour of mask;
+    :Split contours that are too high;
+  backward:Next color;
+  repeat while (more colors) is (yes)
+  :Combine all contours;
+  :Sort all contours with color;
+  :Get offset of all contours;
+  :Combine color and offset list;
+  :Compare list with recipe;
+  :Overlay workspace, masks op blank;
+endif
+:Overlay raw image, recept/result op blank;
+:Display window;
+endwhile
+->pressed;
+
+end
+@enduml
