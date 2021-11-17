@@ -6,8 +6,6 @@ Asks for data and receives the whole product
 """ ----- IMPORTS ----- """
 import socket
 from ast import literal_eval
-import numpy as np
-
 # IJsel laptop
 #HOST = '192.168.14.219'
 # Christiaan laptop

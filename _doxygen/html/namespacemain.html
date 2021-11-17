@@ -120,10 +120,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>block_small_area</b> =
 int&#160;</td><td class="memItemRight" valign="bottom"><b>block_width_big</b> = 55</td></tr>
 <tr class="separator:a7fc0792e7de33d674ea5e40bc21c19c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a209a0c709014f1f9272ee8d4177fbbd6"><td class="memItemLeft" align="right" valign="top"><a id="a209a0c709014f1f9272ee8d4177fbbd6" name="a209a0c709014f1f9272ee8d4177fbbd6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>block_height</b> = 26</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>block_height</b> = 24</td></tr>
 <tr class="separator:a209a0c709014f1f9272ee8d4177fbbd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3918840e3e99a3d21164a68064831af3"><td class="memItemLeft" align="right" valign="top"><a id="a3918840e3e99a3d21164a68064831af3" name="a3918840e3e99a3d21164a68064831af3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>block_height_offset</b> = 2</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>block_height_offset</b> = 8</td></tr>
 <tr class="separator:a3918840e3e99a3d21164a68064831af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16056d89a0defac71901de0eb612b450"><td class="memItemLeft" align="right" valign="top"><a id="a16056d89a0defac71901de0eb612b450" name="a16056d89a0defac71901de0eb612b450"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>block_split_cut_size</b> = 12</td></tr>
@@ -152,7 +152,7 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>color_name_table</b>
 <tr class="memdesc:ab70ab73e9fecc7bf59c365e96999ddeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">all logic tables <br /></td></tr>
 <tr class="separator:ab70ab73e9fecc7bf59c365e96999ddeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15587b085eecfde6a59bcd6863ef5d22"><td class="memItemLeft" align="right" valign="top"><a id="a15587b085eecfde6a59bcd6863ef5d22" name="a15587b085eecfde6a59bcd6863ef5d22"></a>
-tuple&#160;</td><td class="memItemRight" valign="bottom"><b>color_bgr_table</b> = ( (0,200,0), (0,190,255), (255,70,0), (0,0,255) )</td></tr>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>color_bgr_table</b> = ( (0,200,0), (0,255,255), (255,70,0), (0,0,255) )</td></tr>
 <tr class="separator:a15587b085eecfde6a59bcd6863ef5d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb9e45e66f19224d202f290bfb431f5e"><td class="memItemLeft" align="right" valign="top"><a id="acb9e45e66f19224d202f290bfb431f5e" name="acb9e45e66f19224d202f290bfb431f5e"></a>
 list&#160;</td><td class="memItemRight" valign="bottom"><b>lab_min_max_table</b> = [ [[],[]], [[],[]], [[],[]], [[],[]] ]</td></tr>
@@ -166,15 +166,37 @@ list&#160;</td><td class="memItemRight" valign="bottom"><b>color_contour_table</
 <tr class="memitem:ad3074c9eadaf085032839d2409b34857"><td class="memItemLeft" align="right" valign="top"><a id="ad3074c9eadaf085032839d2409b34857" name="ad3074c9eadaf085032839d2409b34857"></a>
 list&#160;</td><td class="memItemRight" valign="bottom"><b>color_mask_combine</b> = []</td></tr>
 <tr class="separator:ad3074c9eadaf085032839d2409b34857"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1090b3509955c0d153284833a5d33874"><td class="memItemLeft" align="right" valign="top"><a id="a1090b3509955c0d153284833a5d33874" name="a1090b3509955c0d153284833a5d33874"></a>
+<tr class="memitem:a091f556c640a388a25777f6de23c612a"><td class="memItemLeft" align="right" valign="top"><a id="a091f556c640a388a25777f6de23c612a" name="a091f556c640a388a25777f6de23c612a"></a>
 list&#160;</td><td class="memItemRight" valign="bottom"><b>full_product</b> = []</td></tr>
-<tr class="separator:a1090b3509955c0d153284833a5d33874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a091f556c640a388a25777f6de23c612a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc1497759e02ae9cae6ab3be2aff3848"><td class="memItemLeft" align="right" valign="top"><a id="acc1497759e02ae9cae6ab3be2aff3848" name="acc1497759e02ae9cae6ab3be2aff3848"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>window_blank</b> = np.zeros((1080, 1920,3), np.uint8)</td></tr>
+<tr class="memdesc:acc1497759e02ae9cae6ab3be2aff3848"><td class="mdescLeft">&#160;</td><td class="mdescRight">empty window to place frames in <br /></td></tr>
+<tr class="separator:acc1497759e02ae9cae6ab3be2aff3848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae76e05aedf01c238e2f0245268aea01c"><td class="memItemLeft" align="right" valign="top"><a id="ae76e05aedf01c238e2f0245268aea01c" name="ae76e05aedf01c238e2f0245268aea01c"></a>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>pos_raw_image</b> = (1380,250)</td></tr>
+<tr class="separator:ae76e05aedf01c238e2f0245268aea01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a920861fafc1972db6458bd4ef8771828"><td class="memItemLeft" align="right" valign="top"><a id="a920861fafc1972db6458bd4ef8771828" name="a920861fafc1972db6458bd4ef8771828"></a>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>pos_img_crop</b> = (1300,250)</td></tr>
+<tr class="separator:a920861fafc1972db6458bd4ef8771828"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5500416408ce647f26ba0a8858a44f38"><td class="memItemLeft" align="right" valign="top"><a id="a5500416408ce647f26ba0a8858a44f38" name="a5500416408ce647f26ba0a8858a44f38"></a>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>pos_four_filters</b> = (1380,10)</td></tr>
+<tr class="separator:a5500416408ce647f26ba0a8858a44f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d915cf4694a7ab9e7a4e31a9bdd4725"><td class="memItemLeft" align="right" valign="top"><a id="a7d915cf4694a7ab9e7a4e31a9bdd4725" name="a7d915cf4694a7ab9e7a4e31a9bdd4725"></a>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>pos_corrected_image</b> = (850,100)</td></tr>
+<tr class="separator:a7d915cf4694a7ab9e7a4e31a9bdd4725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c7abcee2a15a26683fd4f0f0bb0244d"><td class="memItemLeft" align="right" valign="top"><a id="a7c7abcee2a15a26683fd4f0f0bb0244d" name="a7c7abcee2a15a26683fd4f0f0bb0244d"></a>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>pos_recept_result</b> = (400,0)</td></tr>
+<tr class="separator:a7c7abcee2a15a26683fd4f0f0bb0244d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae57958345b17f9ca8597330ba07e1a1c"><td class="memItemLeft" align="right" valign="top"><a id="ae57958345b17f9ca8597330ba07e1a1c" name="ae57958345b17f9ca8597330ba07e1a1c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>start_time</b> = datetime.datetime.now()</td></tr>
 <tr class="separator:ae57958345b17f9ca8597330ba07e1a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9747c7855b9a13a1eb7154adf31061f"><td class="memItemLeft" align="right" valign="top"><a id="ad9747c7855b9a13a1eb7154adf31061f" name="ad9747c7855b9a13a1eb7154adf31061f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>step_index</b> = 0</td></tr>
 <tr class="separator:ad9747c7855b9a13a1eb7154adf31061f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7103a74ed1d9221c3f4dc3d87c4d3143"><td class="memItemLeft" align="right" valign="top"><a id="a7103a74ed1d9221c3f4dc3d87c4d3143" name="a7103a74ed1d9221c3f4dc3d87c4d3143"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>window_vision</b> = window_blank.copy()</td></tr>
+<tr class="separator:a7103a74ed1d9221c3f4dc3d87c4d3143"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add977d49531fd983e5bc8c1175977340"><td class="memItemLeft" align="right" valign="top"><a id="add977d49531fd983e5bc8c1175977340" name="add977d49531fd983e5bc8c1175977340"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>frame</b> = mc.read(camera, cam_scale)</td></tr>
 <tr class="separator:add977d49531fd983e5bc8c1175977340"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,10 +204,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>step_index</b> = 0</td
 &#160;</td><td class="memItemRight" valign="bottom"><b>final_frame</b> = frame.copy()</td></tr>
 <tr class="separator:a1a9c5d2d76da980da40df302b6dcce88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b0bdd8320e857b9483772aae538352a"><td class="memItemLeft" align="right" valign="top"><a id="a2b0bdd8320e857b9483772aae538352a" name="a2b0bdd8320e857b9483772aae538352a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>height</b> = int(work_frame.shape[0] * 3)</td></tr>
 <tr class="separator:a2b0bdd8320e857b9483772aae538352a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ab2814363702aa04da32dd0ace34cd8"><td class="memItemLeft" align="right" valign="top"><a id="a1ab2814363702aa04da32dd0ace34cd8" name="a1ab2814363702aa04da32dd0ace34cd8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>width</b></td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> = int(work_frame.shape[1] * 3)</td></tr>
 <tr class="separator:a1ab2814363702aa04da32dd0ace34cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7b933db3f3efb10dba64181f4901c84"><td class="memItemLeft" align="right" valign="top"><a id="ac7b933db3f3efb10dba64181f4901c84" name="ac7b933db3f3efb10dba64181f4901c84"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>depth</b></td></tr>
@@ -237,24 +259,21 @@ list&#160;</td><td class="memItemRight" valign="bottom"><b>all_colors</b> = []</
 <tr class="memitem:a67b9a3a235dbab4a6b57bb5152c350c1"><td class="memItemLeft" align="right" valign="top"><a id="a67b9a3a235dbab4a6b57bb5152c350c1" name="a67b9a3a235dbab4a6b57bb5152c350c1"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>colors</b></td></tr>
 <tr class="separator:a67b9a3a235dbab4a6b57bb5152c350c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a993118f39026271080746db4a91ec394"><td class="memItemLeft" align="right" valign="top"><a id="a993118f39026271080746db4a91ec394" name="a993118f39026271080746db4a91ec394"></a>
-list&#160;</td><td class="memItemRight" valign="bottom"><b>all_pos</b> = []</td></tr>
-<tr class="separator:a993118f39026271080746db4a91ec394"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5edd0eaeeddc018050504eb108c6eed"><td class="memItemLeft" align="right" valign="top"><a id="ad5edd0eaeeddc018050504eb108c6eed" name="ad5edd0eaeeddc018050504eb108c6eed"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>w</b></td></tr>
-<tr class="separator:ad5edd0eaeeddc018050504eb108c6eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a000f2a1e9067a79452cb985555e196d5"><td class="memItemLeft" align="right" valign="top"><a id="a000f2a1e9067a79452cb985555e196d5" name="a000f2a1e9067a79452cb985555e196d5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>h</b></td></tr>
-<tr class="separator:a000f2a1e9067a79452cb985555e196d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f44262494a45d0ed43dd7db92161c4d"><td class="memItemLeft" align="right" valign="top"><a id="a7f44262494a45d0ed43dd7db92161c4d" name="a7f44262494a45d0ed43dd7db92161c4d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>compare_x</b> = x</td></tr>
-<tr class="separator:a7f44262494a45d0ed43dd7db92161c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6799c67cae5a57276bb3a34be40f9511"><td class="memItemLeft" align="right" valign="top"><a id="a6799c67cae5a57276bb3a34be40f9511" name="a6799c67cae5a57276bb3a34be40f9511"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>mid_x</b> = int(x + 0.5*w)</td></tr>
-<tr class="separator:a6799c67cae5a57276bb3a34be40f9511"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40a78efa4faaf58ce9d70b2461f5fede"><td class="memItemLeft" align="right" valign="top"><a id="a40a78efa4faaf58ce9d70b2461f5fede" name="a40a78efa4faaf58ce9d70b2461f5fede"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>debug_frame</b> = mc.four_in_one_frame(color_mask_table, 0.8)</td></tr>
-<tr class="separator:a40a78efa4faaf58ce9d70b2461f5fede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bdf1565bed38064d8b20e36f17cf7e3"><td class="memItemLeft" align="right" valign="top"><a id="a4bdf1565bed38064d8b20e36f17cf7e3" name="a4bdf1565bed38064d8b20e36f17cf7e3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>all_pos</b> = mf.create_block_pos_array(work_frame, contours, mid_pos, block_width_big/4)</td></tr>
+<tr class="separator:a4bdf1565bed38064d8b20e36f17cf7e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8692cc6a55d796a52c983929f11028f"><td class="memItemLeft" align="right" valign="top"><a id="ae8692cc6a55d796a52c983929f11028f" name="ae8692cc6a55d796a52c983929f11028f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>color_pos</b> = np.stack((colors, all_pos), axis=1)</td></tr>
+<tr class="separator:ae8692cc6a55d796a52c983929f11028f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb74da65311a806a7910717b75c717a"><td class="memItemLeft" align="right" valign="top"><a id="acbb74da65311a806a7910717b75c717a" name="acbb74da65311a806a7910717b75c717a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>four_filters</b> = mc.four_in_one_frame(color_mask_table, 0.8)</td></tr>
+<tr class="separator:acbb74da65311a806a7910717b75c717a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe8459b03c2384497513080d0af7023b"><td class="memItemLeft" align="right" valign="top"><a id="abe8459b03c2384497513080d0af7023b" name="abe8459b03c2384497513080d0af7023b"></a>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>dim</b> = (width, height)</td></tr>
+<tr class="separator:abe8459b03c2384497513080d0af7023b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68bb901891c9dff4a485f4a7039197d8"><td class="memItemLeft" align="right" valign="top"><a id="a68bb901891c9dff4a485f4a7039197d8" name="a68bb901891c9dff4a485f4a7039197d8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>rr_frame</b> = mrr.draw_recept_result(full_product, color_pos)</td></tr>
+<tr class="separator:a68bb901891c9dff4a485f4a7039197d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Based on python code for Multiple Color Detection:
