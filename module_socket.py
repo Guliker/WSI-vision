@@ -9,11 +9,11 @@ import time
 from ast import literal_eval
 # IJsel laptop
 #HOST = '192.168.14.219'
-# Christiaan laptop
+# debug laptop
 #HOST = '192.168.14.174'
 HOST = ''
 PORT = 30000
-HOST_send = '192.168.14.174'
+HOST_send = '192.168.14.219'
 
 
 command_message = b"asking_for_file"
