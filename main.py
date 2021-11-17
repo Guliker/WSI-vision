@@ -216,19 +216,22 @@ for i,name in enumerate(color_name_table):
 
 """ ----- MAIN LOOP BLOCK FINDER ----- """
 mid_pos = 2
-
+frame_count = 0
 # test code
 #full_product = [ [7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]
 
 
 while(1):
+    frame_count += 1
     window_vision = window_blank.copy()
     color_pos = []
     
-    if (not len(full_product)):
-        full_product = ms.ask_for_data(0.01)
-    else:
-        mid_pos = full_product[0][1]
+    if(frame_count > 30):
+        frame_count = 0
+        if (not len(full_product)):
+            full_product = ms.ask_for_data(0.3)
+        else:
+            mid_pos = full_product[0][1]
 
     if(debug):
         #time to get frame
@@ -359,17 +362,15 @@ while(1):
     mf.overlay_image(window_vision, rr_frame, pos_recept_result)
     
     # quick debug to show variables
-    #test_var = progress
-    #cv2.putText(window_vision, str(test_var), (50,50), font, 0.5, (255, 255, 255))
-    
-    cv2.imshow("window vision", window_vision)
+    test_var = frame_count
+    cv2.putText(window_vision, str(test_var), (50,50), font, 0.5, (255, 255, 255))
     
     if(progress == 1):
         completed_flag = 1
         
     if(completed_flag):
         cv2.putText(window_vision, "Product completed", (300,50), font, 1, (255, 255, 255))
-        if(not progress):
+        if(progress == 0):
             full_product = []
             completed_flag = 0
     
@@ -380,6 +381,8 @@ while(1):
     
     #get_time(start_time)
 
+    cv2.imshow("window vision", window_vision)
+    
     key = cv2.waitKey(10) & 0xFF 
     # check esc to exit
     if (key == 27):
