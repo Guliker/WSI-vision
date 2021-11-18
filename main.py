@@ -87,12 +87,13 @@ buffer_product = []
 
 ## empty window to place frames in
 window_blank = np.zeros((1080, 1920,3), np.uint8)
+window_green = np.full((1080,1920,3), (0,50,0), np.uint8)
 
 pos_raw_image = (1380,250)
-pos_img_crop = (1300,250)
-pos_four_filters = (1380,10)
+pos_img_crop = (1300,280)
+pos_four_filters = (1380,0)
 pos_corrected_image = (850,100)
-pos_recept_result = (400,0)
+pos_recept_result = (500,0)
 
 completed_flag = 0
 """ ----- ----- ----- """
@@ -224,20 +225,23 @@ frame_count = 0
 
 while(1):
     frame_count += 1
-    window_vision = window_blank.copy()
+    
+    if(completed_flag):
+        window_vision = window_green.copy()
+    else:
+        window_vision = window_blank.copy()
     color_pos = []
     
     # get product to be checked
     if(frame_count > 10):
-        temp_product = ms.ask_for_data(0.01)
+        temp_product = ms.ask_for_data(0.01,5.0)
         # check if there is a product received
         if(len(temp_product)):
             buffer_product.append(temp_product)
         if(not len(full_product)):
             if(len(buffer_product)):
                 full_product = buffer_product.pop(0)
-        else:
-            mid_pos = full_product[0][1]
+                mid_pos = full_product[0][1]
 
     if(debug):
         #time to get frame
@@ -364,18 +368,17 @@ while(1):
           
     # create raw image and recipe overlays
     mf.overlay_image(window_vision, frame, pos_raw_image)
-    rr_frame, progress = mrr.draw_recept_result(full_product, color_pos)
+    rr_frame, progress = mrr.draw_recept_result(full_product, color_pos, completed_flag)
     mf.overlay_image(window_vision, rr_frame, pos_recept_result)
     
     # quick debug to show variables
-    test_var = buffer_product
+    test_var = len(buffer_product)
     cv2.putText(window_vision, str(test_var), (50,50), font, 0.5, (255, 255, 255))
     
     if(progress == 1):
         completed_flag = 1
-        
+
     if(completed_flag):
-        cv2.putText(window_vision, "Product completed", (300,50), font, 1, (255, 255, 255))
         if(progress == 0):
             full_product = []
             completed_flag = 0

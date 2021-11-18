@@ -12,14 +12,17 @@ colom2 = 150
 window_size = (1000, 250,3)
 
 """ ----- IMPORTS ----- """
-def draw_recept_result(recept_array, result_array):
+def draw_recept_result(recept_array, result_array, background):
     """
     :brief      Creates a image that shows the recept and result array, when they are the same a background will display that
     :param      recept_array:   Array of the recipe to build, in the format: [[block1,pos1],[block2,pos2],..]
     :param      result_array:   Array of the result that is build, in the format: [[block1,pos1],[block2,pos2],..]
     :return     two values: An image where the arrays and background are displayed on, percentage completed
     """
-    window_recept_result = np.zeros(window_size, np.uint8)
+    if(background):
+        window_recept_result = np.full(window_size, (0,50,0), np.uint8)
+    else:
+        window_recept_result = np.zeros(window_size, np.uint8)
     
     total = 0
     progress = 0

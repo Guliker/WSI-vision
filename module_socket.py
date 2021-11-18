@@ -21,39 +21,37 @@ command_message_cobot = b"asking_for_data"
 
 arr = []
 
-def ask_for_data(timeout_time=1.0):
+def ask_for_data(timeout_send=1.0, timeout_receive=5.0):
     """
     :brief      Start connection with the socket and asking for an available block on the socket
     :return     Array of items that are the product
     """
     # send data request
-    msg = []
     print("")
     print("Sending ... "),
-    succes = send_request(timeout_time)
-    if(succes):
-        print("Receiving ... "),
-        time.sleep(0.1)
-        msg = receive_data()
+    msg = send_request(timeout_send, timeout_receive)
     print("Done")
     return msg
     
-def send_request(timeout_time=1.0):
+def send_request(timeout_send, timeout_receive):
     """
     :brief      Send to the cto a request for data
     :return     If the request was succesfull
     """
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(timeout_time)   # timeout for connection in seconds
+        s.settimeout(timeout_send)   # timeout for connection in seconds
         s.connect((HOST_send, PORT))
         s.sendall(str("asking_for_file"))
+        s.settimeout(timeout_receive)
+        print("Receiving ... "),
+        recv_msg = s.recv(1024)
         s.close()
-        return True
+        return literal_eval(recv_msg)
     except socket.error as socketerror:
         print(""),
         s.close()
-        return False
+        return []
     
 def receive_data(timeout_time=1.0):
     """
