@@ -27,10 +27,10 @@ def ask_for_data(timeout_send=1.0, timeout_receive=5.0):
     :return     Array of items that are the product
     """
     # send data request
-    print("")
-    print("Sending ... "),
+    #print("")
+    #print("Sending ... "),
     msg = send_request(timeout_send, timeout_receive)
-    print("Done")
+    #print("Done")
     return msg
     
 def send_request(timeout_send, timeout_receive):
@@ -47,6 +47,7 @@ def send_request(timeout_send, timeout_receive):
         print("Receiving ... "),
         recv_msg = s.recv(1024)
         s.close()
+        print(recv_msg)
         return literal_eval(recv_msg)
     except socket.error as socketerror:
         print(""),
