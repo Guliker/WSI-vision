@@ -92,8 +92,8 @@ window_green = np.full((1080,1920,3), (0,50,0), np.uint8)
 pos_raw_image = (1380,250)
 pos_img_crop = (1300,280)
 pos_four_filters = (1380,0)
-pos_corrected_image = (850,100)
-pos_recept_result = (500,0)
+pos_corrected_image = (880,110)
+pos_recept_result = (600,0)
 
 completed_flag = 0
 """ ----- ----- ----- """

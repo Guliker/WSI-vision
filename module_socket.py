@@ -50,7 +50,6 @@ def send_request(timeout_send, timeout_receive):
         print(recv_msg)
         return literal_eval(recv_msg)
     except socket.error as socketerror:
-        print(""),
         s.close()
         return []
     
