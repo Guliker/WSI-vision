@@ -12,7 +12,7 @@ from ast import literal_eval
 # debug laptop
 #HOST = '192.168.14.174'
 HOST = ''
-PORT = 30000
+PORT = 30001
 HOST_send = '192.168.14.219'
 
 
