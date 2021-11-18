@@ -41,6 +41,7 @@ if (Biggest contour) then (not empty)
   repeat while (more colors) is (yes)
   :Convert all contours to (block, position);
   :Compare list with recipe;
+  note right: <img:img/fin_rr.png>
   :Overlay workspace, masks op blank;
 endif
 :Overlay raw image, recept/result op blank;
