@@ -1,26 +1,31 @@
-@startuml
+@startuml vision
 start
 :Configure camera;
 while (more colors?)
   :Read frame;
+  note right: <img:img/cal_read.png>
   :Get color of middle;
+  note right: <img:img/cal_crop.png>
   if (Spacebar) then (Pressed)
     :Save color;
+    note right: <img:img/cal_value.png>
     :Go to next color;
   endif
 endwhile
 ->no;
 
-:Print four found colors;
+:Print: four found colors;
 
 while (esc not pressed?)
 :Create blank window
 (1920x1080);
-if (Recipe) then (empty)
+if (Recipe) then (available)
     :Get recipe;
 endif
 :Read frame;
+note right: <img:img/fin_read.png>
 :Create mask of every color;
+note right: <img:img/fin_product.png>
 :Find the biggest contour in mask,
 the whole product;
 if (Biggest contour) then (not empty)
@@ -28,14 +33,13 @@ if (Biggest contour) then (not empty)
   :Create workspace around product;
   repeat
     :Create mask for color;
+  note right: <img:img/fin_filter1.png>
     :Create contour of mask;
     :Split contours that are too high;
+  note right: <img:img/fin_filter2.png>
   backward:Next color;
   repeat while (more colors) is (yes)
-  :Combine all contours;
-  :Sort all contours with color;
-  :Get offset of all contours;
-  :Combine color and offset list;
+  :Convert all contours to (block, position);
   :Compare list with recipe;
   :Overlay workspace, masks op blank;
 endif
