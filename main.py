@@ -83,6 +83,7 @@ color_mask_table = [        [],             [],             [],             []  
 color_contour_table = [     [],             [],             [],             []          ]   # here are the contours of each block stored for each color
 color_mask_combine = []
 full_product = []
+buffer_product = []
 
 ## empty window to place frames in
 window_blank = np.zeros((1080, 1920,3), np.uint8)
@@ -226,10 +227,15 @@ while(1):
     window_vision = window_blank.copy()
     color_pos = []
     
+    # get product to be checked
     if(frame_count > 10):
-        frame_count = 0
-        if (not len(full_product)):
-            full_product = ms.ask_for_data(0.01)
+        temp_product = ms.ask_for_data(0.01)
+        # check if there is a product received
+        if(len(temp_product)):
+            buffer_product.append(temp_product)
+        if(not len(full_product)):
+            if(len(buffer_product)):
+                full_product = buffer_product.pop(0)
         else:
             mid_pos = full_product[0][1]
 
@@ -362,7 +368,7 @@ while(1):
     mf.overlay_image(window_vision, rr_frame, pos_recept_result)
     
     # quick debug to show variables
-    test_var = frame_count
+    test_var = buffer_product
     cv2.putText(window_vision, str(test_var), (50,50), font, 0.5, (255, 255, 255))
     
     if(progress == 1):
