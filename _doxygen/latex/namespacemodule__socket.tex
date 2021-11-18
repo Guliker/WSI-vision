@@ -3,7 +3,11 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \mbox{\hyperlink{namespacemodule__socket_a7734341290c666d51373089c23daf88b}{ask\+\_\+for\+\_\+data}} (timeout\+\_\+time=1.\+0)
+def \mbox{\hyperlink{namespacemodule__socket_a46cc0b15223ee0f9d6e493c7c2858b20}{ask\+\_\+for\+\_\+data}} (timeout\+\_\+send=1.\+0, timeout\+\_\+receive=5.\+0)
+\item 
+def \mbox{\hyperlink{namespacemodule__socket_ae1aa7a797c4627ab316d84ecd66dfb8d}{send\+\_\+request}} (timeout\+\_\+send, timeout\+\_\+receive)
+\item 
+def \mbox{\hyperlink{namespacemodule__socket_a1cc1aac0632334b86336cba18e7fcdae}{receive\+\_\+data}} (timeout\+\_\+time=1.\+0)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -12,7 +16,10 @@ def \mbox{\hyperlink{namespacemodule__socket_a7734341290c666d51373089c23daf88b}{
 string {\bfseries HOST} = \textquotesingle{}\textquotesingle{}
 \item 
 \mbox{\Hypertarget{namespacemodule__socket_a37f6df1e2ada3f213803ae23862dcd53}\label{namespacemodule__socket_a37f6df1e2ada3f213803ae23862dcd53}} 
-int {\bfseries PORT} = 30000
+int {\bfseries PORT} = 30001
+\item 
+\mbox{\Hypertarget{namespacemodule__socket_aa814bbc84549e4c62f58ac29269fa160}\label{namespacemodule__socket_aa814bbc84549e4c62f58ac29269fa160}} 
+string {\bfseries HOST\+\_\+send} = \textquotesingle{}192.\+168.\+14.\+219\textquotesingle{}
 \item 
 \mbox{\Hypertarget{namespacemodule__socket_a81d6c2e04b8e84baeffef2240eef82bd}\label{namespacemodule__socket_a81d6c2e04b8e84baeffef2240eef82bd}} 
 string {\bfseries command\+\_\+message} = b\char`\"{}asking\+\_\+for\+\_\+file\char`\"{}
@@ -32,13 +39,31 @@ Asks for data and receives the whole product
  
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespacemodule__socket_a7734341290c666d51373089c23daf88b}\label{namespacemodule__socket_a7734341290c666d51373089c23daf88b}} 
+\mbox{\Hypertarget{namespacemodule__socket_a46cc0b15223ee0f9d6e493c7c2858b20}\label{namespacemodule__socket_a46cc0b15223ee0f9d6e493c7c2858b20}} 
 \index{module\_socket@{module\_socket}!ask\_for\_data@{ask\_for\_data}}
 \index{ask\_for\_data@{ask\_for\_data}!module\_socket@{module\_socket}}
 \doxysubsubsection{\texorpdfstring{ask\_for\_data()}{ask\_for\_data()}}
-{\footnotesize\ttfamily def module\+\_\+socket.\+ask\+\_\+for\+\_\+data (\begin{DoxyParamCaption}\item[{}]{timeout\+\_\+time = {\ttfamily 1.0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def module\+\_\+socket.\+ask\+\_\+for\+\_\+data (\begin{DoxyParamCaption}\item[{}]{timeout\+\_\+send = {\ttfamily 1.0},  }\item[{}]{timeout\+\_\+receive = {\ttfamily 5.0} }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}:brief      Start connection with the socket and asking for an available block on the socket
 :return     Array of items that are the product
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__socket_a1cc1aac0632334b86336cba18e7fcdae}\label{namespacemodule__socket_a1cc1aac0632334b86336cba18e7fcdae}} 
+\index{module\_socket@{module\_socket}!receive\_data@{receive\_data}}
+\index{receive\_data@{receive\_data}!module\_socket@{module\_socket}}
+\doxysubsubsection{\texorpdfstring{receive\_data()}{receive\_data()}}
+{\footnotesize\ttfamily def module\+\_\+socket.\+receive\+\_\+data (\begin{DoxyParamCaption}\item[{}]{timeout\+\_\+time = {\ttfamily 1.0} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Send to the cto a request for data
+:return     If the request was succesfull
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__socket_ae1aa7a797c4627ab316d84ecd66dfb8d}\label{namespacemodule__socket_ae1aa7a797c4627ab316d84ecd66dfb8d}} 
+\index{module\_socket@{module\_socket}!send\_request@{send\_request}}
+\index{send\_request@{send\_request}!module\_socket@{module\_socket}}
+\doxysubsubsection{\texorpdfstring{send\_request()}{send\_request()}}
+{\footnotesize\ttfamily def module\+\_\+socket.\+send\+\_\+request (\begin{DoxyParamCaption}\item[{}]{timeout\+\_\+send,  }\item[{}]{timeout\+\_\+receive }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Send to the cto a request for data
+:return     If the request was succesfull
 \end{DoxyVerb}
  

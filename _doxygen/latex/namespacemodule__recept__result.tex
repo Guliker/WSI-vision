@@ -3,7 +3,13 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \mbox{\hyperlink{namespacemodule__recept__result_ad91fd38254933b193dc74be9ff7208e7}{draw\+\_\+recept\+\_\+result}} (recept\+\_\+array, result\+\_\+array)
+def \mbox{\hyperlink{namespacemodule__recept__result_abc9fd6884753ce62154fd36491db561a}{draw\+\_\+recept\+\_\+result}} (recept\+\_\+array, result\+\_\+array, background)
+\item 
+def \mbox{\hyperlink{namespacemodule__recept__result_adf6b14c6f4a7a7434db357244f6baaaa}{draw\+\_\+array\+\_\+vertical}} (image, array, colom\+\_\+pos, sub\+\_\+text)
+\item 
+def \mbox{\hyperlink{namespacemodule__recept__result_a07f947739216a38a86144c767d15cfeb}{draw\+\_\+background}} (image, inputarray1, inputarray2)
+\item 
+def \mbox{\hyperlink{namespacemodule__recept__result_ac4016025a044d6b7f856852619ad3e77}{calc\+\_\+max\+\_\+common}} (array1, array2)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -15,16 +21,16 @@ def \mbox{\hyperlink{namespacemodule__recept__result_ad91fd38254933b193dc74be9ff
 int {\bfseries size} = 1
 \item 
 \mbox{\Hypertarget{namespacemodule__recept__result_ad7ad6cd8d7dac87fd12ad04779163472}\label{namespacemodule__recept__result_ad7ad6cd8d7dac87fd12ad04779163472}} 
-int {\bfseries spacing} = 20$\ast$size
+int {\bfseries spacing} = 80$\ast$size
 \item 
 \mbox{\Hypertarget{namespacemodule__recept__result_a4a0a59e396ab15819947f4341ab0506a}\label{namespacemodule__recept__result_a4a0a59e396ab15819947f4341ab0506a}} 
-int {\bfseries colom1} = 0
+int {\bfseries colom1} = 10
 \item 
 \mbox{\Hypertarget{namespacemodule__recept__result_ae2e2aeea21dbc440eb6e1610531f41ca}\label{namespacemodule__recept__result_ae2e2aeea21dbc440eb6e1610531f41ca}} 
-int {\bfseries colom2} = 200
+int {\bfseries colom2} = 150
 \item 
 \mbox{\Hypertarget{namespacemodule__recept__result_aded159021e1626ee5141f3663d53d269}\label{namespacemodule__recept__result_aded159021e1626ee5141f3663d53d269}} 
-tuple {\bfseries window\+\_\+size} = (1000, 400,3)
+tuple {\bfseries window\+\_\+size} = (1000, 250,3)
 \end{DoxyCompactItemize}
 
 
@@ -34,13 +40,50 @@ tuple {\bfseries window\+\_\+size} = (1000, 400,3)
  
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespacemodule__recept__result_ad91fd38254933b193dc74be9ff7208e7}\label{namespacemodule__recept__result_ad91fd38254933b193dc74be9ff7208e7}} 
+\mbox{\Hypertarget{namespacemodule__recept__result_ac4016025a044d6b7f856852619ad3e77}\label{namespacemodule__recept__result_ac4016025a044d6b7f856852619ad3e77}} 
+\index{module\_recept\_result@{module\_recept\_result}!calc\_max\_common@{calc\_max\_common}}
+\index{calc\_max\_common@{calc\_max\_common}!module\_recept\_result@{module\_recept\_result}}
+\doxysubsubsection{\texorpdfstring{calc\_max\_common()}{calc\_max\_common()}}
+{\footnotesize\ttfamily def module\+\_\+recept\+\_\+result.\+calc\+\_\+max\+\_\+common (\begin{DoxyParamCaption}\item[{}]{array1,  }\item[{}]{array2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Calculates the max length that both arrays can have
+:param      array1:     Array to compare
+:param      array2:     Array to compare
+:return     two values: maximum common length, difference between the arrays
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__recept__result_adf6b14c6f4a7a7434db357244f6baaaa}\label{namespacemodule__recept__result_adf6b14c6f4a7a7434db357244f6baaaa}} 
+\index{module\_recept\_result@{module\_recept\_result}!draw\_array\_vertical@{draw\_array\_vertical}}
+\index{draw\_array\_vertical@{draw\_array\_vertical}!module\_recept\_result@{module\_recept\_result}}
+\doxysubsubsection{\texorpdfstring{draw\_array\_vertical()}{draw\_array\_vertical()}}
+{\footnotesize\ttfamily def module\+\_\+recept\+\_\+result.\+draw\+\_\+array\+\_\+vertical (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{array,  }\item[{}]{colom\+\_\+pos,  }\item[{}]{sub\+\_\+text }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Draws an array on an image in the vertial axis, from bottom to top
+:param      array:      Array to be drawn
+:param      image:      Image to be drawn on
+:param      colom_pos:  Position of the array in the x-axis
+:param      sub_text:   Text that is drawn below the array
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__recept__result_a07f947739216a38a86144c767d15cfeb}\label{namespacemodule__recept__result_a07f947739216a38a86144c767d15cfeb}} 
+\index{module\_recept\_result@{module\_recept\_result}!draw\_background@{draw\_background}}
+\index{draw\_background@{draw\_background}!module\_recept\_result@{module\_recept\_result}}
+\doxysubsubsection{\texorpdfstring{draw\_background()}{draw\_background()}}
+{\footnotesize\ttfamily def module\+\_\+recept\+\_\+result.\+draw\+\_\+background (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{inputarray1,  }\item[{}]{inputarray2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Draws an background depending on the values of both inputs
+:param      input1:     Input to be compared with the other input
+:param      input2:     Input to be compared with the other input 
+:param      colom:      Position of the background
+:return     amount of green rectangles
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__recept__result_abc9fd6884753ce62154fd36491db561a}\label{namespacemodule__recept__result_abc9fd6884753ce62154fd36491db561a}} 
 \index{module\_recept\_result@{module\_recept\_result}!draw\_recept\_result@{draw\_recept\_result}}
 \index{draw\_recept\_result@{draw\_recept\_result}!module\_recept\_result@{module\_recept\_result}}
 \doxysubsubsection{\texorpdfstring{draw\_recept\_result()}{draw\_recept\_result()}}
-{\footnotesize\ttfamily def module\+\_\+recept\+\_\+result.\+draw\+\_\+recept\+\_\+result (\begin{DoxyParamCaption}\item[{}]{recept\+\_\+array,  }\item[{}]{result\+\_\+array }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def module\+\_\+recept\+\_\+result.\+draw\+\_\+recept\+\_\+result (\begin{DoxyParamCaption}\item[{}]{recept\+\_\+array,  }\item[{}]{result\+\_\+array,  }\item[{}]{background }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}:brief      
-:return     
+\begin{DoxyVerb}:brief      Creates a image that shows the recept and result array, when they are the same a background will display that
+:param      recept_array:   Array of the recipe to build, in the format: [[block1,pos1],[block2,pos2],..]
+:param      result_array:   Array of the result that is build, in the format: [[block1,pos1],[block2,pos2],..]
+:return     two values: An image where the arrays and background are displayed on, percentage completed
 \end{DoxyVerb}
  

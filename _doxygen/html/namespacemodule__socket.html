@@ -71,8 +71,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7734341290c666d51373089c23daf88b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__socket.html#a7734341290c666d51373089c23daf88b">ask_for_data</a> (timeout_time=1.0)</td></tr>
-<tr class="separator:a7734341290c666d51373089c23daf88b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46cc0b15223ee0f9d6e493c7c2858b20"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__socket.html#a46cc0b15223ee0f9d6e493c7c2858b20">ask_for_data</a> (timeout_send=1.0, timeout_receive=5.0)</td></tr>
+<tr class="separator:a46cc0b15223ee0f9d6e493c7c2858b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1aa7a797c4627ab316d84ecd66dfb8d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__socket.html#ae1aa7a797c4627ab316d84ecd66dfb8d">send_request</a> (timeout_send, timeout_receive)</td></tr>
+<tr class="separator:ae1aa7a797c4627ab316d84ecd66dfb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cc1aac0632334b86336cba18e7fcdae"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__socket.html#a1cc1aac0632334b86336cba18e7fcdae">receive_data</a> (timeout_time=1.0)</td></tr>
+<tr class="separator:a1cc1aac0632334b86336cba18e7fcdae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -80,8 +84,11 @@ Variables</h2></td></tr>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>HOST</b> = ''</td></tr>
 <tr class="separator:af85e5e66315b61469489538fbe8032bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37f6df1e2ada3f213803ae23862dcd53"><td class="memItemLeft" align="right" valign="top"><a id="a37f6df1e2ada3f213803ae23862dcd53" name="a37f6df1e2ada3f213803ae23862dcd53"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>PORT</b> = 30000</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>PORT</b> = 30001</td></tr>
 <tr class="separator:a37f6df1e2ada3f213803ae23862dcd53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa814bbc84549e4c62f58ac29269fa160"><td class="memItemLeft" align="right" valign="top"><a id="aa814bbc84549e4c62f58ac29269fa160" name="aa814bbc84549e4c62f58ac29269fa160"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HOST_send</b> = '192.168.14.219'</td></tr>
+<tr class="separator:aa814bbc84549e4c62f58ac29269fa160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81d6c2e04b8e84baeffef2240eef82bd"><td class="memItemLeft" align="right" valign="top"><a id="a81d6c2e04b8e84baeffef2240eef82bd" name="a81d6c2e04b8e84baeffef2240eef82bd"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>command_message</b> = b&quot;asking_for_file&quot;</td></tr>
 <tr class="separator:a81d6c2e04b8e84baeffef2240eef82bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -96,8 +103,8 @@ list&#160;</td><td class="memItemRight" valign="bottom"><b>arr</b> = []</td></tr
 <div class="textblock"><pre class="fragment">Used to connect with the customer portal script (CTO-script)
 Asks for data and receives the whole product
 </pre> </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a7734341290c666d51373089c23daf88b" name="a7734341290c666d51373089c23daf88b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7734341290c666d51373089c23daf88b">&#9670;&nbsp;</a></span>ask_for_data()</h2>
+<a id="a46cc0b15223ee0f9d6e493c7c2858b20" name="a46cc0b15223ee0f9d6e493c7c2858b20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46cc0b15223ee0f9d6e493c7c2858b20">&#9670;&nbsp;</a></span>ask_for_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -106,13 +113,73 @@ Asks for data and receives the whole product
           <td class="memname">def module_socket.ask_for_data </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>timeout_time</em> = <code>1.0</code></td><td>)</td>
+          <td class="paramname"><em>timeout_send</em> = <code>1.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>timeout_receive</em> = <code>5.0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <pre class="fragment">:brief      Start connection with the socket and asking for an available block on the socket
 :return     Array of items that are the product
+</pre> 
+</div>
+</div>
+<a id="a1cc1aac0632334b86336cba18e7fcdae" name="a1cc1aac0632334b86336cba18e7fcdae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cc1aac0632334b86336cba18e7fcdae">&#9670;&nbsp;</a></span>receive_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def module_socket.receive_data </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>timeout_time</em> = <code>1.0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">:brief      Send to the cto a request for data
+:return     If the request was succesfull
+</pre> 
+</div>
+</div>
+<a id="ae1aa7a797c4627ab316d84ecd66dfb8d" name="ae1aa7a797c4627ab316d84ecd66dfb8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1aa7a797c4627ab316d84ecd66dfb8d">&#9670;&nbsp;</a></span>send_request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def module_socket.send_request </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>timeout_send</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>timeout_receive</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">:brief      Send to the cto a request for data
+:return     If the request was succesfull
 </pre> 
 </div>
 </div>

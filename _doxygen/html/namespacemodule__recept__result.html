@@ -71,8 +71,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad91fd38254933b193dc74be9ff7208e7"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__recept__result.html#ad91fd38254933b193dc74be9ff7208e7">draw_recept_result</a> (recept_array, result_array)</td></tr>
-<tr class="separator:ad91fd38254933b193dc74be9ff7208e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc9fd6884753ce62154fd36491db561a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__recept__result.html#abc9fd6884753ce62154fd36491db561a">draw_recept_result</a> (recept_array, result_array, background)</td></tr>
+<tr class="separator:abc9fd6884753ce62154fd36491db561a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf6b14c6f4a7a7434db357244f6baaaa"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__recept__result.html#adf6b14c6f4a7a7434db357244f6baaaa">draw_array_vertical</a> (image, array, colom_pos, sub_text)</td></tr>
+<tr class="separator:adf6b14c6f4a7a7434db357244f6baaaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07f947739216a38a86144c767d15cfeb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__recept__result.html#a07f947739216a38a86144c767d15cfeb">draw_background</a> (image, inputarray1, inputarray2)</td></tr>
+<tr class="separator:a07f947739216a38a86144c767d15cfeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4016025a044d6b7f856852619ad3e77"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__recept__result.html#ac4016025a044d6b7f856852619ad3e77">calc_max_common</a> (array1, array2)</td></tr>
+<tr class="separator:ac4016025a044d6b7f856852619ad3e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -83,23 +89,139 @@ Variables</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> = 1</td></tr>
 <tr class="separator:a196aa7f41e3db945c5f0e5301c0545e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7ad6cd8d7dac87fd12ad04779163472"><td class="memItemLeft" align="right" valign="top"><a id="ad7ad6cd8d7dac87fd12ad04779163472" name="ad7ad6cd8d7dac87fd12ad04779163472"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>spacing</b> = 20*size</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>spacing</b> = 80*size</td></tr>
 <tr class="separator:ad7ad6cd8d7dac87fd12ad04779163472"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a0a59e396ab15819947f4341ab0506a"><td class="memItemLeft" align="right" valign="top"><a id="a4a0a59e396ab15819947f4341ab0506a" name="a4a0a59e396ab15819947f4341ab0506a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>colom1</b> = 0</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>colom1</b> = 10</td></tr>
 <tr class="separator:a4a0a59e396ab15819947f4341ab0506a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2e2aeea21dbc440eb6e1610531f41ca"><td class="memItemLeft" align="right" valign="top"><a id="ae2e2aeea21dbc440eb6e1610531f41ca" name="ae2e2aeea21dbc440eb6e1610531f41ca"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>colom2</b> = 200</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>colom2</b> = 150</td></tr>
 <tr class="separator:ae2e2aeea21dbc440eb6e1610531f41ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aded159021e1626ee5141f3663d53d269"><td class="memItemLeft" align="right" valign="top"><a id="aded159021e1626ee5141f3663d53d269" name="aded159021e1626ee5141f3663d53d269"></a>
-tuple&#160;</td><td class="memItemRight" valign="bottom"><b>window_size</b> = (1000, 400,3)</td></tr>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>window_size</b> = (1000, 250,3)</td></tr>
 <tr class="separator:aded159021e1626ee5141f3663d53d269"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Module to draw the recept and result colom
 </pre> </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ad91fd38254933b193dc74be9ff7208e7" name="ad91fd38254933b193dc74be9ff7208e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad91fd38254933b193dc74be9ff7208e7">&#9670;&nbsp;</a></span>draw_recept_result()</h2>
+<a id="ac4016025a044d6b7f856852619ad3e77" name="ac4016025a044d6b7f856852619ad3e77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4016025a044d6b7f856852619ad3e77">&#9670;&nbsp;</a></span>calc_max_common()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def module_recept_result.calc_max_common </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>array1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>array2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">:brief      Calculates the max length that both arrays can have
+:param      array1:     Array to compare
+:param      array2:     Array to compare
+:return     two values: maximum common length, difference between the arrays
+</pre> 
+</div>
+</div>
+<a id="adf6b14c6f4a7a7434db357244f6baaaa" name="adf6b14c6f4a7a7434db357244f6baaaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6b14c6f4a7a7434db357244f6baaaa">&#9670;&nbsp;</a></span>draw_array_vertical()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def module_recept_result.draw_array_vertical </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>colom_pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>sub_text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">:brief      Draws an array on an image in the vertial axis, from bottom to top
+:param      array:      Array to be drawn
+:param      image:      Image to be drawn on
+:param      colom_pos:  Position of the array in the x-axis
+:param      sub_text:   Text that is drawn below the array
+</pre> 
+</div>
+</div>
+<a id="a07f947739216a38a86144c767d15cfeb" name="a07f947739216a38a86144c767d15cfeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07f947739216a38a86144c767d15cfeb">&#9670;&nbsp;</a></span>draw_background()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def module_recept_result.draw_background </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>inputarray1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>inputarray2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">:brief      Draws an background depending on the values of both inputs
+:param      input1:     Input to be compared with the other input
+:param      input2:     Input to be compared with the other input 
+:param      colom:      Position of the background
+:return     amount of green rectangles
+</pre> 
+</div>
+</div>
+<a id="abc9fd6884753ce62154fd36491db561a" name="abc9fd6884753ce62154fd36491db561a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc9fd6884753ce62154fd36491db561a">&#9670;&nbsp;</a></span>draw_recept_result()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -114,7 +236,13 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>window_size</b> = (1
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>result_array</em>&#160;</td>
+          <td class="paramname"><em>result_array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>background</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -123,8 +251,10 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>window_size</b> = (1
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">:brief      
-:return     
+<pre class="fragment">:brief      Creates a image that shows the recept and result array, when they are the same a background will display that
+:param      recept_array:   Array of the recipe to build, in the format: [[block1,pos1],[block2,pos2],..]
+:param      result_array:   Array of the result that is build, in the format: [[block1,pos1],[block2,pos2],..]
+:return     two values: An image where the arrays and background are displayed on, percentage completed
 </pre> 
 </div>
 </div>
