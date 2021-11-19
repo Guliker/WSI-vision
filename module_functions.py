@@ -276,9 +276,13 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
     ext_left = tuple(contour[most_left][0])
     ext_right = tuple(contour[most_right][0])
     
+    # create array of points to the left
+    left_array = contour[most_left:ext_index][0]
+    # create array of points to the right
+    right_array = contour[ext_index:most_right][0]
     # calculate angle of bottom to left and bottom to right
-    angle_r = find_angle_between(ext_bottom, ext_right)
-    angle_l = find_angle_between(ext_bottom, ext_left) -3.1415
+    angle_r = find_angle_of_array(right_array)
+    angle_l = find_angle_of_array(left_array) -3.1415
     
     '''
     angle_diff = difference(angle_l, angle_r)
@@ -328,17 +332,21 @@ def transform_workspace(image, workspace, width, height):
                     [0, height - 1]])
     m = cv2.getPerspectiveTransform(workspace.astype(np.float32),h)
     return cv2.warpPerspective(image,m,(width, height))
-    
-def find_angle_between(p1, p2):
+
+def find_angle_of_array(points_array):
     """
-    :brief      Calculates smallest angle between two points, always under 180
-    :param      p1:     Point 1 of the line
-    :param      p2:     Point 2 of the line
+    :brief      Calculates the angle between every point and takes the avg, always under 180
+    :param      points_array:   Array of points to calculate the angle of
     :return     Angle of that line relative to the horizon
     """
-    angle = np.arctan2(p1[1] - p2[1], p2[0] - p1[0])
-    return angle
-
+    angle_array = []
+    points_amount = len(points_array)
+    for i,p1 in enumerate(points_array):
+        # loop through every point that is afther point1
+        if i < points_amount -1:
+            for p2 in points_array[i+1:points_amount]:
+                angle_array.append(np.arctan2(p1[1] - p2[1], p2[0] - p1[0]))
+    return np.average(angle_array)
 '''
 def difference(x,y):
     if x >= y:
