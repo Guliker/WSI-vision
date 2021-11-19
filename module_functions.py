@@ -292,6 +292,10 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
         angle_r_available = False
     '''
     # draw lowest, left and right points
+    ext_bottom = tuple(np.array(ext_bottom)*scale)
+    ext_left = tuple(np.array(ext_left)*scale)
+    ext_right = tuple(np.array(ext_right)*scale)
+    
     cv2.line(image, ext_bottom, ext_left, (128,0,255), 3,shift=0)
     cv2.line(image, ext_bottom, ext_right, (255,0,128), 3,shift=0)
     if(debug):
@@ -414,11 +418,11 @@ def create_block_pos_array(image, contours, lowest_block_pos, offset_width):
         for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
             mid_x = int(x + 0.5*w)
-            if (mid_x > compare_x + offset_width):    # right side
+            if (mid_x > compare_x + offset_width):      # right side
                 all_pos.append(3)
-            elif (mid_x < compare_x - offset_width):  # left side
+            elif (mid_x < compare_x - offset_width):    # left side
                 all_pos.append(1)
-            else:                           # middle
+            else:                                       # middle
                 all_pos.append(2)
     return all_pos
 
