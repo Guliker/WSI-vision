@@ -21,6 +21,7 @@ while (esc not pressed?)
 (1920x1080);
 if (Recipe) then (available)
     :Get recipe;
+    :Convert to .XML;
 endif
 :Read frame;
 note right: <img:img/fin_read.png>

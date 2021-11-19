@@ -207,7 +207,7 @@ def create_workspace(image, debug_image, contours, width, height, offset, debug,
         # find biggest contour to work with
         big_contour = max(contours, key=cv2.contourArea)
         
-        angle = find_contour_angle(big_contour, offset*2, offset, debug_image, scale, debug)
+        angle = find_contour_angle(big_contour, offset*2, offset, image, scale, debug)
 
         #angle, idx = min([(abs(val), idx) for (idx, val) in enumerate([angle_r, angle_l])])
                         
@@ -231,7 +231,7 @@ def create_workspace(image, debug_image, contours, width, height, offset, debug,
        
         
         if(debug):
-            cv2.putText(image, "b0: " + str(box[0]), (20,300),
+            cv2.putText(debug_image, "b0: " + str(box[0]), (20,300),
                         font, 1,
                         (255, 255, 255))
                         
@@ -250,6 +250,9 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
     :param      contour:    Contour with no approx
     :param      search_w:   Search area width
     :param      search_h:   Search area height
+    :param      imgate:     Image to draw angle lines on
+    :param      scale:      Scale that the contour has been scaled by
+    :param      debug:      If debug mode is active
     :return     The closest angle to make te contour flat
     """
     #find lowset point
@@ -288,11 +291,10 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
     else:
         angle_r_available = False
     '''
+    # draw lowest, left and right points
+    cv2.line(image, ext_bottom, ext_left, (128,0,255), 3,shift=0)
+    cv2.line(image, ext_bottom, ext_right, (255,0,128), 3,shift=0)
     if(debug):
-        # draw lowest, left and right points
-        cv2.circle(image, tuple(np.array(ext_bottom)*scale), 4, (255,255,255), -1)
-        cv2.circle(image, tuple(np.array(ext_left)*scale), 4, (255,0,0), -1)
-        cv2.circle(image, tuple(np.array(ext_right)*scale), 4, (0,0,255), -1)
         
         # write radiant angle of the workspace
         cv2.putText(image, "R: " + str(angle_r), (20,180),
