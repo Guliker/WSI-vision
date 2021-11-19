@@ -39,10 +39,10 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 device_manager = gx.DeviceManager()     ## device manager for the Daheng Imaging camera
 camera = device_manager.open_device_by_index(1) ## device opened on index one, the first camera
 cam_scale = 0.5     ## scaling of the camera image to the filters
-mask_scale_rotation = float(1)/2     ## scaling for the rotation mask
+mask_scale_rotation = float(1)/1     ## scaling for the rotation mask
 
 ## settings for the calibration window
-calibration_search_height = 350
+calibration_search_height = 50
 ## settings for the calibration window
 calibration_search_width = 50
 
@@ -379,7 +379,7 @@ while(1):
         completed_flag = 1
 
     if(completed_flag):
-        if(progress == 0):
+        if(progress == 0 and not len(color_pos)):
             full_product = []
             completed_flag = 0
     
@@ -406,6 +406,9 @@ while(1):
         mid_pos += 1
     if key == ord('='):
         mid_pos -= 1
+    if key == ord('x'):
+        full_product = []
+        completed_flag = 0
 
 """ ----- ----- ----- """
 

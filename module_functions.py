@@ -262,6 +262,7 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
     # find left and right points that are close to the bottom
     most_left = ext_index
     most_right = ext_index
+    '''
     for i, y in enumerate (contour[:, :, 1]):
         x = contour[:, :, 0][i]
         if((x < ext_bottom[0] + (search_w) and x > ext_bottom[0] - (search_w))
@@ -272,13 +273,20 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
             # more left
             if(x < contour[most_left][0][0]):
                 most_left = i
-        
+    
     ext_left = tuple(contour[most_left][0])
     ext_right = tuple(contour[most_right][0])
+    '''
+    dif1 = 6
+    dif2 = 18
+    bot_left = tuple(contour[ext_index - dif1][0])
+    ext_left = tuple(contour[ext_index - dif2][0])
+    bot_right = tuple(contour[ext_index + dif1][0])
+    ext_right = tuple(contour[ext_index + dif2][0])
     
     # calculate angle of bottom to left and bottom to right
-    angle_r = find_angle_between(ext_bottom, ext_right)
-    angle_l = find_angle_between(ext_bottom, ext_left) -3.1415
+    angle_r = find_angle_between(bot_right, ext_right)
+    angle_l = find_angle_between(bot_left, ext_left) -3.1415
     
     '''
     angle_diff = difference(angle_l, angle_r)
@@ -292,8 +300,8 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
         angle_r_available = False
     '''
     # draw lowest, left and right points
-    cv2.line(image, ext_bottom*scale, ext_left, (128,0,255), 3)
-    cv2.line(image, ext_bottom, ext_right, (255,0,128), 3)
+    cv2.line(image, tuple(np.array(bot_left)*scale), tuple(np.array(ext_left)*scale), (128,0,255), 3)
+    cv2.line(image, tuple(np.array(bot_right)*scale), tuple(np.array(ext_right)*scale), (255,0,128), 3)
     if(debug):
         
         # write radiant angle of the workspace
