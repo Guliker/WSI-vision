@@ -282,7 +282,10 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
     right_array = contour[ext_index:most_right][0]
     # calculate angle of bottom to left and bottom to right
     angle_r = find_angle_of_array(right_array)
-    angle_l = find_angle_of_array(left_array) -3.1415
+    angle_l = find_angle_of_array(left_array)
+    draw_line_angle(image, ext_bottom, angle_r, 50,(128,0,255))
+    draw_line_angle(image, ext_bottom, angle_l, 50,(255,0,128))
+    angle_l += np.pi
     
     '''
     angle_diff = difference(angle_l, angle_r)
@@ -300,8 +303,8 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
     ext_left = tuple(np.array(ext_left)*scale)
     ext_right = tuple(np.array(ext_right)*scale)
     
-    cv2.line(image, ext_bottom, ext_left, (128,0,255), 3,shift=0)
-    cv2.line(image, ext_bottom, ext_right, (255,0,128), 3,shift=0)
+    #cv2.line(image, ext_bottom, ext_left, (128,0,255), 3,shift=0)
+    #cv2.line(image, ext_bottom, ext_right, (255,0,128), 3,shift=0)
     if(debug):
         
         # write radiant angle of the workspace
@@ -347,13 +350,12 @@ def find_angle_of_array(points_array):
             for p2 in points_array[i+1:points_amount]:
                 angle_array.append(np.arctan2(p1[1] - p2[1], p2[0] - p1[0]))
     return np.average(angle_array)
-'''
-def difference(x,y):
-    if x >= y:
-        return x-y
-    else:
-        return y-x
-'''
+
+def draw_line_angle(image, start_point, angle_rad, length, color):
+    x =  int(round(start_point[0] + length * np.cos(angle_rad)))
+    y =  int(round(start_point[1] + length * np.sin(angle_rad)))
+    cv2.line(image, start_point, [x,y], color, 3,)
+
 """ ----- ----- COUNTING ----- ----- """
 def sort_contours_on_height(cnts, clr):
     """
