@@ -276,16 +276,9 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
     ext_left = tuple(contour[most_left][0])
     ext_right = tuple(contour[most_right][0])
     
-    # create array of points to the left
-    left_array = contour[most_left:ext_index][0]
-    # create array of points to the right
-    right_array = contour[ext_index:most_right][0]
     # calculate angle of bottom to left and bottom to right
-    angle_r = find_angle_of_array(right_array)
-    angle_l = find_angle_of_array(left_array)
-    draw_line_angle(image, ext_bottom, angle_r, 50,(128,0,255))
-    draw_line_angle(image, ext_bottom, angle_l, 50,(255,0,128))
-    angle_l += np.pi
+    angle_r = find_angle_between(ext_bottom, ext_right)
+    angle_l = find_angle_between(ext_bottom, ext_left) -3.1415
     
     '''
     angle_diff = difference(angle_l, angle_r)
@@ -299,12 +292,8 @@ def find_contour_angle(contour, search_w, search_h, image, scale, debug):
         angle_r_available = False
     '''
     # draw lowest, left and right points
-    ext_bottom = tuple(np.array(ext_bottom)*scale)
-    ext_left = tuple(np.array(ext_left)*scale)
-    ext_right = tuple(np.array(ext_right)*scale)
-    
-    #cv2.line(image, ext_bottom, ext_left, (128,0,255), 3,shift=0)
-    #cv2.line(image, ext_bottom, ext_right, (255,0,128), 3,shift=0)
+    cv2.line(image, ext_bottom*scale, ext_left, (128,0,255), 3)
+    cv2.line(image, ext_bottom, ext_right, (255,0,128), 3)
     if(debug):
         
         # write radiant angle of the workspace
@@ -335,27 +324,24 @@ def transform_workspace(image, workspace, width, height):
                     [0, height - 1]])
     m = cv2.getPerspectiveTransform(workspace.astype(np.float32),h)
     return cv2.warpPerspective(image,m,(width, height))
-
-def find_angle_of_array(points_array):
+    
+def find_angle_between(p1, p2):
     """
-    :brief      Calculates the angle between every point and takes the avg, always under 180
-    :param      points_array:   Array of points to calculate the angle of
+    :brief      Calculates smallest angle between two points, always under 180
+    :param      p1:     Point 1 of the line
+    :param      p2:     Point 2 of the line
     :return     Angle of that line relative to the horizon
     """
-    angle_array = []
-    points_amount = len(points_array)
-    for i,p1 in enumerate(points_array):
-        # loop through every point that is afther point1
-        if i < points_amount -1:
-            for p2 in points_array[i+1:points_amount]:
-                angle_array.append(np.arctan2(p1[1] - p2[1], p2[0] - p1[0]))
-    return np.average(angle_array)
+    angle = np.arctan2(p1[1] - p2[1], p2[0] - p1[0])
+    return angle
 
-def draw_line_angle(image, start_point, angle_rad, length, color):
-    x =  int(round(start_point[0] + length * np.cos(angle_rad)))
-    y =  int(round(start_point[1] + length * np.sin(angle_rad)))
-    cv2.line(image, start_point, [x,y], color, 3,)
-
+'''
+def difference(x,y):
+    if x >= y:
+        return x-y
+    else:
+        return y-x
+'''
 """ ----- ----- COUNTING ----- ----- """
 def sort_contours_on_height(cnts, clr):
     """
@@ -428,11 +414,11 @@ def create_block_pos_array(image, contours, lowest_block_pos, offset_width):
         for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
             mid_x = int(x + 0.5*w)
-            if (mid_x > compare_x + offset_width):      # right side
+            if (mid_x > compare_x + offset_width):    # right side
                 all_pos.append(3)
-            elif (mid_x < compare_x - offset_width):    # left side
+            elif (mid_x < compare_x - offset_width):  # left side
                 all_pos.append(1)
-            else:                                       # middle
+            else:                           # middle
                 all_pos.append(2)
     return all_pos
 
