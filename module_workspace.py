@@ -35,7 +35,7 @@ def create_workspace(image, debug_image, contours, width, height, offset, debug,
         # find biggest contour to work with
         big_contour = max(contours, key=cv2.contourArea)
         
-        angle = find_contour_angle(big_contour, offset*2, offset, image, scale, debug)
+        angle = find_contour_angle(big_contour, image, scale, debug)
 
         #angle, idx = min([(abs(val), idx) for (idx, val) in enumerate([angle_r, angle_l])])
                         
@@ -72,7 +72,7 @@ def create_workspace(image, debug_image, contours, width, height, offset, debug,
         
         return np.array(box)
 
-def find_contour_angle(contour, image, scale, debug, points_skip= 6, points_group= 6):
+def find_contour_angle(contour, image, scale, debug, points_skip= 6, points_group= 10):
     """
     :brief      Returns the angle of a contour
     :param      contour:        Contour with no approx
@@ -86,11 +86,16 @@ def find_contour_angle(contour, image, scale, debug, points_skip= 6, points_grou
 
     # find two points to for the line angle
     bot_right, ext_right = points_avg(contour, points_skip, points_group)
-    bot_left, ext_left = points_avg(contour, points_skip, points_group)
-
+    bot_left, ext_left = points_avg(contour, -points_skip, -points_group)
+    
     # calculate angle of bottom to left and bottom to right
     angle_r = find_angle_between(bot_right, ext_right)
-    angle_l = find_angle_between(bot_left, ext_left) -3.1415
+    angle_l = find_angle_between(bot_left, ext_left)
+    
+    bot_right = (int(bot_right[0]),int(bot_right[1]))
+    ext_right = (int(ext_right[0]),int(ext_right[1]))
+    bot_left = (int(bot_left[0]),int(bot_left[1]))
+    ext_left = (int(ext_left[0]),int(ext_left[1]))
     
     # draw lowest, left and right points
     cv2.line(image, tuple(np.array(bot_left)*scale), tuple(np.array(ext_left)*scale), (128,0,255), 3)
@@ -158,14 +163,22 @@ def points_avg(cnt, skip, group):
         t1 = p1
         p1 = p3
         p3 = t1
+        
+    start = cnt[p1:p2]
+    end = cnt[p2:p3]
     
-    start = tuple(cnt[p1:p2][0])
-    end = tuple(cnt[p2:p3][0])
-
-    x, y = np.split(start,[-1],axis=1)
+    temp =[]
+    for i, item in enumerate(start):
+        temp.append(item[0])
+    x, y = np.split(temp,[-1],axis=1)
     start = (np.average(x),np.average(y))
-    x, y = np.split(end,[-1],axis=1)
+    
+    temp =[]
+    for i, item in enumerate(end):
+        temp.append(item[0])
+    x, y = np.split(temp,[-1],axis=1)
     end = (np.average(x),np.average(y))
+    
     return (start,end)
 
 '''
