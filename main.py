@@ -23,6 +23,7 @@ import module_camera as mc
 import module_functions as mf
 import module_socket as ms
 import module_recept_result as mrr
+import module_workspace as mw
 
 #import math
 import numpy as np
@@ -284,8 +285,8 @@ while(1):
     #get_time(start_time)
     
     if(contours_combined):
-        workspace = mf.create_workspace(frame, window_vision, contours_combined, workspace_width, workspace_height, contour_rotation_search_area, debug, mask_scale_rotation)
-        work_frame = mf.transform_workspace(frame, workspace, workspace_width, workspace_height)
+        workspace = mw.create_workspace(frame, window_vision, contours_combined, workspace_width, workspace_height, contour_rotation_search_area, debug, mask_scale_rotation)
+        work_frame = mw.transform_workspace(frame, workspace, workspace_width, workspace_height)
         lab_frame = cv2.cvtColor(work_frame, color_space)
         
         # time to get workplace
