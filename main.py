@@ -15,6 +15,26 @@ controls:
 - to shift mid offset to the left
 + to shift mid offset to the right
 d to open debug windows and info
+
+-----values saved dark:
+green:
+[[-32, 105, 108], [79, 131, 140]]
+yellow:
+[[3, 102, 136], [127, 132, 170]]
+blue:
+[[-33, 129, 75], [83, 165, 114]]
+red:
+[[-34, 134, 119], [77, 157, 144]]
+
+-----values saved light:
+green:
+[[58, 74, 128], [174, 99, 168]]
+yellow:
+[[186, 99, 212], [298, 118, 228]]
+blue:
+[[40, 145, 33], [158, 189, 73]]
+red:
+[[75, 182, 171], [184, 201, 197]]
 """
 
 """ ----- IMPORTS ----- """
@@ -51,7 +71,7 @@ calibration_search_width = 50
 # 0 = lum
 # 1 = a; green - magenta
 # 2 = b; blue - yellow
-lab_offset_table = [50,5,5]
+lab_offset_table = [80,10,10]
 
 ## values of a block information
 block_small_area = 500
@@ -271,7 +291,7 @@ while(1):
     # create masks for each color, and check rotation of the masks
     for i, name in enumerate(color_name_table):
         #creates a color mask
-        color_mask_table[i] = mf.create_bit_mask_for_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1, mask_scale_rotation)
+        color_mask_table[i] = mf.create_bit_mask_for_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate-1, erode_dilate, mask_scale_rotation)
         if (i):
             color_mask_combine = cv2.bitwise_or(color_mask_combine, color_mask_table[i])
         else:

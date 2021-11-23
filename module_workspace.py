@@ -34,45 +34,36 @@ def create_workspace(image, debug_image, contours, width, height, offset, debug,
     if(contours):
         # find biggest contour to work with
         big_contour = max(contours, key=cv2.contourArea)
+        centre,(w, h), rotation = cv2.minAreaRect(big_contour)
         
-        angle = find_contour_angle(big_contour, image, scale, debug)
+        angle, pos_lowest = find_contour_angle(big_contour, image, scale, debug)
 
         #angle, idx = min([(abs(val), idx) for (idx, val) in enumerate([angle_r, angle_l])])
-                        
-        # create corner points of the workspace
-        mid = cv2.moments(big_contour)
-        if((mid['m00']) == 0):
-            cx = 0
-            cy = 0
-        else:
-            cx = int(mid['m10']/mid['m00'])
-            cy = int(mid['m01']/mid['m00'])
-            
+                                    
         box = [[],[],[],[]]
-        midleft = [int(cx - (width * np.cos(angle))), int(cy + (width * np.sin(angle)))]        # left
-        midright = [int(cx + (width * np.cos(angle))), int(cy - (width * np.sin(angle)))]        # right
+        midleft = [int(centre[0] - (width * np.cos(angle))), int(centre[1] + (width * np.sin(angle)))]         # left
+        midright = [int(centre[0] + (width * np.cos(angle))), int(centre[1] - (width * np.sin(angle)))]        # right
         
         box[0] = [int(midleft[0] - (height * np.sin(angle)))*scale, int(midleft[1] - (height * np.cos(angle)))*scale]        # topleft
-        box[1] = [int(midright[0] - (height * np.sin(angle)))*scale, int(midright[1] - (height * np.cos(angle)))*scale]        # topright
-        box[2] = [int(midright[0] + (height * np.sin(angle)))*scale, int(midright[1] + (height * np.cos(angle)))*scale]        # bottomright
+        box[1] = [int(midright[0] - (height * np.sin(angle)))*scale, int(midright[1] - (height * np.cos(angle)))*scale]      # topright
+        box[2] = [int(midright[0] + (height * np.sin(angle)))*scale, int(midright[1] + (height * np.cos(angle)))*scale]      # bottomright
         box[3] = [int(midleft[0] + (height * np.sin(angle)))*scale, int(midleft[1] + (height * np.cos(angle)))*scale]        # bottomleft
+        
+        box = np.int0(box)
+        cv2.drawContours(image,[box], 0, (255,255,255), 1)
        
         
         if(debug):
             cv2.putText(debug_image, "b0: " + str(box[0]), (20,300),
                         font, 1,
                         (255, 255, 255))
-                        
-            
-            # draw corners of workspace
-            cv2.circle(image, tuple(box[0]), 4, (0,0,255), -1)
-            cv2.circle(image, tuple(box[1]), 4, (0,255,0), -1)
-            cv2.circle(image, tuple(box[2]), 4, (255,0,0), -1)
-            cv2.circle(image, tuple(box[3]), 4, (255,0,255), -1)
+            cv2.putText(debug_image, "roatation: " + str(rotation), (20,400),
+                        font, 1,
+                        (255, 255, 255))
         
         return np.array(box)
 
-def find_contour_angle(contour, image, scale, debug, points_skip= 6, points_group= 10):
+def find_contour_angle(contour, image, scale, debug, points_skip= 4, points_group= 8):
     """
     :brief      Returns the angle of a contour
     :param      contour:        Contour with no approx
@@ -83,10 +74,12 @@ def find_contour_angle(contour, image, scale, debug, points_skip= 6, points_grou
     :param      end_index:      Search area height
     :return     The closest angle to make te contour flat
     """
+    #find lowset point
+    ext = contour[:, :, 1].argmax()
 
     # find two points to for the line angle
-    bot_right, ext_right = points_avg(contour, points_skip, points_group)
-    bot_left, ext_left = points_avg(contour, -points_skip, -points_group)
+    bot_right, ext_right = points_avg(contour, ext, points_skip, points_group)
+    bot_left, ext_left = points_avg(contour, ext, -points_skip, -points_group)
     
     # calculate angle of bottom to left and bottom to right
     angle_r = find_angle_between(bot_right, ext_right)
@@ -112,9 +105,9 @@ def find_contour_angle(contour, image, scale, debug, points_skip= 6, points_grou
     
     # return the smallest angle
     if((abs(angle_l) > abs(angle_r))):
-        return angle_r
+        return (angle_r,contour[ext][0])
     else:
-        return angle_l
+        return (angle_l,contour[ext][0])
 
 def transform_workspace(image, workspace, width, height):
     """
@@ -143,16 +136,15 @@ def find_angle_between(p1, p2):
     return angle
 
 
-def points_avg(cnt, skip, group):
+def points_avg(cnt, ext, skip, group):
     """
     :brief      Calculates avg start and end point for the angle calculation
     :param      cnt:    Contour to find point for
+    :param      ext:    Lowest point index in the contour:    ext = contour[:, :, 1].argmax()
     :param      skip:   Error margin of the lowest point
     :param      group:  How many points a group consists of
     :return     Avg position of two points ((x,y),(x,y))
     """
-    #find lowset point
-    ext = cnt[:, :, 1].argmax()
 
     p1 = ext + skip
     p2 = p1 + group
