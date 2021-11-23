@@ -291,7 +291,7 @@ while(1):
     # create masks for each color, and check rotation of the masks
     for i, name in enumerate(color_name_table):
         #creates a color mask
-        color_mask_table[i] = mf.create_bit_mask_for_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate-1, erode_dilate, mask_scale_rotation)
+        color_mask_table[i] = mf.create_bit_mask_for_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1, mask_scale_rotation)
         if (i):
             color_mask_combine = cv2.bitwise_or(color_mask_combine, color_mask_table[i])
         else:

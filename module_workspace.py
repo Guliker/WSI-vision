@@ -63,7 +63,7 @@ def create_workspace(image, debug_image, contours, width, height, offset, debug,
         
         return np.array(box)
 
-def find_contour_angle(contour, image, scale, debug, points_skip= 4, points_group= 8):
+def find_contour_angle(contour, image, scale, debug, points_skip= 3, points_group= 6):
     """
     :brief      Returns the angle of a contour
     :param      contour:        Contour with no approx
@@ -78,21 +78,28 @@ def find_contour_angle(contour, image, scale, debug, points_skip= 4, points_grou
     ext = contour[:, :, 1].argmax()
 
     # find two points to for the line angle
-    bot_right, ext_right = points_avg(contour, ext, points_skip, points_group)
-    bot_left, ext_left = points_avg(contour, ext, -points_skip, -points_group)
+    right1,right2,right3 = points_avg(contour, ext, points_skip, points_group)
+    left1,left2,left3 = points_avg(contour, ext, -points_skip, -points_group)
     
     # calculate angle of bottom to left and bottom to right
-    angle_r = find_angle_between(bot_right, ext_right)
-    angle_l = find_angle_between(bot_left, ext_left)
+    angle_r1 = find_angle_between(right1, right2)
+    angle_r2 = find_angle_between(right2, right3)
+    #angle_r3 = find_angle_between(right1, right3)
+    angle_r = np.average((angle_r1,angle_r2))
     
-    bot_right = (int(bot_right[0]),int(bot_right[1]))
-    ext_right = (int(ext_right[0]),int(ext_right[1]))
-    bot_left = (int(bot_left[0]),int(bot_left[1]))
-    ext_left = (int(ext_left[0]),int(ext_left[1]))
+    angle_l1 = find_angle_between(left1, left2)
+    angle_l2 = find_angle_between(left2, left3)
+    #angle_l3 = find_angle_between(left1, left3)
+    angle_l = np.average((angle_l1,angle_l2))
     
+    right1 = np.int0(right1)
+    right3 = np.int0(right3)
+    left1 = np.int0(left1)
+    left3 = np.int0(left3)
+   
     # draw lowest, left and right points
-    cv2.line(image, tuple(np.array(bot_left)*scale), tuple(np.array(ext_left)*scale), (128,0,255), 3)
-    cv2.line(image, tuple(np.array(bot_right)*scale), tuple(np.array(ext_right)*scale), (255,0,128), 3)
+    cv2.line(image, tuple(np.array(left1)*scale), tuple(np.array(left3)*scale), (128,0,255), 3)
+    cv2.line(image, tuple(np.array(right1)*scale), tuple(np.array(right3)*scale), (255,0,128), 3)
     if(debug):
         
         # write radiant angle of the workspace
@@ -149,30 +156,38 @@ def points_avg(cnt, ext, skip, group):
     p1 = ext + skip
     p2 = p1 + group
     p3 = p2 + group
+    p4 = p3 + group
 
-    #swap p1 and p3 so p1 is the smallest
-    if(p1 > p3):
-        t1 = p1
-        p1 = p3
-        p3 = t1
-        
-    start = cnt[p1:p2]
-    end = cnt[p2:p3]
+    #swap p1,p4 and p2,p3 so p1 is the smallest
+    if(p1 > p4):
+        temp = p1
+        p1 = p4
+        p4 = temp
+        temp = p2
+        p2 = p3
+        p3 = temp
     
-    temp =[]
-    for i, item in enumerate(start):
-        temp.append(item[0])
-    x, y = np.split(temp,[-1],axis=1)
-    start = (np.average(x),np.average(y))
+    avg1 = points_to_avg(cnt[p1:p2])
+    avg2 = points_to_avg(cnt[p2:p3])
+    avg3 = points_to_avg(cnt[p3:p4])
     
-    temp =[]
-    for i, item in enumerate(end):
-        temp.append(item[0])
-    x, y = np.split(temp,[-1],axis=1)
-    end = (np.average(x),np.average(y))
-    
-    return (start,end)
+    return (avg1,avg2,avg3)
 
+def points_to_avg(points):
+    """
+    :brief      From array ((x,y),(x,y),..) to avg (x,y)
+    :param      points:  Array of points
+    :param      group:  How many points a group consists of
+    :return     Avg position of two points ((x,y),(x,y))
+    """
+    x = []
+    y = []
+    for i, item in enumerate(points):
+        x.append(item[0][0])
+        y.append(item[0][1])
+    return (np.average(x),np.average(y))
+
+    
 '''
 def difference(x,y):
     if x >= y:
