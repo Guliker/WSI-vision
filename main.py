@@ -98,7 +98,7 @@ color_space = cv2.COLOR_BGR2LAB
 
 ## all logic tables
 color_name_table = (        "green",        "yellow",       "blue",         "red"       )   # name of each color
-color_bgr_table = (         (0,200,0),     (0,255,255),    (255,70,0),     (0,0,255)    )   # colors used to display on screen text and boxes
+color_bgr_table = (         (0,200,0),      (0,200,255),    (255,100,0),    (0,0,255)    )   # colors used to display on screen text and boxes
 lab_min_max_table = [       [[],[]],        [[],[]],        [[],[]],        [[],[]]     ]   # here are the min and max LAB values stored for each color
 color_mask_table = [        [],             [],             [],             []          ]   # here are the bit masks stored for each color
 color_contour_table = [     [],             [],             [],             []          ]   # here are the contours of each block stored for each color

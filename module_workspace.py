@@ -82,15 +82,15 @@ def find_contour_angle(contour, image, scale, debug, points_skip= 3, points_grou
     left1,left2,left3 = points_avg(contour, ext, -points_skip, -points_group)
     
     # calculate angle of bottom to left and bottom to right
-    angle_r1 = find_angle_between(right1, right2)
-    angle_r2 = find_angle_between(right2, right3)
-    #angle_r3 = find_angle_between(right1, right3)
-    angle_r = np.average((angle_r1,angle_r2))
+    #angle_r1 = find_angle_between(right1, right2)
+    #angle_r2 = find_angle_between(right2, right3)
+    angle_r3 = find_angle_between(right1, right3)
+    angle_r = angle_r3
     
-    angle_l1 = find_angle_between(left1, left2)
-    angle_l2 = find_angle_between(left2, left3)
-    #angle_l3 = find_angle_between(left1, left3)
-    angle_l = np.average((angle_l1,angle_l2))
+    #angle_l1 = find_angle_between(left1, left2)
+    #angle_l2 = find_angle_between(left2, left3)
+    angle_l3 = find_angle_between(left1, left3)
+    angle_l = angle_l3
     
     right1 = np.int0(right1)
     right3 = np.int0(right3)
