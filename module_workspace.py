@@ -77,6 +77,11 @@ def find_contour_angle(contour, image, scale, debug, points_group= 9):
     #find lowset point
     ext_left = contour[:, :, 1].argmax()
     ext_right = contour_same_height_point(contour, ext_left)
+   
+    left_points = contour[ext_left - points_group : ext_left]
+    right_points = contour[ext_right : ext_right + points_group]
+    left_points = contour_to_points(left_points)
+    right_points = contour_to_points(right_points)
     
     # find two points to for the line angle
     right1,right2 = points_avg(contour, ext_right, points_group)
@@ -170,11 +175,22 @@ def points_avg(cnt, ext, group):
     
     return (avg1,avg2)
 
+def contour_to_points(cnt):
+    """
+    :brief      From array (((x,y)),((x,y)),..) to avg ((x,y),(x,y),..)
+    :param      cnt:    Array of points
+    :return     Positions of each contour point
+    """
+    pos = []
+    for i, item in enumerate(cnt):
+        pos.append(item[0])
+    return (pos)
+
+
 def points_to_avg(points):
     """
     :brief      From array ((x,y),(x,y),..) to avg (x,y)
     :param      points:  Array of points
-    :param      group:  How many points a group consists of
     :return     Avg position of two points ((x,y),(x,y))
     """
     x = []
