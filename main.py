@@ -44,6 +44,7 @@ import module_functions as mf
 import module_socket as ms
 import module_recept_result as mrr
 import module_workspace as mw
+import module_xml   as mx
 
 #import math
 import numpy as np
@@ -103,7 +104,7 @@ lab_min_max_table = [       [[],[]],        [[],[]],        [[],[]],        [[],
 color_mask_table = [        [],             [],             [],             []          ]   # here are the bit masks stored for each color
 color_contour_table = [     [],             [],             [],             []          ]   # here are the contours of each block stored for each color
 color_mask_combine = []
-full_product = []
+current_product = []
 buffer_product = []
 
 ## empty window to place frames in
@@ -117,6 +118,8 @@ pos_corrected_image = (880,110)
 pos_recept_result = (600,0)
 
 completed_flag = 0
+
+xml_path_file = "legoorders/current.xml"
 """ ----- ----- ----- """
 
 # trackbar callback fucntion does nothing but required for trackbar
@@ -241,7 +244,7 @@ for i,name in enumerate(color_name_table):
 mid_pos = 2
 frame_count = 0
 # test code
-#full_product = [ [7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]
+#current_product = [ [7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]
 
 
 while(1):
@@ -259,10 +262,13 @@ while(1):
         # check if there is a product received
         if(len(temp_product)):
             buffer_product.append(temp_product)
-        if(not len(full_product)):
+
+        # check if the current checked product is empty
+        if(not len(current_product)):
             if(len(buffer_product)):
-                full_product = buffer_product.pop(0)
-                mid_pos = full_product[0][1]
+                current_product = buffer_product.pop(0)
+                mid_pos = current_product[0][1]
+                mx.xml_generate(current_product, xml_path_file)
 
     if(debug):
         #time to get frame
@@ -389,7 +395,7 @@ while(1):
           
     # create raw image and recipe overlays
     mf.overlay_image(window_vision, frame, pos_raw_image)
-    rr_frame, progress = mrr.draw_recept_result(full_product, color_pos, completed_flag)
+    rr_frame, progress = mrr.draw_recept_result(current_product, color_pos, completed_flag)
     mf.overlay_image(window_vision, rr_frame, pos_recept_result)
     
     # quick debug to show variables
@@ -401,7 +407,7 @@ while(1):
 
     if(completed_flag):
         if(progress == 0 and not len(color_pos)):
-            full_product = []
+            current_product = []
             completed_flag = 0
     
     # show normal view + bounding boxes    
@@ -428,7 +434,7 @@ while(1):
     if key == ord('='):
         mid_pos -= 1
     if key == ord('x'):
-        full_product = []
+        current_product = []
         completed_flag = 0
 
 """ ----- ----- ----- """
