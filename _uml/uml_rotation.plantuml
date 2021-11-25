@@ -6,11 +6,13 @@ partition "get_contour_angle()"{
 note left: <img:img/rot_contour_angle.png>
 :Get Lowest point;
 note left: <img:img/rot_lowest_angle.png>
-:Get Left and Right point;
+:Get Left and Right point
+(average);
 note left: <img:img/rot_l_r_angle.png>
 
-:Get better bottom right point
-if needed;
+:Get better bottom Left and 
+Right point (average);
+note right: <img:img/rot_lb_rb.png>
 
 :Get lines of corner;
 note left: <img:img/rot_lines.png>

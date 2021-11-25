@@ -28,16 +28,16 @@ bool {\bfseries debug} = False
 float {\bfseries cam\+\_\+scale} = 0.\+5
 \item 
 \mbox{\Hypertarget{namespacemain_a7e45bcb5552ef02fdee70ec872564df6}\label{namespacemain_a7e45bcb5552ef02fdee70ec872564df6}} 
-int {\bfseries mask\+\_\+scale\+\_\+rotation} = float(1)/2
+int {\bfseries mask\+\_\+scale\+\_\+rotation} = float(1)/1
 \item 
 \mbox{\Hypertarget{namespacemain_abd2c2ae5293e033745aead2ccfc46206}\label{namespacemain_abd2c2ae5293e033745aead2ccfc46206}} 
-int {\bfseries calibration\+\_\+search\+\_\+height} = 350
+int {\bfseries calibration\+\_\+search\+\_\+height} = 50
 \begin{DoxyCompactList}\small\item\em settings for the calibration window \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacemain_abb17bdd9ea378f3a1acb2fd858c02c2d}\label{namespacemain_abb17bdd9ea378f3a1acb2fd858c02c2d}} 
 int {\bfseries calibration\+\_\+search\+\_\+width} = 50
 \begin{DoxyCompactList}\small\item\em settings for the calibration window \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacemain_abd106cc927e30c390c959e6d0107498a}\label{namespacemain_abd106cc927e30c390c959e6d0107498a}} 
-list {\bfseries lab\+\_\+offset\+\_\+table} = \mbox{[}50,5,5\mbox{]}
+list {\bfseries lab\+\_\+offset\+\_\+table} = \mbox{[}80,10,10\mbox{]}
 \begin{DoxyCompactList}\small\item\em lab offsets for the color finder, each value is an hard value, order is\+: 0 = lum 1 = a; green -\/ magenta 2 = b; blue -\/ yellow \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacemain_a0fd1c744b6add516f1ee985c5fd30eb6}\label{namespacemain_a0fd1c744b6add516f1ee985c5fd30eb6}} 
 int {\bfseries block\+\_\+small\+\_\+area} = 500
@@ -73,7 +73,7 @@ int {\bfseries workspace\+\_\+height} = block\+\_\+height $\ast$ 12
 tuple {\bfseries color\+\_\+name\+\_\+table} = ( \char`\"{}green\char`\"{}, \char`\"{}yellow\char`\"{}, \char`\"{}blue\char`\"{}, \char`\"{}red\char`\"{} )
 \begin{DoxyCompactList}\small\item\em all logic tables \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacemain_a15587b085eecfde6a59bcd6863ef5d22}\label{namespacemain_a15587b085eecfde6a59bcd6863ef5d22}} 
-tuple {\bfseries color\+\_\+bgr\+\_\+table} = ( (0,200,0), (0,255,255), (255,70,0), (0,0,255) )
+tuple {\bfseries color\+\_\+bgr\+\_\+table} = ( (0,200,0), (0,200,255), (255,100,0), (0,0,255) )
 \item 
 \mbox{\Hypertarget{namespacemain_acb9e45e66f19224d202f290bfb431f5e}\label{namespacemain_acb9e45e66f19224d202f290bfb431f5e}} 
 list {\bfseries lab\+\_\+min\+\_\+max\+\_\+table} = \mbox{[} \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]}, \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]}, \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]}, \mbox{[}\mbox{[}$\,$\mbox{]},\mbox{[}$\,$\mbox{]}\mbox{]} \mbox{]}
@@ -87,14 +87,14 @@ list {\bfseries color\+\_\+contour\+\_\+table} = \mbox{[} \mbox{[}$\,$\mbox{]}, 
 \mbox{\Hypertarget{namespacemain_ad3074c9eadaf085032839d2409b34857}\label{namespacemain_ad3074c9eadaf085032839d2409b34857}} 
 list {\bfseries color\+\_\+mask\+\_\+combine} = \mbox{[}$\,$\mbox{]}
 \item 
-\mbox{\Hypertarget{namespacemain_a1bede7623692db38a0820de7ca53c13b}\label{namespacemain_a1bede7623692db38a0820de7ca53c13b}} 
-list {\bfseries full\+\_\+product} = \mbox{[}$\,$\mbox{]}
+\mbox{\Hypertarget{namespacemain_abc34bfdba9bc2ca80904dbd7bdf3d277}\label{namespacemain_abc34bfdba9bc2ca80904dbd7bdf3d277}} 
+list {\bfseries current\+\_\+product} = \mbox{[}$\,$\mbox{]}
 \item 
 \mbox{\Hypertarget{namespacemain_a95314d6bea53d96611f508b8fb5bff61}\label{namespacemain_a95314d6bea53d96611f508b8fb5bff61}} 
 list {\bfseries buffer\+\_\+product} = \mbox{[}$\,$\mbox{]}
 \item 
 \mbox{\Hypertarget{namespacemain_acc1497759e02ae9cae6ab3be2aff3848}\label{namespacemain_acc1497759e02ae9cae6ab3be2aff3848}} 
-{\bfseries window\+\_\+blank} = np.\+zeros((1080, 1920,3), np.\+uint8)
+{\bfseries window\+\_\+blank} = np.\+zeros((1080,1920,3), np.\+uint8)
 \begin{DoxyCompactList}\small\item\em empty window to place frames in \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacemain_a69a688869d0f3e2361afb29599afff27}\label{namespacemain_a69a688869d0f3e2361afb29599afff27}} 
 {\bfseries window\+\_\+green} = np.\+full((1080,1920,3), (0,50,0), np.\+uint8)
@@ -116,6 +116,9 @@ tuple {\bfseries pos\+\_\+recept\+\_\+result} = (600,0)
 \item 
 \mbox{\Hypertarget{namespacemain_a28b9391185400f51c41b6d9df8df8a6f}\label{namespacemain_a28b9391185400f51c41b6d9df8df8a6f}} 
 int {\bfseries completed\+\_\+flag} = 0
+\item 
+\mbox{\Hypertarget{namespacemain_a31de583d291ae8e56aebae6ad2564714}\label{namespacemain_a31de583d291ae8e56aebae6ad2564714}} 
+string {\bfseries xml\+\_\+path\+\_\+file} = \char`\"{}legoorders/current.\+xml\char`\"{}
 \item 
 \mbox{\Hypertarget{namespacemain_ae57958345b17f9ca8597330ba07e1a1c}\label{namespacemain_ae57958345b17f9ca8597330ba07e1a1c}} 
 {\bfseries start\+\_\+time} = datetime.\+datetime.\+now()
@@ -180,10 +183,10 @@ list {\bfseries color\+\_\+pos} = \mbox{[}$\,$\mbox{]}
 {\bfseries contours\+\_\+combined} = mf.\+create\+\_\+contour(color\+\_\+mask\+\_\+combine, \mbox{\hyperlink{namespacemain_a0fd1c744b6add516f1ee985c5fd30eb6}{block\+\_\+small\+\_\+area}}$\ast$mask\+\_\+scale\+\_\+rotation, method=cv2.\+CHAIN\+\_\+\+APPROX\+\_\+\+NONE)
 \item 
 \mbox{\Hypertarget{namespacemain_ab581b55123a485174473bac676e37fff}\label{namespacemain_ab581b55123a485174473bac676e37fff}} 
-{\bfseries workspace} = mf.\+create\+\_\+workspace(frame, window\+\_\+vision, contours\+\_\+combined, workspace\+\_\+width, \mbox{\hyperlink{namespacemain_a308950ee87da20aa2843fe273a91a023}{workspace\+\_\+height}}, contour\+\_\+rotation\+\_\+search\+\_\+area, \mbox{\hyperlink{namespacemain_a7e1ddce5792139e2174735e6619ae428}{debug}}, mask\+\_\+scale\+\_\+rotation)
+{\bfseries workspace} = mw.\+create\+\_\+workspace(frame, window\+\_\+vision, contours\+\_\+combined, workspace\+\_\+width, \mbox{\hyperlink{namespacemain_a308950ee87da20aa2843fe273a91a023}{workspace\+\_\+height}}, contour\+\_\+rotation\+\_\+search\+\_\+area, \mbox{\hyperlink{namespacemain_a7e1ddce5792139e2174735e6619ae428}{debug}}, mask\+\_\+scale\+\_\+rotation)
 \item 
 \mbox{\Hypertarget{namespacemain_abf57f22dee7ffb08b6faa67baf1a0092}\label{namespacemain_abf57f22dee7ffb08b6faa67baf1a0092}} 
-{\bfseries work\+\_\+frame} = mf.\+transform\+\_\+workspace(frame, workspace, workspace\+\_\+width, \mbox{\hyperlink{namespacemain_a308950ee87da20aa2843fe273a91a023}{workspace\+\_\+height}})
+{\bfseries work\+\_\+frame} = mw.\+transform\+\_\+workspace(frame, workspace, workspace\+\_\+width, \mbox{\hyperlink{namespacemain_a308950ee87da20aa2843fe273a91a023}{workspace\+\_\+height}})
 \item 
 \mbox{\Hypertarget{namespacemain_afd7689bfdb3b5acc45ac89d03d5bd08d}\label{namespacemain_afd7689bfdb3b5acc45ac89d03d5bd08d}} 
 {\bfseries iterations}
@@ -237,6 +240,26 @@ controls:
 - to shift mid offset to the left
 + to shift mid offset to the right
 d to open debug windows and info
+
+-----values saved dark:
+green:
+[[-32, 105, 108], [79, 131, 140]]
+yellow:
+[[3, 102, 136], [127, 132, 170]]
+blue:
+[[-33, 129, 75], [83, 165, 114]]
+red:
+[[-34, 134, 119], [77, 157, 144]]
+
+-----values saved light:
+green:
+[[58, 74, 128], [174, 99, 168]]
+yellow:
+[[186, 99, 212], [298, 118, 228]]
+blue:
+[[40, 145, 33], [158, 189, 73]]
+red:
+[[75, 182, 171], [184, 201, 197]]
 \end{DoxyVerb}
  
 

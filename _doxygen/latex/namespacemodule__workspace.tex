@@ -1,0 +1,129 @@
+\hypertarget{namespacemodule__workspace}{}\doxysection{module\+\_\+workspace Namespace Reference}
+\label{namespacemodule__workspace}\index{module\_workspace@{module\_workspace}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemodule__workspace_a4ec08dad96f74dd9e2a37fa162925570}{create\+\_\+workspace}} (image, debug\+\_\+image, contours, width, height, offset, debug, scale=1)
+\item 
+def \mbox{\hyperlink{namespacemodule__workspace_adb1e680e28039cab8533095d299a5798}{find\+\_\+contour\+\_\+angle}} (contour, image, scale, debug, points\+\_\+group=9)
+\item 
+def \mbox{\hyperlink{namespacemodule__workspace_a6faa807f05af8008e32de907c27ae316}{transform\+\_\+workspace}} (image, workspace, width, height)
+\item 
+def \mbox{\hyperlink{namespacemodule__workspace_ac943044a5a7c1bc6513fd81773c147de}{find\+\_\+angle\+\_\+between}} (p1, p2)
+\item 
+\mbox{\Hypertarget{namespacemodule__workspace_a808c627e7d8aed2f8ad5b08be1877bc1}\label{namespacemodule__workspace_a808c627e7d8aed2f8ad5b08be1877bc1}} 
+def {\bfseries contour\+\_\+same\+\_\+height\+\_\+point} (cnt, low\+\_\+i)
+\item 
+def \mbox{\hyperlink{namespacemodule__workspace_a11b589e0c1d5004cb27d38b33ba8b718}{points\+\_\+avg}} (cnt, ext, group)
+\item 
+def \mbox{\hyperlink{namespacemodule__workspace_af32f4cde408ce492f99734106ceb4655}{contour\+\_\+to\+\_\+points}} (cnt)
+\item 
+def \mbox{\hyperlink{namespacemodule__workspace_a146287c765ca66435fbbf9038a043fe5}{points\+\_\+to\+\_\+avg}} (points)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacemodule__workspace_a4e3ce1a8976070e8e547069967773e96}\label{namespacemodule__workspace_a4e3ce1a8976070e8e547069967773e96}} 
+{\bfseries font} = cv2.\+FONT\+\_\+\+HERSHEY\+\_\+\+SIMPLEX
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Functions used for the WSI vision module
+- calibration
+- mask
+- contours
+- workspace
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemodule__workspace_af32f4cde408ce492f99734106ceb4655}\label{namespacemodule__workspace_af32f4cde408ce492f99734106ceb4655}} 
+\index{module\_workspace@{module\_workspace}!contour\_to\_points@{contour\_to\_points}}
+\index{contour\_to\_points@{contour\_to\_points}!module\_workspace@{module\_workspace}}
+\doxysubsubsection{\texorpdfstring{contour\_to\_points()}{contour\_to\_points()}}
+{\footnotesize\ttfamily def module\+\_\+workspace.\+contour\+\_\+to\+\_\+points (\begin{DoxyParamCaption}\item[{}]{cnt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      From array (((x,y)),((x,y)),..) to avg ((x,y),(x,y),..)
+:param      cnt:    Array of points
+:return     Positions of each contour point
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__workspace_a4ec08dad96f74dd9e2a37fa162925570}\label{namespacemodule__workspace_a4ec08dad96f74dd9e2a37fa162925570}} 
+\index{module\_workspace@{module\_workspace}!create\_workspace@{create\_workspace}}
+\index{create\_workspace@{create\_workspace}!module\_workspace@{module\_workspace}}
+\doxysubsubsection{\texorpdfstring{create\_workspace()}{create\_workspace()}}
+{\footnotesize\ttfamily def module\+\_\+workspace.\+create\+\_\+workspace (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{debug\+\_\+image,  }\item[{}]{contours,  }\item[{}]{width,  }\item[{}]{height,  }\item[{}]{offset,  }\item[{}]{debug,  }\item[{}]{scale = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Makes a workspace centred on the biggest contour
+:param      image:      Image to draw on in debug mode
+:param      contours:   Array of contours in the image
+:param      width:      Width of the workspace
+:param      height:     Height of the workspace
+:param      offset:     How big the search window is for the angle
+:param      debug:      If debug info should be shown
+:param      scale:      Factor to scale the image, 1 = normal
+:return     Four points of the designated workspace
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__workspace_ac943044a5a7c1bc6513fd81773c147de}\label{namespacemodule__workspace_ac943044a5a7c1bc6513fd81773c147de}} 
+\index{module\_workspace@{module\_workspace}!find\_angle\_between@{find\_angle\_between}}
+\index{find\_angle\_between@{find\_angle\_between}!module\_workspace@{module\_workspace}}
+\doxysubsubsection{\texorpdfstring{find\_angle\_between()}{find\_angle\_between()}}
+{\footnotesize\ttfamily def module\+\_\+workspace.\+find\+\_\+angle\+\_\+between (\begin{DoxyParamCaption}\item[{}]{p1,  }\item[{}]{p2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Calculates smallest angle between two points, always under 180
+:param      p1:     Point 1 of the line
+:param      p2:     Point 2 of the line
+:return     Angle of that line relative to the horizon
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__workspace_adb1e680e28039cab8533095d299a5798}\label{namespacemodule__workspace_adb1e680e28039cab8533095d299a5798}} 
+\index{module\_workspace@{module\_workspace}!find\_contour\_angle@{find\_contour\_angle}}
+\index{find\_contour\_angle@{find\_contour\_angle}!module\_workspace@{module\_workspace}}
+\doxysubsubsection{\texorpdfstring{find\_contour\_angle()}{find\_contour\_angle()}}
+{\footnotesize\ttfamily def module\+\_\+workspace.\+find\+\_\+contour\+\_\+angle (\begin{DoxyParamCaption}\item[{}]{contour,  }\item[{}]{image,  }\item[{}]{scale,  }\item[{}]{debug,  }\item[{}]{points\+\_\+group = {\ttfamily 9} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Returns the angle of a contour
+:param      contour:        Contour with no approx
+:param      imgate:         Image to draw angle lines on
+:param      scale:          Scale that the contour has been scaled by
+:param      debug:          If debug mode is active
+:param      start_index:    Search area width
+:param      end_index:      Search area height
+:return     The closest angle to make te contour flat
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__workspace_a11b589e0c1d5004cb27d38b33ba8b718}\label{namespacemodule__workspace_a11b589e0c1d5004cb27d38b33ba8b718}} 
+\index{module\_workspace@{module\_workspace}!points\_avg@{points\_avg}}
+\index{points\_avg@{points\_avg}!module\_workspace@{module\_workspace}}
+\doxysubsubsection{\texorpdfstring{points\_avg()}{points\_avg()}}
+{\footnotesize\ttfamily def module\+\_\+workspace.\+points\+\_\+avg (\begin{DoxyParamCaption}\item[{}]{cnt,  }\item[{}]{ext,  }\item[{}]{group }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Calculates avg start and end point for the angle calculation
+:param      cnt:    Contour to find point for
+:param      ext:    Lowest point index in the contour:    ext = contour[:, :, 1].argmax()
+:param      skip:   Error margin of the lowest point
+:param      group:  How many points a group consists of
+:return     Avg position of two points ((x,y),(x,y))
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__workspace_a146287c765ca66435fbbf9038a043fe5}\label{namespacemodule__workspace_a146287c765ca66435fbbf9038a043fe5}} 
+\index{module\_workspace@{module\_workspace}!points\_to\_avg@{points\_to\_avg}}
+\index{points\_to\_avg@{points\_to\_avg}!module\_workspace@{module\_workspace}}
+\doxysubsubsection{\texorpdfstring{points\_to\_avg()}{points\_to\_avg()}}
+{\footnotesize\ttfamily def module\+\_\+workspace.\+points\+\_\+to\+\_\+avg (\begin{DoxyParamCaption}\item[{}]{points }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      From array ((x,y),(x,y),..) to avg (x,y)
+:param      points:  Array of points
+:return     Avg position of two points ((x,y),(x,y))
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__workspace_a6faa807f05af8008e32de907c27ae316}\label{namespacemodule__workspace_a6faa807f05af8008e32de907c27ae316}} 
+\index{module\_workspace@{module\_workspace}!transform\_workspace@{transform\_workspace}}
+\index{transform\_workspace@{transform\_workspace}!module\_workspace@{module\_workspace}}
+\doxysubsubsection{\texorpdfstring{transform\_workspace()}{transform\_workspace()}}
+{\footnotesize\ttfamily def module\+\_\+workspace.\+transform\+\_\+workspace (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{workspace,  }\item[{}]{width,  }\item[{}]{height }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Rotates and resizes an section off the image
+:param      image:      Original image where the workspace is in
+:param      workspace:  Four points of the workspace
+:param      width:      Width of the new image
+:param      height:     Height of the new image
+:return     New image that has been transformed and warped
+\end{DoxyVerb}
+ 
