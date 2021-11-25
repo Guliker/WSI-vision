@@ -17,12 +17,12 @@ import cv2
 #resolution = (3088, 2048)
 #offset_resolution = (0, 0)
 cam_resolution = (904,1600)
-cam_offset_resolution = (1096, 224)
+cam_offset_resolution = (1024, 224)
 
 cam_gain_rgb = (1.4 , 1.0, 2.3)
 # good values for 50hz lighting
-# 25; 20; 16.67; 12.5
-cam_frame_rate = 12.5
+# 25; 20; 16.67; 12.5; 5
+cam_frame_rate = 10
 
 cam_exposure = 8000
 cam_gain = 8
@@ -127,17 +127,15 @@ def read(cam, scale):
     #rgb_image = np.dstack((r*2, g, b*2))
     bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
     
-    # rotate, 1 = cw, 0 = ccw
-    #rotated_image=cv2.transpose(bgr_image)
-    #rotated_image=cv2.flip(rotated_image,flipCode=0)
-    rotated_image = bgr_image
+    ## rotate, 1 = 90; 2= 180; 3=270
+    bgr_image = np.rot90(bgr_image,2)
     
     #rescale
-    width = int(rotated_image.shape[1] * scale)
-    height = int(rotated_image.shape[0] * scale)
+    width = int(bgr_image.shape[1] * scale)
+    height = int(bgr_image.shape[0] * scale)
     dim = (width, height)
 
-    return cv2.resize(rotated_image, dim, interpolation = cv2.INTER_AREA)
+    return cv2.resize(bgr_image, dim, interpolation = cv2.INTER_AREA)
 
 def close(cam):
     """

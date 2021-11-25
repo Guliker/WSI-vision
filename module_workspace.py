@@ -102,10 +102,10 @@ def find_contour_angle(contour, image, scale, debug, points_group= 9):
     if(debug):
         
         # write radiant angle of the workspace
-        cv2.putText(image, "R: " + str(angle_r), (20,180),
+        cv2.putText(image, "R: " + str(angle_r), (20,40),
                     font, 1,
                     (255, 255, 255))
-        cv2.putText(image, "L: " + str(angle_l), (20,250),
+        cv2.putText(image, "L: " + str(angle_l), (20,100),
                     font, 1,
                     (255, 255, 255))
     
@@ -198,7 +198,10 @@ def points_to_avg(points):
     for i, item in enumerate(points):
         x.append(item[0][0])
         y.append(item[0][1])
-    return (np.average(x),np.average(y))
+    if x and y:
+        return (np.average(x),np.average(y))
+    else:
+        return(0,0)
 
     
 '''

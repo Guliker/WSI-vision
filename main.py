@@ -46,12 +46,13 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 device_manager = gx.DeviceManager()     ## device manager for the Daheng Imaging camera
 camera = device_manager.open_device_by_index(1) ## device opened on index one, the first camera
 cam_scale = 0.5     ## scaling of the camera image to the filters
-mask_scale_rotation = float(1)/1     ## scaling for the rotation mask
+mask_scale_rotation = float(1)/2     ## scaling for the rotation mask
 
 ## settings for the calibration window
-calibration_search_height = 50
+calibration_search_height = 80
+calibration_search_height_offset = 120
 ## settings for the calibration window
-calibration_search_width = 50
+calibration_search_width = 80
 
 ## lab offsets for the color finder, each value is an hard value, order is:
 # 0 = lum
@@ -61,19 +62,22 @@ lab_offset_table = [80,10,10]
 
 ## values of a block information
 block_small_area = 500
-block_width_big = 55
-block_height = 26
-block_height_offset = 4
+
+block_width_big = 120
+workspace_scale = 1
+color_mask_scale = 0.7 * workspace_scale
+block_height = 24
+block_height_offset = 2
 
 
 ## line size to split blocks
 block_split_cut_size = 4 #12
 ## ammount of erosion and dilation applied to the color masks
-erode_dilate = 2
+erode_dilate = 4
 
 ## distance to check rotation
 workspace_height = block_height * 12
-workspace_width = int(block_width_big * 3)
+workspace_width = int(block_width_big * 2)
 contour_rotation_search_area = int(block_width_big/4)
 
 ## type of color space used, many possibilities
@@ -156,7 +160,7 @@ while(step_index < len(color_name_table)):
 
     # crop image to centre
     x = int((width - calibration_search_width)/2)
-    y = int((height - calibration_search_height)/2)
+    y = int((height - calibration_search_height)/2) + calibration_search_height_offset
     img_crop = frame[y:y+calibration_search_height, x:x+calibration_search_width]
     # show the box that shows where the crop is
     mf.draw_calibration_box(final_frame, x, y, calibration_search_width, calibration_search_height,
@@ -297,7 +301,7 @@ while(1):
     
     if(contours_combined):
         workspace = mw.create_workspace(frame, window_vision, contours_combined, workspace_width, workspace_height, contour_rotation_search_area, debug, mask_scale_rotation)
-        work_frame = mw.transform_workspace(frame, workspace, workspace_width, workspace_height)
+        work_frame = mw.transform_workspace(frame, workspace, int(workspace_width*color_mask_scale), int(workspace_height*color_mask_scale))
         lab_frame = cv2.cvtColor(work_frame, color_space)
         
         # time to get workplace
@@ -367,7 +371,7 @@ while(1):
         if(debug):
             cv2.imshow("color_mask_combine", color_mask_combine)
             
-        four_filters = mc.four_in_one_frame(color_mask_table, 0.8)
+        four_filters = mc.four_in_one_frame(color_mask_table, color_mask_scale)
         #cv2.imshow("rybg_frame", four_filters)
         #four_filters = cv2.cvtColor(four_filters,cv2.COLOR_GRAY2RGB)
         mf.overlay_image(window_vision, four_filters, pos_four_filters)
