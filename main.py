@@ -119,7 +119,7 @@ pos_recept_result = (600,0)
 
 completed_flag = 0
 
-xml_path_file = "legoorders/current.xml"
+xml_path_file = "current.xml"
 """ ----- ----- ----- """
 
 # trackbar callback fucntion does nothing but required for trackbar
@@ -244,7 +244,7 @@ for i,name in enumerate(color_name_table):
 mid_pos = 2
 frame_count = 0
 # test code
-#current_product = [ [7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]
+#buffer_product = [[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]]
 
 
 while(1):
