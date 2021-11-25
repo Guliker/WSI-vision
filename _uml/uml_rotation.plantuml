@@ -1,0 +1,27 @@
+@startuml rotation
+start
+partition "get_contour_angle()"{
+
+:Get Full Contour;
+note left: <img:img/rot_contour_angle.png>
+:Get Lowest point;
+note left: <img:img/rot_lowest_angle.png>
+:Get Left and Right point;
+note left: <img:img/rot_l_r_angle.png>
+
+:Get better bottom right point
+if needed;
+
+:Get lines of corner;
+note left: <img:img/rot_lines.png>
+if (smallest angle) then (left)
+  :Use left angle;
+  note left: <img:img/rot_left.png>
+else (right)
+  :Use right angle;
+  note right: <img:img/rot_right.png>
+endif
+
+}
+end
+@enduml

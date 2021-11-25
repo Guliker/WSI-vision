@@ -108,7 +108,7 @@ current_product = []
 buffer_product = []
 
 ## empty window to place frames in
-window_blank = np.zeros((1080, 1920,3), np.uint8)
+window_blank = np.zeros((1080,1920,3), np.uint8)
 window_green = np.full((1080,1920,3), (0,50,0), np.uint8)
 
 pos_raw_image = (1380,250)
