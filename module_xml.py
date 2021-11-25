@@ -56,4 +56,4 @@ def xml_generate(block_and_pos, save_path_file = "current_block.xml"):
 
     with open(save_path_file, "w") as f:
         f.write(xml_str) 
-        print(str(xml_str))
+        
