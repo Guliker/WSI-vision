@@ -2,6 +2,10 @@
 Based on python code for Multiple Color Detection:
 https://www.geeksforgeeks.org/multiple-color-detection-in-real-time-using-python-opencv/
 
+Usefull links:
+https://images4.programmersought.com/894/e7/e759c86ba15f596c2d5a8e795de4925e.png
+https://www.programmersought.com/article/7916959440/
+
     to run:
 install python 2.17.18
 pip2 install numpy
@@ -15,26 +19,7 @@ controls:
 - to shift mid offset to the left
 + to shift mid offset to the right
 d to open debug windows and info
-
------values saved dark:
-green:
-[[-32, 105, 108], [79, 131, 140]]
-yellow:
-[[3, 102, 136], [127, 132, 170]]
-blue:
-[[-33, 129, 75], [83, 165, 114]]
-red:
-[[-34, 134, 119], [77, 157, 144]]
-
------values saved light:
-green:
-[[58, 74, 128], [174, 99, 168]]
-yellow:
-[[186, 99, 212], [298, 118, 228]]
-blue:
-[[40, 145, 33], [158, 189, 73]]
-red:
-[[75, 182, 171], [184, 201, 197]]
+x to cancel the current product
 """
 
 """ ----- IMPORTS ----- """
@@ -108,7 +93,7 @@ current_product = []
 buffer_product = []
 
 ## empty window to place frames in
-window_blank = np.zeros((1080, 1920,3), np.uint8)
+window_blank = np.zeros((1080,1920,3), np.uint8)
 window_green = np.full((1080,1920,3), (0,50,0), np.uint8)
 
 pos_raw_image = (1380,250)

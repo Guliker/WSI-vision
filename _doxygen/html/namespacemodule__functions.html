@@ -89,14 +89,6 @@ Functions</h2></td></tr>
 <tr class="separator:aee0890d804e34c155524adfcc11a39ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6e63cc76dc0f0750b38ca936121d641"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#aa6e63cc76dc0f0750b38ca936121d641">draw_contour</a> (image, contour, color, debug)</td></tr>
 <tr class="separator:aa6e63cc76dc0f0750b38ca936121d641"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcd0636858e1ece6bff7046eeb0f0fe7"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#adcd0636858e1ece6bff7046eeb0f0fe7">create_workspace</a> (image, debug_image, contours, width, height, offset, debug, scale=1)</td></tr>
-<tr class="separator:adcd0636858e1ece6bff7046eeb0f0fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af512726cd648e41774ce21b1d18e0a47"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#af512726cd648e41774ce21b1d18e0a47">find_contour_angle</a> (contour, search_w, search_h, image, scale, debug)</td></tr>
-<tr class="separator:af512726cd648e41774ce21b1d18e0a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2144571c80fd5b4caaa9c4049fec26ec"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#a2144571c80fd5b4caaa9c4049fec26ec">transform_workspace</a> (image, workspace, width, height)</td></tr>
-<tr class="separator:a2144571c80fd5b4caaa9c4049fec26ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b1acafebdc5cc0ef48f7202a12ad056"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#a7b1acafebdc5cc0ef48f7202a12ad056">find_angle_between</a> (p1, p2)</td></tr>
-<tr class="separator:a7b1acafebdc5cc0ef48f7202a12ad056"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac39d58ae949a0f0b8b37dbfed508c114"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#ac39d58ae949a0f0b8b37dbfed508c114">sort_contours_on_height</a> (cnts, clr)</td></tr>
 <tr class="separator:ac39d58ae949a0f0b8b37dbfed508c114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afea944d7c79ea128e4b5de777b84808b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemodule__functions.html#afea944d7c79ea128e4b5de777b84808b">block_color_fill</a> (fill_array, cnt_array, color_index, block_width)</td></tr>
@@ -321,79 +313,6 @@ Examples:
 </pre> 
 </div>
 </div>
-<a id="adcd0636858e1ece6bff7046eeb0f0fe7" name="adcd0636858e1ece6bff7046eeb0f0fe7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcd0636858e1ece6bff7046eeb0f0fe7">&#9670;&nbsp;</a></span>create_workspace()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def module_functions.create_workspace </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>debug_image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>contours</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>height</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>debug</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>scale</em> = <code>1</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<pre class="fragment">:brief      Makes a workspace centred on the biggest contour
-:param      image:      Image to draw on in debug mode
-:param      contours:   Array of contours in the image
-:param      width:      Width of the workspace
-:param      height:     Height of the workspace
-:param      offset:     How big the search window is for the angle
-:param      debug:      If debug info should be shown
-:param      scale:      Factor to scale the image, 1 = normal
-:return     Four points of the designated workspace
-</pre> 
-</div>
-</div>
 <a id="a2c5543c5de1a9dd901fe1bd4660f054c" name="a2c5543c5de1a9dd901fe1bd4660f054c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c5543c5de1a9dd901fe1bd4660f054c">&#9670;&nbsp;</a></span>draw_calibration_box()</h2>
 
@@ -554,95 +473,6 @@ Examples:
 :param      y:      Y position for the left point of the line
 :param      w:      Width the line will be to the right
 :param      t:      Thickness of the line
-</pre> 
-</div>
-</div>
-<a id="a7b1acafebdc5cc0ef48f7202a12ad056" name="a7b1acafebdc5cc0ef48f7202a12ad056"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b1acafebdc5cc0ef48f7202a12ad056">&#9670;&nbsp;</a></span>find_angle_between()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def module_functions.find_angle_between </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>p1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>p2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<pre class="fragment">:brief      Calculates smallest angle between two points, always under 180
-:param      p1:     Point 1 of the line
-:param      p2:     Point 2 of the line
-:return     Angle of that line relative to the horizon
-</pre> 
-</div>
-</div>
-<a id="af512726cd648e41774ce21b1d18e0a47" name="af512726cd648e41774ce21b1d18e0a47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af512726cd648e41774ce21b1d18e0a47">&#9670;&nbsp;</a></span>find_contour_angle()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def module_functions.find_contour_angle </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>contour</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>search_w</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>search_h</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>scale</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>debug</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<pre class="fragment">:brief      Returns the angle of a contour
-:param      contour:    Contour with no approx
-:param      search_w:   Search area width
-:param      search_h:   Search area height
-:return     The closest angle to make te contour flat
 </pre> 
 </div>
 </div>
@@ -880,52 +710,6 @@ Examples:
 :param      contour:    Array of contours in the image
 :param      height:     Maximum height of a contour
 :param      offset:     Offset the height can be
-</pre> 
-</div>
-</div>
-<a id="a2144571c80fd5b4caaa9c4049fec26ec" name="a2144571c80fd5b4caaa9c4049fec26ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2144571c80fd5b4caaa9c4049fec26ec">&#9670;&nbsp;</a></span>transform_workspace()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def module_functions.transform_workspace </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>workspace</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>height</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<pre class="fragment">:brief      Rotates and resizes an section off the image
-:param      image:      Original image where the workspace is in
-:param      workspace:  Four points of the workspace
-:param      width:      Width of the new image
-:param      height:     Height of the new image
-:return     New image that has been transformed and warped
 </pre> 
 </div>
 </div>

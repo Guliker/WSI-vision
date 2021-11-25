@@ -98,10 +98,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>debug</b> = False</td
 float&#160;</td><td class="memItemRight" valign="bottom"><b>cam_scale</b> = 0.5</td></tr>
 <tr class="separator:a97eca30fbe558abee9f90e65bf47f3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e45bcb5552ef02fdee70ec872564df6"><td class="memItemLeft" align="right" valign="top"><a id="a7e45bcb5552ef02fdee70ec872564df6" name="a7e45bcb5552ef02fdee70ec872564df6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>mask_scale_rotation</b> = float(1)/2</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>mask_scale_rotation</b> = float(1)/1</td></tr>
 <tr class="separator:a7e45bcb5552ef02fdee70ec872564df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd2c2ae5293e033745aead2ccfc46206"><td class="memItemLeft" align="right" valign="top"><a id="abd2c2ae5293e033745aead2ccfc46206" name="abd2c2ae5293e033745aead2ccfc46206"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>calibration_search_height</b> = 350</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>calibration_search_height</b> = 50</td></tr>
 <tr class="memdesc:abd2c2ae5293e033745aead2ccfc46206"><td class="mdescLeft">&#160;</td><td class="mdescRight">settings for the calibration window <br /></td></tr>
 <tr class="separator:abd2c2ae5293e033745aead2ccfc46206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb17bdd9ea378f3a1acb2fd858c02c2d"><td class="memItemLeft" align="right" valign="top"><a id="abb17bdd9ea378f3a1acb2fd858c02c2d" name="abb17bdd9ea378f3a1acb2fd858c02c2d"></a>
@@ -109,7 +109,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>calibration_search_wid
 <tr class="memdesc:abb17bdd9ea378f3a1acb2fd858c02c2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">settings for the calibration window <br /></td></tr>
 <tr class="separator:abb17bdd9ea378f3a1acb2fd858c02c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd106cc927e30c390c959e6d0107498a"><td class="memItemLeft" align="right" valign="top"><a id="abd106cc927e30c390c959e6d0107498a" name="abd106cc927e30c390c959e6d0107498a"></a>
-list&#160;</td><td class="memItemRight" valign="bottom"><b>lab_offset_table</b> = [50,5,5]</td></tr>
+list&#160;</td><td class="memItemRight" valign="bottom"><b>lab_offset_table</b> = [80,10,10]</td></tr>
 <tr class="memdesc:abd106cc927e30c390c959e6d0107498a"><td class="mdescLeft">&#160;</td><td class="mdescRight">lab offsets for the color finder, each value is an hard value, order is: 0 = lum 1 = a; green - magenta 2 = b; blue - yellow <br /></td></tr>
 <tr class="separator:abd106cc927e30c390c959e6d0107498a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fd1c744b6add516f1ee985c5fd30eb6"><td class="memItemLeft" align="right" valign="top"><a id="a0fd1c744b6add516f1ee985c5fd30eb6" name="a0fd1c744b6add516f1ee985c5fd30eb6"></a>
@@ -152,7 +152,7 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>color_name_table</b>
 <tr class="memdesc:ab70ab73e9fecc7bf59c365e96999ddeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">all logic tables <br /></td></tr>
 <tr class="separator:ab70ab73e9fecc7bf59c365e96999ddeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15587b085eecfde6a59bcd6863ef5d22"><td class="memItemLeft" align="right" valign="top"><a id="a15587b085eecfde6a59bcd6863ef5d22" name="a15587b085eecfde6a59bcd6863ef5d22"></a>
-tuple&#160;</td><td class="memItemRight" valign="bottom"><b>color_bgr_table</b> = ( (0,200,0), (0,255,255), (255,70,0), (0,0,255) )</td></tr>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>color_bgr_table</b> = ( (0,200,0), (0,200,255), (255,100,0), (0,0,255) )</td></tr>
 <tr class="separator:a15587b085eecfde6a59bcd6863ef5d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb9e45e66f19224d202f290bfb431f5e"><td class="memItemLeft" align="right" valign="top"><a id="acb9e45e66f19224d202f290bfb431f5e" name="acb9e45e66f19224d202f290bfb431f5e"></a>
 list&#160;</td><td class="memItemRight" valign="bottom"><b>lab_min_max_table</b> = [ [[],[]], [[],[]], [[],[]], [[],[]] ]</td></tr>
@@ -166,14 +166,14 @@ list&#160;</td><td class="memItemRight" valign="bottom"><b>color_contour_table</
 <tr class="memitem:ad3074c9eadaf085032839d2409b34857"><td class="memItemLeft" align="right" valign="top"><a id="ad3074c9eadaf085032839d2409b34857" name="ad3074c9eadaf085032839d2409b34857"></a>
 list&#160;</td><td class="memItemRight" valign="bottom"><b>color_mask_combine</b> = []</td></tr>
 <tr class="separator:ad3074c9eadaf085032839d2409b34857"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bede7623692db38a0820de7ca53c13b"><td class="memItemLeft" align="right" valign="top"><a id="a1bede7623692db38a0820de7ca53c13b" name="a1bede7623692db38a0820de7ca53c13b"></a>
-list&#160;</td><td class="memItemRight" valign="bottom"><b>full_product</b> = []</td></tr>
-<tr class="separator:a1bede7623692db38a0820de7ca53c13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc34bfdba9bc2ca80904dbd7bdf3d277"><td class="memItemLeft" align="right" valign="top"><a id="abc34bfdba9bc2ca80904dbd7bdf3d277" name="abc34bfdba9bc2ca80904dbd7bdf3d277"></a>
+list&#160;</td><td class="memItemRight" valign="bottom"><b>current_product</b> = []</td></tr>
+<tr class="separator:abc34bfdba9bc2ca80904dbd7bdf3d277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95314d6bea53d96611f508b8fb5bff61"><td class="memItemLeft" align="right" valign="top"><a id="a95314d6bea53d96611f508b8fb5bff61" name="a95314d6bea53d96611f508b8fb5bff61"></a>
 list&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_product</b> = []</td></tr>
 <tr class="separator:a95314d6bea53d96611f508b8fb5bff61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc1497759e02ae9cae6ab3be2aff3848"><td class="memItemLeft" align="right" valign="top"><a id="acc1497759e02ae9cae6ab3be2aff3848" name="acc1497759e02ae9cae6ab3be2aff3848"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>window_blank</b> = np.zeros((1080, 1920,3), np.uint8)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>window_blank</b> = np.zeros((1080,1920,3), np.uint8)</td></tr>
 <tr class="memdesc:acc1497759e02ae9cae6ab3be2aff3848"><td class="mdescLeft">&#160;</td><td class="mdescRight">empty window to place frames in <br /></td></tr>
 <tr class="separator:acc1497759e02ae9cae6ab3be2aff3848"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69a688869d0f3e2361afb29599afff27"><td class="memItemLeft" align="right" valign="top"><a id="a69a688869d0f3e2361afb29599afff27" name="a69a688869d0f3e2361afb29599afff27"></a>
@@ -197,6 +197,9 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>pos_recept_result</b
 <tr class="memitem:a28b9391185400f51c41b6d9df8df8a6f"><td class="memItemLeft" align="right" valign="top"><a id="a28b9391185400f51c41b6d9df8df8a6f" name="a28b9391185400f51c41b6d9df8df8a6f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>completed_flag</b> = 0</td></tr>
 <tr class="separator:a28b9391185400f51c41b6d9df8df8a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31de583d291ae8e56aebae6ad2564714"><td class="memItemLeft" align="right" valign="top"><a id="a31de583d291ae8e56aebae6ad2564714" name="a31de583d291ae8e56aebae6ad2564714"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>xml_path_file</b> = &quot;legoorders/current.xml&quot;</td></tr>
+<tr class="separator:a31de583d291ae8e56aebae6ad2564714"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae57958345b17f9ca8597330ba07e1a1c"><td class="memItemLeft" align="right" valign="top"><a id="ae57958345b17f9ca8597330ba07e1a1c" name="ae57958345b17f9ca8597330ba07e1a1c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>start_time</b> = datetime.datetime.now()</td></tr>
 <tr class="separator:ae57958345b17f9ca8597330ba07e1a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -260,10 +263,10 @@ list&#160;</td><td class="memItemRight" valign="bottom"><b>color_pos</b> = []</t
 &#160;</td><td class="memItemRight" valign="bottom"><b>contours_combined</b> = mf.create_contour(color_mask_combine, <a class="el" href="namespacemain.html#a0fd1c744b6add516f1ee985c5fd30eb6">block_small_area</a>*mask_scale_rotation, method=cv2.CHAIN_APPROX_NONE)</td></tr>
 <tr class="separator:ade385e5fe8ddbfd3589c9fd5bc404dbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab581b55123a485174473bac676e37fff"><td class="memItemLeft" align="right" valign="top"><a id="ab581b55123a485174473bac676e37fff" name="ab581b55123a485174473bac676e37fff"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>workspace</b> = mf.create_workspace(frame, window_vision, contours_combined, workspace_width, <a class="el" href="namespacemain.html#a308950ee87da20aa2843fe273a91a023">workspace_height</a>, contour_rotation_search_area, <a class="el" href="namespacemain.html#a7e1ddce5792139e2174735e6619ae428">debug</a>, mask_scale_rotation)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>workspace</b> = mw.create_workspace(frame, window_vision, contours_combined, workspace_width, <a class="el" href="namespacemain.html#a308950ee87da20aa2843fe273a91a023">workspace_height</a>, contour_rotation_search_area, <a class="el" href="namespacemain.html#a7e1ddce5792139e2174735e6619ae428">debug</a>, mask_scale_rotation)</td></tr>
 <tr class="separator:ab581b55123a485174473bac676e37fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf57f22dee7ffb08b6faa67baf1a0092"><td class="memItemLeft" align="right" valign="top"><a id="abf57f22dee7ffb08b6faa67baf1a0092" name="abf57f22dee7ffb08b6faa67baf1a0092"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>work_frame</b> = mf.transform_workspace(frame, workspace, workspace_width, <a class="el" href="namespacemain.html#a308950ee87da20aa2843fe273a91a023">workspace_height</a>)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>work_frame</b> = mw.transform_workspace(frame, workspace, workspace_width, <a class="el" href="namespacemain.html#a308950ee87da20aa2843fe273a91a023">workspace_height</a>)</td></tr>
 <tr class="separator:abf57f22dee7ffb08b6faa67baf1a0092"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd7689bfdb3b5acc45ac89d03d5bd08d"><td class="memItemLeft" align="right" valign="top"><a id="afd7689bfdb3b5acc45ac89d03d5bd08d" name="afd7689bfdb3b5acc45ac89d03d5bd08d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>iterations</b></td></tr>
@@ -316,6 +319,26 @@ controls:
 - to shift mid offset to the left
 + to shift mid offset to the right
 d to open debug windows and info
+
+-----values saved dark:
+green:
+[[-32, 105, 108], [79, 131, 140]]
+yellow:
+[[3, 102, 136], [127, 132, 170]]
+blue:
+[[-33, 129, 75], [83, 165, 114]]
+red:
+[[-34, 134, 119], [77, 157, 144]]
+
+-----values saved light:
+green:
+[[58, 74, 128], [174, 99, 168]]
+yellow:
+[[186, 99, 212], [298, 118, 228]]
+blue:
+[[40, 145, 33], [158, 189, 73]]
+red:
+[[75, 182, 171], [184, 201, 197]]
 </pre> </div><h2 class="groupheader">Variable Documentation</h2>
 <a id="aa35b6f2aa80b399eb966fc5d6d916504" name="aa35b6f2aa80b399eb966fc5d6d916504"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa35b6f2aa80b399eb966fc5d6d916504">&#9670;&nbsp;</a></span>kernal</h2>

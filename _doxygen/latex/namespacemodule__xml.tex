@@ -1,0 +1,74 @@
+\hypertarget{namespacemodule__xml}{}\doxysection{module\+\_\+xml Namespace Reference}
+\label{namespacemodule__xml}\index{module\_xml@{module\_xml}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemodule__xml_a2247a4c6385ef96c05701db243639099}{xml\+\_\+generate}} (block\+\_\+and\+\_\+pos, save\+\_\+path\+\_\+file=\char`\"{}current\+\_\+block.\+xml\char`\"{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+dictionary \mbox{\hyperlink{namespacemodule__xml_a584a6158dd0a053b819a7b729e6234c3}{map\+\_\+block}}
+\item 
+dictionary \mbox{\hyperlink{namespacemodule__xml_a16446ad44ea273a1f22e9ed691db1bec}{map\+\_\+pos}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Functions used for the WSI vision module
+- calibration
+- mask
+- contours
+- workspace
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemodule__xml_a2247a4c6385ef96c05701db243639099}\label{namespacemodule__xml_a2247a4c6385ef96c05701db243639099}} 
+\index{module\_xml@{module\_xml}!xml\_generate@{xml\_generate}}
+\index{xml\_generate@{xml\_generate}!module\_xml@{module\_xml}}
+\doxysubsubsection{\texorpdfstring{xml\_generate()}{xml\_generate()}}
+{\footnotesize\ttfamily def module\+\_\+xml.\+xml\+\_\+generate (\begin{DoxyParamCaption}\item[{}]{block\+\_\+and\+\_\+pos,  }\item[{}]{save\+\_\+path\+\_\+file = {\ttfamily \char`\"{}current\+\_\+block.xml\char`\"{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Creates an xml file of the product that can be read by the customer portal
+:param      block_and_pos:      Array of the block lane and position
+:param      save_path_file:     The path and file where the made xml file will be saved
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacemodule__xml_a584a6158dd0a053b819a7b729e6234c3}\label{namespacemodule__xml_a584a6158dd0a053b819a7b729e6234c3}} 
+\index{module\_xml@{module\_xml}!map\_block@{map\_block}}
+\index{map\_block@{map\_block}!module\_xml@{module\_xml}}
+\doxysubsubsection{\texorpdfstring{map\_block}{map\_block}}
+{\footnotesize\ttfamily dictionary module\+\_\+xml.\+map\+\_\+block}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =    \{}
+\DoxyCodeLine{2                     1: (\textcolor{stringliteral}{"{}Grey"{}}, \textcolor{stringliteral}{"{}1"{}}),}
+\DoxyCodeLine{3                     2: (\textcolor{stringliteral}{"{}Yellow"{}}, \textcolor{stringliteral}{"{}1"{}}),}
+\DoxyCodeLine{4                     3: (\textcolor{stringliteral}{"{}Blue"{}}, \textcolor{stringliteral}{"{}1"{}}) ,}
+\DoxyCodeLine{5                     4: (\textcolor{stringliteral}{"{}Red"{}}, \textcolor{stringliteral}{"{}1"{}}),}
+\DoxyCodeLine{6                     5: (\textcolor{stringliteral}{"{}Grey"{}}, \textcolor{stringliteral}{"{}2"{}}),}
+\DoxyCodeLine{7                     6: (\textcolor{stringliteral}{"{}Yellow"{}}, \textcolor{stringliteral}{"{}2"{}}),}
+\DoxyCodeLine{8                     7: (\textcolor{stringliteral}{"{}Blue"{}}, \textcolor{stringliteral}{"{}2"{}}),}
+\DoxyCodeLine{9                     8: (\textcolor{stringliteral}{"{}Red"{}}, \textcolor{stringliteral}{"{}2"{}}),}
+\DoxyCodeLine{10                 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemodule__xml_a16446ad44ea273a1f22e9ed691db1bec}\label{namespacemodule__xml_a16446ad44ea273a1f22e9ed691db1bec}} 
+\index{module\_xml@{module\_xml}!map\_pos@{map\_pos}}
+\index{map\_pos@{map\_pos}!module\_xml@{module\_xml}}
+\doxysubsubsection{\texorpdfstring{map\_pos}{map\_pos}}
+{\footnotesize\ttfamily dictionary module\+\_\+xml.\+map\+\_\+pos}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =     \{}
+\DoxyCodeLine{2                         1: \textcolor{stringliteral}{"{}-\/0,5"{}},}
+\DoxyCodeLine{3                         2: \textcolor{stringliteral}{"{}0"{}},}
+\DoxyCodeLine{4                         3: \textcolor{stringliteral}{"{}0,5"{}},}
+\DoxyCodeLine{5                     \}}
+
+\end{DoxyCode}

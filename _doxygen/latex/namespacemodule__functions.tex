@@ -21,14 +21,6 @@ def \mbox{\hyperlink{namespacemodule__functions_aee0890d804e34c155524adfcc11a39a
 \item 
 def \mbox{\hyperlink{namespacemodule__functions_aa6e63cc76dc0f0750b38ca936121d641}{draw\+\_\+contour}} (image, contour, color, debug)
 \item 
-def \mbox{\hyperlink{namespacemodule__functions_adcd0636858e1ece6bff7046eeb0f0fe7}{create\+\_\+workspace}} (image, debug\+\_\+image, contours, width, height, offset, debug, scale=1)
-\item 
-def \mbox{\hyperlink{namespacemodule__functions_af512726cd648e41774ce21b1d18e0a47}{find\+\_\+contour\+\_\+angle}} (contour, search\+\_\+w, search\+\_\+h, image, scale, debug)
-\item 
-def \mbox{\hyperlink{namespacemodule__functions_a2144571c80fd5b4caaa9c4049fec26ec}{transform\+\_\+workspace}} (image, workspace, width, height)
-\item 
-def \mbox{\hyperlink{namespacemodule__functions_a7b1acafebdc5cc0ef48f7202a12ad056}{find\+\_\+angle\+\_\+between}} (p1, p2)
-\item 
 def \mbox{\hyperlink{namespacemodule__functions_ac39d58ae949a0f0b8b37dbfed508c114}{sort\+\_\+contours\+\_\+on\+\_\+height}} (cnts, clr)
 \item 
 def \mbox{\hyperlink{namespacemodule__functions_afea944d7c79ea128e4b5de777b84808b}{block\+\_\+color\+\_\+fill}} (fill\+\_\+array, cnt\+\_\+array, color\+\_\+index, block\+\_\+width)
@@ -119,22 +111,6 @@ Examples:
 :param      method:     Method used to make the contour (SIMPLE, NONE)
 :return     Array of contours in the image
 \end{DoxyVerb}
- \mbox{\Hypertarget{namespacemodule__functions_adcd0636858e1ece6bff7046eeb0f0fe7}\label{namespacemodule__functions_adcd0636858e1ece6bff7046eeb0f0fe7}} 
-\index{module\_functions@{module\_functions}!create\_workspace@{create\_workspace}}
-\index{create\_workspace@{create\_workspace}!module\_functions@{module\_functions}}
-\doxysubsubsection{\texorpdfstring{create\_workspace()}{create\_workspace()}}
-{\footnotesize\ttfamily def module\+\_\+functions.\+create\+\_\+workspace (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{debug\+\_\+image,  }\item[{}]{contours,  }\item[{}]{width,  }\item[{}]{height,  }\item[{}]{offset,  }\item[{}]{debug,  }\item[{}]{scale = {\ttfamily 1} }\end{DoxyParamCaption})}
-
-\begin{DoxyVerb}:brief      Makes a workspace centred on the biggest contour
-:param      image:      Image to draw on in debug mode
-:param      contours:   Array of contours in the image
-:param      width:      Width of the workspace
-:param      height:     Height of the workspace
-:param      offset:     How big the search window is for the angle
-:param      debug:      If debug info should be shown
-:param      scale:      Factor to scale the image, 1 = normal
-:return     Four points of the designated workspace
-\end{DoxyVerb}
  \mbox{\Hypertarget{namespacemodule__functions_a2c5543c5de1a9dd901fe1bd4660f054c}\label{namespacemodule__functions_a2c5543c5de1a9dd901fe1bd4660f054c}} 
 \index{module\_functions@{module\_functions}!draw\_calibration\_box@{draw\_calibration\_box}}
 \index{draw\_calibration\_box@{draw\_calibration\_box}!module\_functions@{module\_functions}}
@@ -174,29 +150,6 @@ Examples:
 :param      y:      Y position for the left point of the line
 :param      w:      Width the line will be to the right
 :param      t:      Thickness of the line
-\end{DoxyVerb}
- \mbox{\Hypertarget{namespacemodule__functions_a7b1acafebdc5cc0ef48f7202a12ad056}\label{namespacemodule__functions_a7b1acafebdc5cc0ef48f7202a12ad056}} 
-\index{module\_functions@{module\_functions}!find\_angle\_between@{find\_angle\_between}}
-\index{find\_angle\_between@{find\_angle\_between}!module\_functions@{module\_functions}}
-\doxysubsubsection{\texorpdfstring{find\_angle\_between()}{find\_angle\_between()}}
-{\footnotesize\ttfamily def module\+\_\+functions.\+find\+\_\+angle\+\_\+between (\begin{DoxyParamCaption}\item[{}]{p1,  }\item[{}]{p2 }\end{DoxyParamCaption})}
-
-\begin{DoxyVerb}:brief      Calculates smallest angle between two points, always under 180
-:param      p1:     Point 1 of the line
-:param      p2:     Point 2 of the line
-:return     Angle of that line relative to the horizon
-\end{DoxyVerb}
- \mbox{\Hypertarget{namespacemodule__functions_af512726cd648e41774ce21b1d18e0a47}\label{namespacemodule__functions_af512726cd648e41774ce21b1d18e0a47}} 
-\index{module\_functions@{module\_functions}!find\_contour\_angle@{find\_contour\_angle}}
-\index{find\_contour\_angle@{find\_contour\_angle}!module\_functions@{module\_functions}}
-\doxysubsubsection{\texorpdfstring{find\_contour\_angle()}{find\_contour\_angle()}}
-{\footnotesize\ttfamily def module\+\_\+functions.\+find\+\_\+contour\+\_\+angle (\begin{DoxyParamCaption}\item[{}]{contour,  }\item[{}]{search\+\_\+w,  }\item[{}]{search\+\_\+h,  }\item[{}]{image,  }\item[{}]{scale,  }\item[{}]{debug }\end{DoxyParamCaption})}
-
-\begin{DoxyVerb}:brief      Returns the angle of a contour
-:param      contour:    Contour with no approx
-:param      search_w:   Search area width
-:param      search_h:   Search area height
-:return     The closest angle to make te contour flat
 \end{DoxyVerb}
  \mbox{\Hypertarget{namespacemodule__functions_a853d161a502bcfd87493ab3aa6b0d78b}\label{namespacemodule__functions_a853d161a502bcfd87493ab3aa6b0d78b}} 
 \index{module\_functions@{module\_functions}!find\_min\_max\_array@{find\_min\_max\_array}}
@@ -266,18 +219,5 @@ Examples:
 :param      contour:    Array of contours in the image
 :param      height:     Maximum height of a contour
 :param      offset:     Offset the height can be
-\end{DoxyVerb}
- \mbox{\Hypertarget{namespacemodule__functions_a2144571c80fd5b4caaa9c4049fec26ec}\label{namespacemodule__functions_a2144571c80fd5b4caaa9c4049fec26ec}} 
-\index{module\_functions@{module\_functions}!transform\_workspace@{transform\_workspace}}
-\index{transform\_workspace@{transform\_workspace}!module\_functions@{module\_functions}}
-\doxysubsubsection{\texorpdfstring{transform\_workspace()}{transform\_workspace()}}
-{\footnotesize\ttfamily def module\+\_\+functions.\+transform\+\_\+workspace (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{workspace,  }\item[{}]{width,  }\item[{}]{height }\end{DoxyParamCaption})}
-
-\begin{DoxyVerb}:brief      Rotates and resizes an section off the image
-:param      image:      Original image where the workspace is in
-:param      workspace:  Four points of the workspace
-:param      width:      Width of the new image
-:param      height:     Height of the new image
-:return     New image that has been transformed and warped
 \end{DoxyVerb}
  
