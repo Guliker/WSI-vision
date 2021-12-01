@@ -30,7 +30,7 @@ map_pos =    {
 """ ----- ----- ----- """
 
 """----- ----- XML ----- -----"""
-def xml_generate(block_and_pos, save_path_file = "current_block.xml"):
+def xml_generate(block_and_pos, save_path_file = "C://LegoView/current_block.xml"):
     """
     :brief      Creates an xml file of the product that can be read by the customer portal
     :param      block_and_pos:      Array of the block lane and position
@@ -56,4 +56,6 @@ def xml_generate(block_and_pos, save_path_file = "current_block.xml"):
 
     with open(save_path_file, "w") as f:
         f.write(xml_str) 
+
+#xml_generate(((2,1),(4,3)))
         
