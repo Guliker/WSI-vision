@@ -31,6 +31,7 @@ import module_socket as ms
 import module_recept_result as mrr
 import module_workspace as mw
 import module_xml   as mx
+import module_display_window as mdw
 
 #import math
 import numpy as np
@@ -107,12 +108,14 @@ buffer_product = []
 ## empty window to place frames in
 window_blank = np.zeros((1080,1920,3), np.uint8)
 window_green = np.full((1080,1920,3), (0,50,0), np.uint8)
+viewer_frame = np.zeros((8,8,3, np.uint8))
 
 pos_raw_image = (1380,250)
 pos_img_crop = (1300,280)
 pos_four_filters = (1380,0)
 pos_corrected_image = (880,110)
 pos_recept_result = (600,0)
+pos_viewer = (0,0)
 
 completed_flag = 0
 
@@ -243,6 +246,8 @@ frame_count = 0
 #buffer_product = [[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]]
 
 
+OBS_window = mdw.OBS_open(2)
+
 while(1):
     frame_count += 1
     
@@ -265,6 +270,14 @@ while(1):
                 current_product = buffer_product.pop(0)
                 mid_pos = current_product[0][1]
                 mx.xml_generate(current_product, xml_path_file)
+        
+        # update viewer frame
+        if(len(current_product)):
+            viewer_frame = mdw.OBS_frame(OBS_window)
+
+    if(len(current_product)):
+        # display viewer frame
+        mf.overlay_image(window_vision, viewer_frame, pos_viewer)
 
     if(debug):
         #time to get frame
@@ -434,6 +447,7 @@ while(1):
 """ ----- EXIT ----- """
 mc.close(camera)
 cv2.destroyAllWindows()
+mdw.OBS_close(OBS_window)
 
 """ ----- ----- ----- """
 
