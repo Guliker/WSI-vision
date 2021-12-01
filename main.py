@@ -21,6 +21,7 @@ controls:
 d to open debug windows and info
 x to cancel the current product
 """
+print("initialisation ... "),
 
 """ ----- IMPORTS ----- """
 import gxipy as gx
@@ -49,9 +50,10 @@ cam_scale = 0.5     ## scaling of the camera image to the filters
 mask_scale_rotation = float(1)/1     ## scaling for the rotation mask
 
 ## settings for the calibration window
-calibration_search_height = 50
+calibration_search_height = 80
+calibration_serach_height_offset = 140
 ## settings for the calibration window
-calibration_search_width = 50
+calibration_search_width = 80
 
 ## lab offsets for the color finder, each value is an hard value, order is:
 # 0 = lum
@@ -70,6 +72,16 @@ block_height_offset = 4
 block_split_cut_size = 4 #12
 ## ammount of erosion and dilation applied to the color masks
 erode_dilate = 2
+kernal = np.array([ [1,1,1],
+                    [1,1,1],
+                    [1,1,1]     ], "uint8")
+'''
+kernal = np.array([ [1,1,1,1,1],
+                    [1,1,1,1,1],
+                    [1,1,1,1,1],
+                    [1,1,1,1,1],
+                    [1,1,1,1,1]     ], "uint8")
+'''
 
 ## distance to check rotation
 workspace_height = block_height * 12
@@ -125,7 +137,6 @@ def get_time(name, start):
 """ ----- MAIN LOOP FOR CALIBRATION ----- """
 """ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- """
 #(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[])
-print("initialisation ... "),
 mc.init(camera, device_manager)
 step_index = 0
 print("complete")
@@ -156,7 +167,7 @@ while(step_index < len(color_name_table)):
 
     # crop image to centre
     x = int((width - calibration_search_width)/2)
-    y = int((height - calibration_search_height)/2)
+    y = int((height - calibration_search_height)/2) + calibration_serach_height_offset
     img_crop = frame[y:y+calibration_search_height, x:x+calibration_search_width]
     # show the box that shows where the crop is
     mf.draw_calibration_box(final_frame, x, y, calibration_search_width, calibration_search_height,
@@ -274,10 +285,6 @@ while(1):
     # BGR(RGB color space) to 
     # lab(hue-saturation-value)
     lab_frame = cv2.cvtColor(frame, color_space)
-    
-    kernal = np.array([ [1,1,1],
-                        [1,1,1],
-                        [1,1,1]     ], "uint8")
     
     # create masks for each color, and check rotation of the masks
     for i, name in enumerate(color_name_table):

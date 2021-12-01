@@ -195,10 +195,14 @@ def points_to_avg(points):
     """
     x = []
     y = []
-    for i, item in enumerate(points):
-        x.append(item[0][0])
-        y.append(item[0][1])
-    return (np.average(x),np.average(y))
+    if len(points):
+        for i, item in enumerate(points):
+            x.append(item[0][0])
+            y.append(item[0][1])
+            
+        return (np.average(x),np.average(y))
+    else:
+        return (0,0)
 
     
 '''
