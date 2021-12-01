@@ -11,11 +11,11 @@ from xml.dom import minidom
 import os 
   
 map_block =   {
-                    1: ("Grey", "1"),
+                    1: ("Green", "1"),
                     2: ("Yellow", "1"),
                     3: ("Blue", "1") ,
                     4: ("Red", "1"),
-                    5: ("Grey", "2"),
+                    5: ("Green", "2"),
                     6: ("Yellow", "2"),
                     7: ("Blue", "2"),
                     8: ("Red", "2"),
