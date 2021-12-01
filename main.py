@@ -51,7 +51,7 @@ mask_scale_rotation = float(1)/1     ## scaling for the rotation mask
 
 ## settings for the calibration window
 calibration_search_height = 80
-calibration_serach_height_offset = 140
+calibration_serach_height_offset = -35
 ## settings for the calibration window
 calibration_search_width = 80
 
