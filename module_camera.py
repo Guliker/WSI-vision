@@ -19,7 +19,7 @@ import cv2
 cam_resolution = (904,1600)
 cam_offset_resolution = (1096, 0)
 
-cam_gain_rgb = (1.4 , 1.0, 2.3)
+cam_gain_rgb = (1.4 , 1.0, 2.6)
 # good values for 50hz lighting
 # 25; 20; 16.67; 12.5
 cam_frame_rate = 12.5
