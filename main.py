@@ -248,6 +248,7 @@ while(True):
     #buffer_product = [[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]],[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]]
 
     OBS_window = mdw.OBS_open(2)
+    viewer_frame = mdw.OBS_frame(OBS_window)
 
     while(1):
         frame_count += 1
