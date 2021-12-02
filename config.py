@@ -19,17 +19,16 @@ pos_viewer = (0,50)
 ## values of a block information
 block_small_area = 500
 block_width_big = 55
-block_height = 26
-block_height_offset = 4
+block_height = 26           ## height of the block without the nobs
+block_height_offset = 4     ## height of the nobs of the block
 
 """ ----- workspace ----- """
 ## distance to check rotation
 workspace_height = block_height * 12
 workspace_width = int(block_width_big * 3)
-contour_rotation_search_area = int(block_width_big/4)
 
 """ ----- Daheng Imaging Camera ----- """
-device_manager = gx.DeviceManager()     ## device manager for the Daheng Imaging camera
+device_manager = gx.DeviceManager()             ## device manager for the Daheng Imaging camera
 camera = device_manager.open_device_by_index(1) ## device opened on index one, the first camera
 
 #cam_resolution = (1600, 900)
@@ -62,13 +61,11 @@ lab_offset_table = [80,10,10]
 color_space = cv2.COLOR_BGR2LAB
 #color_space = cv2.COLOR_BGR2YCrCb
 
-## line size to split blocks
-block_split_cut_size = 4 #12
-## ammount of erosion and dilation applied to the color masks
-erode_dilate = 2
+block_split_cut_size = 4    ## line size to split blocks
+erode_dilate = 2            ## ammount of erosion and dilation applied to the color masks
 kernal = np.array([ [1,1,1],
                     [1,1,1],
-                    [1,1,1]     ], "uint8")
+                    [1,1,1]     ], "uint8")     ## kernal used for dilation and erosion
 '''
 kernal = np.array([ [1,1,1,1,1],
                     [1,1,1,1,1],
@@ -79,7 +76,7 @@ kernal = np.array([ [1,1,1,1,1],
 
 """ ---- colors ----- """
 color_name_table = (        "green",        "yellow",       "blue",         "red"       )   # name of each color
-color_bgr_table = (         (0,200,0),      (0,200,255),    (255,100,0),    (0,0,255)    )   # colors used to display on screen text and boxes
+color_bgr_table = (         (0,200,0),      (0,200,255),    (255,100,0),    (0,0,255)    )  # colors used to display on screen text and boxes
 lab_min_max_table = [       [[],[]],        [[],[]],        [[],[]],        [[],[]]     ]   # here are the min and max LAB values stored for each color
 color_mask_table = [        [],             [],             [],             []          ]   # here are the bit masks stored for each color
 color_contour_table = [     [],             [],             [],             []          ]   # here are the contours of each block stored for each color
@@ -98,7 +95,6 @@ window_size = (1000, 250,3)
 """ ----- calibration ----- """
 calibration_search_height = 80
 calibration_serach_height_offset = 70
-## settings for the calibration window
 calibration_search_width = 80
 
 """ ----- socket ----- """

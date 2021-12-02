@@ -248,7 +248,7 @@ while(True):
         #get_time(start_time)
         
         if(contours_combined):
-            workspace = mw.create_workspace(frame, window_vision, contours_combined, cfg.workspace_width, cfg.workspace_height, cfg.contour_rotation_search_area, debug, cfg.mask_scale_rotation)
+            workspace = mw.create_workspace(frame, window_vision, contours_combined, cfg.workspace_width, cfg.workspace_height, debug, cfg.mask_scale_rotation)
             work_frame = mw.transform_workspace(frame, workspace, cfg.workspace_width, cfg.workspace_height)
             lab_frame = cv2.cvtColor(work_frame, cfg.color_space)
             
