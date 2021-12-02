@@ -59,4 +59,3 @@ def xml_generate(block_and_pos, save_path_file = "C://ViewerOrder/Order.xml"):
 
 #cleares file
 xml_generate(())
-        
