@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <LEGOORDER>
-	<BRICK Color="Yellow" Orientation="-0,5" Size="2"/>
-	<BRICK Color="Grey" Orientation="0" Size="2"/>
-	<BRICK Color="Grey" Orientation="0" Size="1"/>
-	<BRICK Color="Blue" Orientation="0,5" Size="2"/>
-	<BRICK Color="Blue" Orientation="0" Size="1"/>
+	<BRICK Color="Yellow" Orientation="0" Size="2"/>
+	<BRICK Color="Green" Orientation="0" Size="1"/>
+	<BRICK Color="Green" Orientation="0.5" Size="2"/>
+	<BRICK Color="Blue" Orientation="0" Size="2"/>
 	<BRICK Color="Red" Orientation="0" Size="1"/>
-	<BRICK Color="Red" Orientation="-0,5" Size="2"/>
-	<BRICK Color="Yellow" Orientation="0" Size="1"/>
+	<BRICK Color="Yellow" Orientation="-0.5" Size="2"/>
+	<BRICK Color="Blue" Orientation="0" Size="1"/>
+	<BRICK Color="Red" Orientation="0.5" Size="2"/>
 </LEGOORDER>

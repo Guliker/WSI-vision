@@ -108,7 +108,7 @@ buffer_product = []
 ## empty window to place frames in
 window_blank = np.zeros((1080,1920,3), np.uint8)
 window_green = np.full((1080,1920,3), (0,50,0), np.uint8)
-viewer_frame = np.zeros((8,8,3, np.uint8))
+viewer_frame = np.zeros((10,10,3), np.uint8)
 
 pos_raw_image = (1380,250)
 pos_img_crop = (1300,280)
@@ -118,8 +118,6 @@ pos_recept_result = (600,0)
 pos_viewer = (0,0)
 
 completed_flag = 0
-
-xml_path_file = "current.xml"
 """ ----- ----- ----- """
 
 # trackbar callback fucntion does nothing but required for trackbar
@@ -269,7 +267,7 @@ while(1):
             if(len(buffer_product)):
                 current_product = buffer_product.pop(0)
                 mid_pos = current_product[0][1]
-                mx.xml_generate(current_product, xml_path_file)
+                mx.xml_generate(current_product)
         
         # update viewer frame
         if(len(current_product)):
