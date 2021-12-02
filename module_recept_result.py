@@ -1,17 +1,13 @@
 """
 Module to draw the recept and result colom
 """
-import cv2
-import numpy as np
-
-font = cv2.FONT_HERSHEY_SIMPLEX
-size = 1
-spacing = 80*size
-colom1 = 10
-colom2 = 150
-window_size = (1000, 250,3)
 
 """ ----- IMPORTS ----- """
+import config as cfg
+import cv2
+import numpy as np
+""" ----- ----- ----- """
+
 def draw_recept_result(recept_array, result_array, background):
     """
     :brief      Creates a image that shows the recept and result array, when they are the same a background will display that
@@ -20,16 +16,16 @@ def draw_recept_result(recept_array, result_array, background):
     :return     two values: An image where the arrays and background are displayed on, percentage completed
     """
     if(background):
-        window_recept_result = np.full(window_size, (0,50,0), np.uint8)
+        window_recept_result = np.full(cfg.window_size, (0,50,0), np.uint8)
     else:
-        window_recept_result = np.zeros(window_size, np.uint8)
+        window_recept_result = np.zeros(cfg.window_size, np.uint8)
     
     total = 0
     progress = 0
     if(len(result_array) <= 8):
         total = draw_background(window_recept_result, recept_array, result_array)
-        draw_array_vertical(window_recept_result, result_array, colom2, "result:")
-    draw_array_vertical(window_recept_result, recept_array, colom1, "recept:")
+        draw_array_vertical(window_recept_result, result_array, cfg.colom2, "result:")
+    draw_array_vertical(window_recept_result, recept_array, cfg.colom1, "recept:")
 
     if(len(recept_array)):
         progress = total/float(len(recept_array))
@@ -44,13 +40,13 @@ def draw_array_vertical(image, array, colom_pos, sub_text):
     :param      colom_pos:  Position of the array in the x-axis
     :param      sub_text:   Text that is drawn below the array
     """
-    cv2.putText(image, sub_text, (colom_pos + 5,window_size[0] - 30),
-                            font, size*0.8,
+    cv2.putText(image, sub_text, (colom_pos + 5,cfg.window_size[0] - 30),
+                            cfg.font, cfg.font_size_rr*0.8,
                             (255, 255, 255))
     for i,item in enumerate(array):
         #item = np.array(item, "uint8")
-        cv2.putText(image, str(item), (colom_pos,window_size[0] - spacing*(i + 1)),
-                            font, size,
+        cv2.putText(image, str(item), (colom_pos,cfg.window_size[0] - cfg.spacing*(i + 1)),
+                            cfg.font, cfg.font_size_rr,
                             (255, 255, 255))
 
 def draw_background(image, inputarray1, inputarray2):
@@ -64,8 +60,8 @@ def draw_background(image, inputarray1, inputarray2):
     total = 0
     max_i, dif = calc_max_common(inputarray1, inputarray2)
     for i in range(max_i + dif):
-        start = (0, window_size[0] - int(spacing*(i + 0.8)))
-        end = (window_size[1], window_size[0] - int(spacing*(i + 1.5)))
+        start = (0, cfg.window_size[0] - int(cfg.spacing*(i + 0.8)))
+        end = (cfg.window_size[1], cfg.window_size[0] - int(cfg.spacing*(i + 1.5)))
         if(i < max_i):
             if(np.array_equal(inputarray1[i],inputarray2[i])):
                 cv2.rectangle(image, start, end, (0,64,0), -1)  # green

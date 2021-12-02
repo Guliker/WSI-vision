@@ -7,13 +7,13 @@ Functions used for the WSI vision module
 """
 
 """ ----- IMPORTS ----- """
+import config as cfg
 import numpy as np
 import cv2
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 """ ----- ----- ----- """
 
-"""----- ----- WORKSPACE ----- -----"""
 def create_workspace(image, debug_image, contours, width, height, offset, debug, scale=1):
     """
     :brief      Makes a workspace centred on the biggest contour

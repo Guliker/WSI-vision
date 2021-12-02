@@ -16,21 +16,17 @@ Filter:
 """
 
 """ ----- IMPORTS ----- """
+import config as cfg
 import cv2
-
-cam_index = 0
-size = (668,974)
 
 def OBS_open(i):
     """
     :brief      Opens a video capture for the virtual camera
     :param      i: Index of the webcam to capture, (for OBS its a virtual camera, index = 2)
     """
-    global cam_index
-    cam_index = i
     cap = cv2.VideoCapture(i)
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, size[0])
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, size[1])
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, cfg.viewer_size[0])
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, cfg.viewer_size[1])
     if not cap.isOpened():
         print("Cannot open camera")
     return cap
