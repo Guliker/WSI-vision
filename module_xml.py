@@ -57,5 +57,6 @@ def xml_generate(block_and_pos, save_path_file = "C://ViewerOrder/Order.xml"):
     with open(save_path_file, "w") as f:
         f.write(xml_str) 
 
-xml_generate(((5,1),(4,3)))
+#cleares file
+xml_generate(())
         
