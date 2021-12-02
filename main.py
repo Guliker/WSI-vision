@@ -115,7 +115,7 @@ pos_img_crop = (1300,280)
 pos_four_filters = (1380,0)
 pos_corrected_image = (880,110)
 pos_recept_result = (600,0)
-pos_viewer = (0,0)
+pos_viewer = (0,50)
 
 completed_flag = 0
 """ ----- ----- ----- """
@@ -241,7 +241,7 @@ for i,name in enumerate(color_name_table):
 mid_pos = 2
 frame_count = 0
 # test code
-#buffer_product = [[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]]
+buffer_product = [[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]]
 
 
 OBS_window = mdw.OBS_open(2)
@@ -403,7 +403,7 @@ while(1):
     
     # quick debug to show variables
     test_var = len(buffer_product)
-    cv2.putText(window_vision, str(test_var), (50,50), font, 0.5, (255, 255, 255))
+    cv2.putText(window_vision, str(test_var), (10,10), font, 0.5, (255, 255, 255))
     
     if(progress == 1):
         completed_flag = 1
@@ -420,6 +420,8 @@ while(1):
     
     #get_time(start_time)
 
+    cv2.putText(window_vision, "press esc to close, space to reset", mf.pos_shift(pos_viewer,(10, 0)),
+                    font, 1, (255,255,255))   
     cv2.imshow("window vision", window_vision)
     
     key = cv2.waitKey(10) & 0xFF 

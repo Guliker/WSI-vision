@@ -9,25 +9,26 @@ https://obsproject.com/forum/resources/obs-virtualcam.949/
 """
 
 """ ----- IMPORTS ----- """
-import cv2 as cv
+import cv2
 
 cam_index = 0
-pos = (0,0)
-size = (400,400)
+pos = (200,0)
+size = (200,400)
 
 def OBS_open(i):
     global cam_index
     cam_index = i
-    cap = cv.VideoCapture(i)
-    #cap.set(cv.CAP_PROP_FRAME_WIDTH, size[0])
-    #cap.set(cv.CAP_PROP_FRAME_HEIGHT, size[1])
+    cap = cv2.VideoCapture(i)
+    #cap.set(cv2.CAP_PROP_FRAME_WIDTH, size[0])
+    #cap.set(cv2.CAP_PROP_FRAME_HEIGHT, size[1])
     if not cap.isOpened():
         print("Cannot open camera")
     return cap
 
-def OBS_frame(cap):
+def OBS_frame(cap, scale= 2.5):
     # Capture frame-by-frame
     ret, frame = cap.read()
+    # if frame is read correctly ret is True
 
     # crop image to centre
     global size
@@ -35,14 +36,18 @@ def OBS_frame(cap):
     x,y = pos
     w,h = size
     frame_crop = frame[y:y+h, x:x+w]
-    # if frame is read correctly ret is True
-    cv.imshow('frame',frame_crop)
-    return frame_crop
+    
+    
+    # rescaling image
+    width = int(frame_crop.shape[1] * scale)
+    height = int(frame_crop.shape[0] * scale)
+    dim = (width, height)
+    return cv2.resize(frame_crop, dim, interpolation = cv2.INTER_AREA)
 
 def OBS_close(cap):
     # When everything done, release the capture
     cap.release()
-    cv.destroyAllWindows()
+    cv2.destroyAllWindows()
 
 def check_multiple():
     for i in range(-1,10):
@@ -51,7 +56,7 @@ def check_multiple():
             OBS_window = OBS_open(i)
             while(1):
                 frame = OBS_frame(OBS_window)
-                if cv.waitKey(1) == ord('q'):
+                if cv2.waitKey(1) == ord('q'):
                     break
             OBS_close(OBS_window)
         except:
@@ -64,7 +69,7 @@ def check_multiple():
 OBS_window = OBS_open(2)
 while(1):
     OBS_frame(OBS_window)
-    if cv.waitKey(1) == ord('q'):
+    if cv2.waitKey(1) == ord('q'):
         break
 OBS_close(OBS_window)
 '''
