@@ -1,9 +1,5 @@
 """
-Functions used for the WSI vision module
-- calibration
-- mask
-- contours
-- workspace
+Function used to make a xml file from a block list
 """
 
 """ ----- IMPORTS ----- """

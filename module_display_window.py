@@ -22,6 +22,10 @@ cam_index = 0
 size = (668,974)
 
 def OBS_open(i):
+    """
+    :brief      Opens a video capture for the virtual camera
+    :param      i: Index of the webcam to capture, (for OBS its a virtual camera, index = 2)
+    """
     global cam_index
     cam_index = i
     cap = cv2.VideoCapture(i)
@@ -31,7 +35,12 @@ def OBS_open(i):
         print("Cannot open camera")
     return cap
 
-def OBS_frame(cap, scale= 1):
+def OBS_frame(cap):
+    """
+    :brief      Capture a frame from a device
+    :param      cap:    Capture device made in OBS_open()
+    :return     Returns the frame captured from the capture device
+    """
     # Capture frame-by-frame
     ret, frame = cap.read()
     # if frame is read correctly ret is True  
@@ -40,12 +49,19 @@ def OBS_frame(cap, scale= 1):
     return frame
 
 def OBS_close(cap):
+    """
+    :brief      Closes and releases the device where it was captured from
+    :param      cap:    Capture device made in OBS_open()
+    """
     # When everything done, release the capture
     cap.release()
     cv2.destroyAllWindows()
 
 def check_multiple():
-    for i in range(2,10):
+    """
+    :brief      Runs trough all possible camera devices and shows them on screen, press q to advance
+    """
+    for i in range(-1,10):
         try:
             print('checking camera',i)
             OBS_window = OBS_open(i)
@@ -59,7 +75,6 @@ def check_multiple():
             continue
 
 #check_multiple() # 2 is index of OBS Virtual Camera , 0 is index of OBS-Camera
-
 '''
 OBS_window = OBS_open(2)
 while(1):
