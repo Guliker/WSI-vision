@@ -22,9 +22,9 @@ map_block =   {
                 }
 
 map_pos =    {
-                        1: "-0,5",
+                        1: "-0.5",
                         2: "0",
-                        3: "0,5",
+                        3: "0.5",
                     }
 
 """ ----- ----- ----- """
@@ -57,5 +57,5 @@ def xml_generate(block_and_pos, save_path_file = "C://ViewerOrder/Order.xml"):
     with open(save_path_file, "w") as f:
         f.write(xml_str) 
 
-xml_generate(((5,1),(4,3)))
+#xml_generate(((5,1),(4,3)))
         

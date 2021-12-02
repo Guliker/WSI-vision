@@ -264,7 +264,7 @@ while(1):
             if(len(buffer_product)):
                 current_product = buffer_product.pop(0)
                 mid_pos = current_product[0][1]
-                mx.xml_generate(current_product, xml_path_file)
+                mx.xml_generate(current_product)
 
     if(debug):
         #time to get frame
