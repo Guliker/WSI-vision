@@ -18,6 +18,7 @@ Filter:
 """ ----- IMPORTS ----- """
 import config as cfg
 import cv2
+""" ----- ----- """
 
 def OBS_open(i):
     """

@@ -24,6 +24,7 @@ x to cancel the current product
 print("initialisation ... "),
 
 """ ----- IMPORTS ----- """
+import config as cfg
 import gxipy as gx
 import module_camera as mc
 import module_functions as mf
@@ -42,80 +43,11 @@ import datetime
 """ ----- DEFINE ----- """
 ## state of the debug mode
 debug = False
-## font used in all the drawn text
-font = cv2.FONT_HERSHEY_SIMPLEX
-
-device_manager = gx.DeviceManager()     ## device manager for the Daheng Imaging camera
-camera = device_manager.open_device_by_index(1) ## device opened on index one, the first camera
-cam_scale = 0.5     ## scaling of the camera image to the filters
-mask_scale_rotation = float(1)/1     ## scaling for the rotation mask
-
-## settings for the calibration window
-calibration_search_height = 80
-calibration_serach_height_offset = 70
-## settings for the calibration window
-calibration_search_width = 80
-
-## lab offsets for the color finder, each value is an hard value, order is:
-# 0 = lum
-# 1 = a; green - magenta
-# 2 = b; blue - yellow
-lab_offset_table = [80,10,10]
-
-## values of a block information
-block_small_area = 500
-block_width_big = 55
-block_height = 26
-block_height_offset = 4
-
-
-## line size to split blocks
-block_split_cut_size = 4 #12
-## ammount of erosion and dilation applied to the color masks
-erode_dilate = 2
-kernal = np.array([ [1,1,1],
-                    [1,1,1],
-                    [1,1,1]     ], "uint8")
-'''
-kernal = np.array([ [1,1,1,1,1],
-                    [1,1,1,1,1],
-                    [1,1,1,1,1],
-                    [1,1,1,1,1],
-                    [1,1,1,1,1]     ], "uint8")
-'''
-
-## distance to check rotation
-workspace_height = block_height * 12
-workspace_width = int(block_width_big * 3)
-contour_rotation_search_area = int(block_width_big/4)
-
-## type of color space used, many possibilities
-# https://learnopencv.com/color-spaces-in-opencv-cpp-python/
-# COLOR_BGR2RGB, COLOR_BGR2LAB, COLOR_BGR2YCrCb, COLOR_BGR2HSV, COLOR_BGR2HSL
-color_space = cv2.COLOR_BGR2LAB
-#color_space = cv2.COLOR_BGR2YCrCb
 
 ## all logic tables
-color_name_table = (        "green",        "yellow",       "blue",         "red"       )   # name of each color
-color_bgr_table = (         (0,200,0),      (0,200,255),    (255,100,0),    (0,0,255)    )   # colors used to display on screen text and boxes
-lab_min_max_table = [       [[],[]],        [[],[]],        [[],[]],        [[],[]]     ]   # here are the min and max LAB values stored for each color
-color_mask_table = [        [],             [],             [],             []          ]   # here are the bit masks stored for each color
-color_contour_table = [     [],             [],             [],             []          ]   # here are the contours of each block stored for each color
 color_mask_combine = []
 current_product = []
 buffer_product = []
-
-## empty window to place frames in
-window_blank = np.zeros((1080,1920,3), np.uint8)
-window_green = np.full((1080,1920,3), (0,50,0), np.uint8)
-viewer_frame = np.zeros((10,10,3), np.uint8)
-
-pos_raw_image = (1380,250)
-pos_img_crop = (1300,280)
-pos_four_filters = (1380,0)
-pos_corrected_image = (880,110)
-pos_recept_result = (600,0)
-pos_viewer = (0,50)
 
 completed_flag = 0
 """ ----- ----- ----- """
@@ -138,21 +70,21 @@ def get_time(name, start):
 """ ----- MAIN LOOP FOR CALIBRATION ----- """
 """ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- """
 #(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[])
-mc.init(camera, device_manager)
+mc.init(cfg.camera, cfg.device_manager)
 
 while(True):
     step_index = 0
     print("complete")
 
-    while(step_index < len(color_name_table)):
-        window_vision = window_blank.copy()
+    while(step_index < len(cfg.color_name_table)):
+        window_vision = cfg.window_blank.copy()
         
         if(debug):
             #time to get frame
             get_time("process time", start_time)
         
         # get one frame of the camera
-        frame = mc.read(camera, cam_scale)
+        frame = mc.read(cfg.camera, cfg.cam_scale)
 
         if(debug):
             #time to get frame
@@ -169,44 +101,44 @@ while(True):
         height, width, depth = frame.shape
 
         # crop image to centre
-        x = int((width - calibration_search_width)/2)
-        y = int((height - calibration_search_height)/2) + calibration_serach_height_offset
-        img_crop = frame[y:y+calibration_search_height, x:x+calibration_search_width]
+        x = int((width - cfg.calibration_search_width)/2)
+        y = int((height - cfg.calibration_search_height)/2) + cfg.calibration_serach_height_offset
+        img_crop = frame[y:y+cfg.calibration_search_height, x:x+cfg.calibration_search_width]
         # show the box that shows where the crop is
-        mf.draw_calibration_box(final_frame, x, y, calibration_search_width, calibration_search_height,
-                                color_name_table[step_index], color_bgr_table[step_index])
+        mf.draw_calibration_box(final_frame, x, y, cfg.calibration_search_width, cfg.calibration_search_height,
+                                cfg.color_name_table[step_index], cfg.color_bgr_table[step_index])
       
         # convert cropped image to min and max LAB values
-        lab_min,lab_max = mf.find_min_max_color(img_crop, color_space, lab_offset_table)
+        lab_min,lab_max = mf.find_min_max_color(img_crop, cfg.color_space, cfg.lab_offset_table)
 
         # in debug mode: display the lab min and max values
         # and display the cropped image
         if(debug):
             #min
-            cv2.putText(window_vision, str(lab_min), mf.pos_shift(pos_img_crop,(0,-40)),
-                        font, 0.4,
-                        color_bgr_table[step_index])   
+            cv2.putText(window_vision, str(lab_min), mf.pos_shift(cfg.pos_img_crop,(0,-40)),
+                        cfg.font, 0.4,
+                        cfg.color_bgr_table[step_index])   
             # max
-            cv2.putText(window_vision, str(lab_max), mf.pos_shift(pos_img_crop,(0,-20)),
-                        font, 0.4,
-                        color_bgr_table[step_index])
+            cv2.putText(window_vision, str(lab_max), mf.pos_shift(cfg.pos_img_crop,(0,-20)),
+                        cfg.font, 0.4,
+                        cfg.color_bgr_table[step_index])
             # show the cropped image
-            mf.overlay_image(window_vision, img_crop, pos_img_crop)
+            mf.overlay_image(window_vision, img_crop, cfg.pos_img_crop)
         
         # show operator instructions
         cv2.putText(window_vision, "Calibration mode", (50,450),
-                    font, 4,
+                    cfg.font, 4,
                     (255,255,255))
         cv2.putText(window_vision, "press space", (50,700),
-                    font, 5,
+                    cfg.font, 5,
                     (255,255,255))
         cv2.putText(window_vision, "to save", (50,900),
-                    font, 5,
+                    cfg.font, 5,
                     (255,255,255))
 
         # show the video with the calibration box
         
-        mf.overlay_image(window_vision, final_frame, pos_raw_image)
+        mf.overlay_image(window_vision, final_frame, cfg.pos_raw_image)
         #cv2.imshow("Video", final_frame)
         cv2.imshow("window vision", window_vision)
         
@@ -215,7 +147,7 @@ while(True):
         # check for spacebar to go to next step
         if key == ord(' '):
             # save the found lab values
-            mf.save_min_max_color(step_index, lab_min, lab_max, lab_min_max_table)
+            mf.save_min_max_color(step_index, lab_min, lab_max, cfg.lab_min_max_table)
             # go to the next color
             step_index += 1
         # check d key to toggle debug mode
@@ -224,7 +156,7 @@ while(True):
                 cv2.destroyWindow("img_crop")
             debug = not debug
         if (key == 27):
-            mc.close(camera)
+            mc.close(cfg.camera)
             cv2.destroyAllWindows()
             exit()
 
@@ -235,9 +167,9 @@ while(True):
     print("\n-----values saved: ")
     if(debug):
         cv2.destroyWindow("img_crop")
-    for i,name in enumerate(color_name_table):
+    for i,name in enumerate(cfg.color_name_table):
         print(name + ":")
-        print(lab_min_max_table[i])
+        print(cfg.lab_min_max_table[i])
 
     """ ----- ----- ----- """
 
@@ -254,9 +186,9 @@ while(True):
         frame_count += 1
         
         if(completed_flag):
-            window_vision = window_green.copy()
+            window_vision = cfg.window_green.copy()
         else:
-            window_vision = window_blank.copy()
+            window_vision = cfg.window_blank.copy()
         color_pos = []
         
         # get product to be checked
@@ -277,14 +209,14 @@ while(True):
                 viewer_frame = mdw.OBS_frame(OBS_window)
 
         # display viewer frame
-        mf.overlay_image(window_vision, viewer_frame, pos_viewer)
+        mf.overlay_image(window_vision, viewer_frame, cfg.pos_viewer)
 
         if(debug):
             #time to get frame
             get_time("process time", start_time)
         
         # get one frame of the camera
-        frame = mc.read(camera, cam_scale)
+        frame = mc.read(cfg.camera, cfg.cam_scale)
 
         if(debug):
             #time to get frame
@@ -297,28 +229,28 @@ while(True):
         # Convert the frame
         # BGR(RGB color space) to 
         # lab(hue-saturation-value)
-        lab_frame = cv2.cvtColor(frame, color_space)
+        lab_frame = cv2.cvtColor(frame, cfg.color_space)
         
         # create masks for each color, and check rotation of the masks
-        for i, name in enumerate(color_name_table):
+        for i, name in enumerate(cfg.color_name_table):
             #creates a color mask
-            color_mask_table[i] = mf.create_bit_mask_for_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1, mask_scale_rotation)
+            cfg.color_mask_table[i] = mf.create_bit_mask_for_color(cfg.kernal, lab_frame, cfg.lab_min_max_table[i], cfg.erode_dilate, cfg.erode_dilate+1, cfg.mask_scale_rotation)
             if (i):
-                color_mask_combine = cv2.bitwise_or(color_mask_combine, color_mask_table[i])
+                color_mask_combine = cv2.bitwise_or(color_mask_combine, cfg.color_mask_table[i])
             else:
-                color_mask_combine = color_mask_table[i]
+                color_mask_combine = cfg.color_mask_table[i]
         
         #color_mask_combine = cv2.dilate(color_mask_combine, kernal, iterations=1)
         #color_mask_combine = cv2.erode(color_mask_combine, kernal, iterations=2)
-        contours_combined = mf.create_contour(color_mask_combine, block_small_area*mask_scale_rotation, method=cv2.CHAIN_APPROX_NONE)
+        contours_combined = mf.create_contour(color_mask_combine, cfg.block_small_area*cfg.mask_scale_rotation, method=cv2.CHAIN_APPROX_NONE)
         
         #time to get contour
         #get_time(start_time)
         
         if(contours_combined):
-            workspace = mw.create_workspace(frame, window_vision, contours_combined, workspace_width, workspace_height, contour_rotation_search_area, debug, mask_scale_rotation)
-            work_frame = mw.transform_workspace(frame, workspace, workspace_width, workspace_height)
-            lab_frame = cv2.cvtColor(work_frame, color_space)
+            workspace = mw.create_workspace(frame, window_vision, contours_combined, cfg.workspace_width, cfg.workspace_height, cfg.contour_rotation_search_area, debug, cfg.mask_scale_rotation)
+            work_frame = mw.transform_workspace(frame, workspace, cfg.workspace_width, cfg.workspace_height)
+            lab_frame = cv2.cvtColor(work_frame, cfg.color_space)
             
             # time to get workplace
             #get_time(start_time)
@@ -327,59 +259,59 @@ while(True):
             # after rotated make contours of the mask
             
             # loop through all the colors and make for each color an mask and contours
-            for i, name in enumerate(color_name_table):
+            for i, name in enumerate(cfg.color_name_table):
                 #creates a color mask
-                color_mask_table[i] = mf.create_bit_mask_for_color(kernal, lab_frame, lab_min_max_table[i], erode_dilate, erode_dilate+1)
+                cfg.color_mask_table[i] = mf.create_bit_mask_for_color(cfg.kernal, lab_frame, cfg.lab_min_max_table[i], cfg.erode_dilate, cfg.erode_dilate+1)
                 
                 # creates contours of the created mask
                 # contour = create_contour(color_mask_table[i])
-                color_contour_table[i] = mf.create_contour(color_mask_table[i], block_small_area)
+                cfg.color_contour_table[i] = mf.create_contour(cfg.color_mask_table[i], cfg.block_small_area)
                 
                 # loop trough all contours
-                for contour in color_contour_table[i]:
+                for contour in cfg.color_contour_table[i]:
                     if(debug):
-                        mf.draw_contour(work_frame, contour, color_bgr_table[i], debug)
-                    mf.split_contour_on_height(color_mask_table[i], contour, block_height, block_height_offset, block_split_cut_size)
+                        mf.draw_contour(work_frame, contour, cfg.color_bgr_table[i], debug)
+                    mf.split_contour_on_height(cfg.color_mask_table[i], contour, cfg.block_height, cfg.block_height_offset, cfg.block_split_cut_size)
                 
                 
                 # erode to remove little white noise
-                color_mask_table[i] = cv2.erode(color_mask_table[i], kernal, iterations= 6)
+                cfg.color_mask_table[i] = cv2.erode(cfg.color_mask_table[i], cfg.kernal, iterations= 6)
                 # dilate to increase back to original size
-                color_mask_table[i] = cv2.dilate(color_mask_table[i], kernal, iterations= 4)
+                cfg.color_mask_table[i] = cv2.dilate(cfg.color_mask_table[i], cfg.kernal, iterations= 4)
                 
-                color_contour_table[i] = mf.create_contour(color_mask_table[i], block_small_area)
-                for contour in color_contour_table[i]:
+                cfg.color_contour_table[i] = mf.create_contour(cfg.color_mask_table[i], cfg.block_small_area)
+                for contour in cfg.color_contour_table[i]:
                     if(not debug):
-                        mf.draw_contour(work_frame, contour, color_bgr_table[i], debug)
+                        mf.draw_contour(work_frame, contour, cfg.color_bgr_table[i], debug)
                 
                 # show the cut up frame
 
                 # write color channel text to display
-                cv2.putText(color_mask_table[i], name, (10,20),
-                            font, 1,
+                cv2.putText(cfg.color_mask_table[i], name, (10,20),
+                            cfg.font, 1,
                             (255, 255, 255))
-                cv2.putText(color_mask_table[i], str(lab_min_max_table[i][0]), (10,45),
-                            font, 0.5,
+                cv2.putText(cfg.color_mask_table[i], str(cfg.lab_min_max_table[i][0]), (10,45),
+                            cfg.font, 0.5,
                             (255, 255, 255))
-                cv2.putText(color_mask_table[i], str(lab_min_max_table[i][1]), (10,60),
-                            font, 0.5,
+                cv2.putText(cfg.color_mask_table[i], str(cfg.lab_min_max_table[i][1]), (10,60),
+                            cfg.font, 0.5,
                             (255, 255, 255))
             
             # time to get all colors
             #get_time(start_time)
             
             # combine all the colors for sorting
-            all_contours = color_contour_table[0] + color_contour_table[1] + color_contour_table[2] + color_contour_table[3]
+            all_contours = cfg.color_contour_table[0] + cfg.color_contour_table[1] + cfg.color_contour_table[2] + cfg.color_contour_table[3]
             
             # fill a color array to remember the size and color of each contour
             all_colors = []
-            for i, name in enumerate(color_name_table):
-               mf.block_color_fill(all_colors, color_contour_table[i], i, block_width_big)
+            for i, name in enumerate(cfg.color_name_table):
+               mf.block_color_fill(all_colors, cfg.color_contour_table[i], i, cfg.block_width_big)
 
             # sort all blocks from bottom-top and print
             contours,colors = mf.sort_contours_on_height(all_contours,all_colors)
             
-            all_pos = mf.create_block_pos_array(work_frame, contours, mid_pos, block_width_big/4)
+            all_pos = mf.create_block_pos_array(work_frame, contours, mid_pos, cfg.block_width_big/4)
 
             color_pos = np.stack((colors, all_pos), axis=1)
                     
@@ -387,25 +319,25 @@ while(True):
             if(debug):
                 cv2.imshow("color_mask_combine", color_mask_combine)
                 
-            four_filters = mc.four_in_one_frame(color_mask_table, 0.8)
+            four_filters = mc.four_in_one_frame(cfg.color_mask_table, 0.8)
             #cv2.imshow("rybg_frame", four_filters)
             #four_filters = cv2.cvtColor(four_filters,cv2.COLOR_GRAY2RGB)
-            mf.overlay_image(window_vision, four_filters, pos_four_filters)
+            mf.overlay_image(window_vision, four_filters, cfg.pos_four_filters)
             # resize workframe
             width = int(work_frame.shape[1] * 3)
             height = int(work_frame.shape[0] * 3)
             dim = (width, height)
             work_frame = cv2.resize(work_frame, dim, interpolation = cv2.INTER_AREA)
-            mf.overlay_image(window_vision, work_frame, pos_corrected_image)
+            mf.overlay_image(window_vision, work_frame, cfg.pos_corrected_image)
               
         # create raw image and recipe overlays
-        mf.overlay_image(window_vision, frame, pos_raw_image)
+        mf.overlay_image(window_vision, frame, cfg.pos_raw_image)
         rr_frame, progress = mrr.draw_recept_result(current_product, color_pos, completed_flag)
-        mf.overlay_image(window_vision, rr_frame, pos_recept_result)
+        mf.overlay_image(window_vision, rr_frame, cfg.pos_recept_result)
         
         # quick debug to show variables
         test_var = len(buffer_product)
-        cv2.putText(window_vision, str(test_var), (10,10), font, 0.5, (255, 255, 255))
+        cv2.putText(window_vision, str(test_var), (10,10), cfg.font, 0.5, (255, 255, 255))
         
         if(progress == 1):
             completed_flag = 1
@@ -422,14 +354,14 @@ while(True):
         
         #get_time(start_time)
 
-        cv2.putText(window_vision, "ESC = Exit ; SPACE = Calibrate", mf.pos_shift(pos_viewer,(10, 0)),
-                        font, 1, (255,255,255))   
+        cv2.putText(window_vision, "ESC = Exit ; SPACE = Calibrate", mf.pos_shift(cfg.pos_viewer,(10, 0)),
+                        cfg.font, 1, (255,255,255))   
         cv2.imshow("window vision", window_vision)
         
         key = cv2.waitKey(10) & 0xFF 
         # check esc to exit
         if key == 27:
-            mc.close(camera)
+            mc.close(cfg.camera)
             cv2.destroyAllWindows()
             mdw.OBS_close(OBS_window)
             exit()
