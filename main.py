@@ -50,6 +50,8 @@ current_product = []
 buffer_product = []
 
 completed_flag = 0
+
+OBS_window = mdw.OBS_open(2)
 """ ----- ----- ----- """
 
 # trackbar callback fucntion does nothing but required for trackbar
@@ -179,7 +181,6 @@ while(True):
     # test code
     #buffer_product = [[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]],[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]]
 
-    OBS_window = mdw.OBS_open(2)
     viewer_frame = mdw.OBS_frame(OBS_window)
 
     while(1):
