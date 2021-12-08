@@ -355,7 +355,7 @@ while(True):
         
         #get_time(start_time)
 
-        cv2.putText(window_vision, "ESC = Exit ; SPACE = Calibrate", mf.pos_shift(cfg.pos_viewer,(10, 0)),
+        cv2.putText(window_vision, "ESC = Exit ; SPACE = Calibration", mf.pos_shift(cfg.pos_viewer,(10, 0)),
                         cfg.font, 1, (255,255,255))   
         cv2.imshow("window vision", window_vision)
         
