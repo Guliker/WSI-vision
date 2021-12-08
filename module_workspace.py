@@ -7,27 +7,25 @@ Functions used for the WSI vision module
 """
 
 """ ----- IMPORTS ----- """
+import config as cfg
 import numpy as np
 import cv2
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 """ ----- ----- ----- """
 
-"""----- ----- WORKSPACE ----- -----"""
-def create_workspace(image, debug_image, contours, width, height, offset, debug, scale=1):
+def create_workspace(image, debug_image, contours, width, height, debug, scale=1):
     """
     :brief      Makes a workspace centred on the biggest contour
     :param      image:      Image to draw on in debug mode
     :param      contours:   Array of contours in the image
     :param      width:      Width of the workspace
     :param      height:     Height of the workspace
-    :param      offset:     How big the search window is for the angle
     :param      debug:      If debug info should be shown
     :param      scale:      Factor to scale the image, 1 = normal
     :return     Four points of the designated workspace
     """
     scale = int(1/scale)
-    offset /= scale
     width /= scale*2
     height /= scale*2
     

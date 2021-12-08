@@ -4,20 +4,11 @@ Asks for data and receives the whole product
 """
 
 """ ----- IMPORTS ----- """
+import config as cfg
 import socket
 import time
 from ast import literal_eval
-# IJsel laptop
-#HOST = '192.168.14.219'
-# debug laptop
-#HOST = '192.168.14.174'
-HOST = ''
-PORT = 30001
-HOST_send = '192.168.14.219'
-
-
-command_message = b"asking_for_file"
-command_message_cobot = b"asking_for_data"
+""" ----- ----- ----- """
 
 arr = []
 
@@ -41,8 +32,8 @@ def send_request(timeout_send, timeout_receive):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.settimeout(timeout_send)   # timeout for connection in seconds
-        s.connect((HOST_send, PORT))
-        s.sendall(str("asking_for_file"))
+        s.connect((cfg.HOST_send, cfg.PORT))
+        s.sendall(str(cfg.command_message_vision))
         s.settimeout(timeout_receive)
         print("Receiving ... "),
         recv_msg = s.recv(1024)
@@ -62,7 +53,7 @@ def receive_data(timeout_time=1.0):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.settimeout(timeout_time)   # timeout for connection in seconds
-        s.bind((HOST, PORT))
+        s.bind((cfg.HOST, cfg.PORT))
         s.listen(5)
         c, addr = s.accept()
         recv_msg = c.recv(1024)
