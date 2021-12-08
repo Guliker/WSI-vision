@@ -35,8 +35,6 @@ Python2.7(3.5) gxipy installation
 		
 		pip install pillow
 		
-		pip install paho-mqtt
-		
 		pip install opencv-python==4.2.0.32
 
 			Red error messages are fine here
@@ -53,71 +51,24 @@ Python2.7(3.5) gxipy installation
 	
 		Default path: C:\Program Files\Daheng Imaging\GalaxySDK\Samples\Python SDK\gxipy
 
-5. Optional configuration camera (MER2-630-60U3M)
-
-	(1) Open the configuration tool "galaxy"
-	
-	(2) Open the usb3.0 camera in the left tool bar
-	
-	(3) In the right toolbar change these settings
-	
-		ImageFormat:
-			Width = 	600
-			Height = 	1000
-			OffsetX =	1244
-			OffsetY =	532
-			
-		AcquisitionTrigger:
-			ExposureTime = 	8000
-			TriggerMode =	gx.GxSwitchEntry.OFF
-		
-		AnalogControls:
-			Gain = 8
-			BalanceRatioSelector = 	gx.GxBalanceRatioSelectorEntry.RED
-			BalanceRatio = 			1.5
-			BalanceRatioSelector = 	gx.GxBalanceRatioSelectorEntry.GREEN
-			BalanceRatio = 			1.0
-			BalanceRatioSelector = 	gx.GxBalanceRatioSelectorEntry.BLUE
-			BalanceRatio = 			2.5
-
-6. Run Python script
+5. Run Python script
 
 	(1) Bring up the DOS command window by typing CMD 
 	
 	(2) Open the Python script in python2.7(3.5)
 	
-		python SIW_vision.py
+		python main.py
 		
 		or
 		
-		python2 SIW_vision.py
+		python2 main.py
 
+6. Optional testing of the camera (MER2-630-60U3M)
 
-
-
-
-Optie 1:
-	Shape Detectie:
-		Difference Mat / contour
-		Box + Orientatie
+	(1) Open the configuration tool "GalaxyView"
 	
-	Kleur Detectie:
-		Zet de kleuren voor de camera
-		Capture de vier kleuren
-		check op de hoogtes de kleuren
-		
-optie 2:
-	Grid layout
-	check kleur in elke grid
-	is deze gelijk aan wat verwacht wordt
-
-optie 3:
-	3 lane detectie met points.
-	(gelijk aan optie 2)
+	(2) Open the usb3.0 camera in the left tool bar
 	
-optie 4:
-	Brick detection, via edge detection
-	common height
+	(3) Select the blue and white play button "start acquisition"
 	
-	
-	
+		The raw image of the camera is now displayed, if the white balance is not configured the image will have a green shade
