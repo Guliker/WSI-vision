@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['erode_5fdilate_0',['erode_dilate',['../namespacemain.html#aaa41289fcadc63f422e62cebe9a76157',1,'main']]]
+  ['lab_5foffset_5ftable_0',['lab_offset_table',['../namespaceconfig.html#a1aea4f6fdf0121f3ad733c271fb00c2e',1,'config']]]
 ];
