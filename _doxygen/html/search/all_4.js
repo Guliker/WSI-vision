@@ -1,7 +1,7 @@
 var searchData=
 [
   ['datastream_0',['DataStream',['../classgxipy_1_1gxiapi_1_1_data_stream.html',1,'gxipy::gxiapi']]],
-  ['debug_1',['debug',['../namespacemain.html#a7e1ddce5792139e2174735e6619ae428',1,'main']]],
+  ['debug_1',['debug',['../namespacemain.html#ad61adafb5044d42f7b8d262a172b446b',1,'main']]],
   ['defective_5fpixel_5fcorrect_2',['defective_pixel_correct',['../classgxipy_1_1gxiapi_1_1_raw_image.html#a79ab05177fa905b846c030a7027aead1',1,'gxipy::gxiapi::RawImage']]],
   ['device_3',['Device',['../classgxipy_1_1gxiapi_1_1_device.html',1,'gxipy::gxiapi']]],
   ['devicemanager_4',['DeviceManager',['../classgxipy_1_1gxiapi_1_1_device_manager.html',1,'gxipy::gxiapi']]],

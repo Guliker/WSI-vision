@@ -1,0 +1,71 @@
+\hypertarget{namespacemodule__display__window}{}\doxysection{module\+\_\+display\+\_\+window Namespace Reference}
+\label{namespacemodule__display__window}\index{module\_display\_window@{module\_display\_window}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemodule__display__window_a23ef8df2794632aea4d6ea848f602f7f}{OBS\+\_\+open}} (i)
+\item 
+def \mbox{\hyperlink{namespacemodule__display__window_a6497f7c27d31f173296342cc9470a889}{OBS\+\_\+frame}} (cap)
+\item 
+def \mbox{\hyperlink{namespacemodule__display__window_a49fc98fec4cb0ac766ca1c2aee12ea32}{OBS\+\_\+close}} (cap)
+\item 
+def \mbox{\hyperlink{namespacemodule__display__window_adedc2bc06afbc5f57fe58a933e2facdf}{check\+\_\+multiple}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Functions to read a open window
+Used to open the Viewer Portal
+
+Using:
+OBS
+OBS virtual cam filter
+https://obsproject.com/forum/resources/obs-virtualcam.949/
+OBS settings
+Filter:
+    crop:
+        left:   580
+        right:  1700
+        up:     580
+        down:   1200
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemodule__display__window_adedc2bc06afbc5f57fe58a933e2facdf}\label{namespacemodule__display__window_adedc2bc06afbc5f57fe58a933e2facdf}} 
+\index{module\_display\_window@{module\_display\_window}!check\_multiple@{check\_multiple}}
+\index{check\_multiple@{check\_multiple}!module\_display\_window@{module\_display\_window}}
+\doxysubsubsection{\texorpdfstring{check\_multiple()}{check\_multiple()}}
+{\footnotesize\ttfamily def module\+\_\+display\+\_\+window.\+check\+\_\+multiple (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Runs trough all possible camera devices and shows them on screen, press q to advance
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__display__window_a49fc98fec4cb0ac766ca1c2aee12ea32}\label{namespacemodule__display__window_a49fc98fec4cb0ac766ca1c2aee12ea32}} 
+\index{module\_display\_window@{module\_display\_window}!OBS\_close@{OBS\_close}}
+\index{OBS\_close@{OBS\_close}!module\_display\_window@{module\_display\_window}}
+\doxysubsubsection{\texorpdfstring{OBS\_close()}{OBS\_close()}}
+{\footnotesize\ttfamily def module\+\_\+display\+\_\+window.\+OBS\+\_\+close (\begin{DoxyParamCaption}\item[{}]{cap }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Closes and releases the device where it was captured from
+:param      cap:    Capture device made in OBS_open()
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__display__window_a6497f7c27d31f173296342cc9470a889}\label{namespacemodule__display__window_a6497f7c27d31f173296342cc9470a889}} 
+\index{module\_display\_window@{module\_display\_window}!OBS\_frame@{OBS\_frame}}
+\index{OBS\_frame@{OBS\_frame}!module\_display\_window@{module\_display\_window}}
+\doxysubsubsection{\texorpdfstring{OBS\_frame()}{OBS\_frame()}}
+{\footnotesize\ttfamily def module\+\_\+display\+\_\+window.\+OBS\+\_\+frame (\begin{DoxyParamCaption}\item[{}]{cap }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Capture a frame from a device
+:param      cap:    Capture device made in OBS_open()
+:return     Returns the frame captured from the capture device
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemodule__display__window_a23ef8df2794632aea4d6ea848f602f7f}\label{namespacemodule__display__window_a23ef8df2794632aea4d6ea848f602f7f}} 
+\index{module\_display\_window@{module\_display\_window}!OBS\_open@{OBS\_open}}
+\index{OBS\_open@{OBS\_open}!module\_display\_window@{module\_display\_window}}
+\doxysubsubsection{\texorpdfstring{OBS\_open()}{OBS\_open()}}
+{\footnotesize\ttfamily def module\+\_\+display\+\_\+window.\+OBS\+\_\+open (\begin{DoxyParamCaption}\item[{}]{i }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}:brief      Opens a video capture for the virtual camera
+:param      i: Index of the webcam to capture, (for OBS its a virtual camera, index = 2)
+\end{DoxyVerb}
+ 
