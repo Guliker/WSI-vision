@@ -28,6 +28,7 @@ workspace_height = block_height * 12
 workspace_width = int(block_width_big * 3)
 
 """ ----- Daheng Imaging Camera ----- """
+# comment and uncomment these 2 lines for testing
 device_manager = gx.DeviceManager()             ## device manager for the Daheng Imaging camera
 camera = device_manager.open_device_by_index(1) ## device opened on index one, the first camera
 
@@ -87,7 +88,7 @@ window_green = np.full((1080,1920,3), (0,50,0), np.uint8)
 
 """ ----- recept result ----- """
 font_size_rr = 1
-spacing = 80*font_size_rr
+spacing = 100*font_size_rr
 colom1 = 10
 colom2 = 150
 window_size = (1000, 250,3)
@@ -125,5 +126,24 @@ map_pos = {
     2: "0",
     3: "0.5",
 }
+
+""" ----- """
+num_to_block = {
+    1: "G1",
+    2: "Y1",
+    3: "B1",
+    4: "R1",
+    5: "G2",
+    6: "Y2",
+    7: "B2",
+    8: "R2",
+}
+
+num_to_pos = {
+    1: "L",
+    2: "M",
+    3: "R",
+}
+
 """ ----- viewer ----- """
 viewer_size = (668,974)

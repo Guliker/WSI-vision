@@ -58,6 +58,7 @@ OBS_window = mdw.OBS_open(2)
 def nothing(x):
     pass
     
+# used to check frame times and process time
 start_time = datetime.datetime.now()
 def get_time(name, start):
     now = datetime.datetime.now()

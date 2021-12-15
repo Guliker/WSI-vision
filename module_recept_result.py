@@ -44,8 +44,9 @@ def draw_array_vertical(image, array, colom_pos, sub_text):
                             cfg.font, cfg.font_size_rr*0.8,
                             (255, 255, 255))
     for i,item in enumerate(array):
-        #item = np.array(item, "uint8")
-        cv2.putText(image, str(item), (colom_pos,cfg.window_size[0] - cfg.spacing*(i + 1)),
+        block = cfg.num_to_block[item[0]]
+        pos = cfg.num_to_pos[item[1]]
+        cv2.putText(image, block + ":" + pos, (colom_pos,cfg.window_size[0] - cfg.spacing*(i + 1)),
                             cfg.font, cfg.font_size_rr,
                             (255, 255, 255))
 
@@ -93,6 +94,17 @@ def calc_max_common(array1, array2):
     return [max_common, difference]
     
     
+"""
+# test code
+recept = [[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]
+result = [[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,2]]
+while(1):
+    window = draw_recept_result(recept, result, 0)[0]
+    cv2.imshow("window", window)
+        
+    key = cv2.waitKey(10) & 0xFF 
+    if (key == 27):
+        cv2.destroyAllWindows()
+        exit()
+"""
     
-    
-
