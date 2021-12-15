@@ -183,7 +183,7 @@ list&#160;</td><td class="memItemRight" valign="bottom"><b>color_contour_table</
 int&#160;</td><td class="memItemRight" valign="bottom"><b>font_size_rr</b> = 1</td></tr>
 <tr class="separator:af5663a13c83c714cd6ef7a6d2bbf4e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a218230f59745819889282d5f450d0897"><td class="memItemLeft" align="right" valign="top"><a id="a218230f59745819889282d5f450d0897" name="a218230f59745819889282d5f450d0897"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>spacing</b> = 80*font_size_rr</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>spacing</b> = 100*font_size_rr</td></tr>
 <tr class="separator:a218230f59745819889282d5f450d0897"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93c991a00c68a003d1c216da1a59edad"><td class="memItemLeft" align="right" valign="top"><a id="a93c991a00c68a003d1c216da1a59edad" name="a93c991a00c68a003d1c216da1a59edad"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>colom1</b> = 10</td></tr>
@@ -219,6 +219,10 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>command_message_vis
 <tr class="separator:affd180d912aca395ff00aaed1b6f70b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad40331ac13cd2fa93daaa65a3a5a44f1"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceconfig.html#ad40331ac13cd2fa93daaa65a3a5a44f1">map_pos</a></td></tr>
 <tr class="separator:ad40331ac13cd2fa93daaa65a3a5a44f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e60725d0f36bbb095ec5e7f6f10a2d"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceconfig.html#a45e60725d0f36bbb095ec5e7f6f10a2d">num_to_block</a></td></tr>
+<tr class="separator:a45e60725d0f36bbb095ec5e7f6f10a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a573653957f40ee02d867bcc76c4f2f72"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceconfig.html#a573653957f40ee02d867bcc76c4f2f72">num_to_pos</a></td></tr>
+<tr class="separator:a573653957f40ee02d867bcc76c4f2f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Load all the settings used for the vision module
@@ -279,6 +283,49 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>command_message_vis
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span>    1: <span class="stringliteral">&quot;-0.5&quot;</span>,</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>    2: <span class="stringliteral">&quot;0&quot;</span>,</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    3: <span class="stringliteral">&quot;0.5&quot;</span>,</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a45e60725d0f36bbb095ec5e7f6f10a2d" name="a45e60725d0f36bbb095ec5e7f6f10a2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45e60725d0f36bbb095ec5e7f6f10a2d">&#9670;&nbsp;</a></span>num_to_block</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary config.num_to_block</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>=  {</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span>    1: <span class="stringliteral">&quot;G1&quot;</span>,</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>    2: <span class="stringliteral">&quot;Y1&quot;</span>,</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    3: <span class="stringliteral">&quot;B1&quot;</span>,</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    4: <span class="stringliteral">&quot;R1&quot;</span>,</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    5: <span class="stringliteral">&quot;G2&quot;</span>,</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    6: <span class="stringliteral">&quot;Y2&quot;</span>,</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    7: <span class="stringliteral">&quot;B2&quot;</span>,</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    8: <span class="stringliteral">&quot;R2&quot;</span>,</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a573653957f40ee02d867bcc76c4f2f72" name="a573653957f40ee02d867bcc76c4f2f72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a573653957f40ee02d867bcc76c4f2f72">&#9670;&nbsp;</a></span>num_to_pos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary config.num_to_pos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>=  {</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span>    1: <span class="stringliteral">&quot;L&quot;</span>,</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>    2: <span class="stringliteral">&quot;M&quot;</span>,</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    3: <span class="stringliteral">&quot;R&quot;</span>,</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>}</div>
 </div><!-- fragment -->
 </div>
