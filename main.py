@@ -205,9 +205,12 @@ while(True):
                 mid_pos = current_product[0][1]
                 mx.xml_generate(current_product)
             
-            # update viewer frame
             if(len(current_product)):
+                # a product? update viewer
                 viewer_frame = mdw.OBS_frame(OBS_window)
+            else:
+                # no product? clear viewer
+                mx.xml_generate(())
 
         # display viewer frame
         mf.overlay_image(window_vision, viewer_frame, cfg.pos_viewer)
