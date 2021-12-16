@@ -205,10 +205,6 @@ while(True):
                 current_product = buffer_product.pop(0)
                 mid_pos = current_product[0][1]
                 mx.xml_generate(current_product)
-            
-            if(not len(current_product)):
-                # no product? clear viewer
-                mx.xml_generate(())
                 
             # a product? update viewer
             viewer_frame = mdw.OBS_frame(OBS_window)
@@ -350,6 +346,8 @@ while(True):
         if(completed_flag):
             if(progress == 0 and not len(color_pos)):
                 current_product = []
+                # no product? clear viewer
+                mx.xml_generate(())
                 completed_flag = 0
         
         # show normal view + bounding boxes    
