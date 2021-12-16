@@ -180,7 +180,7 @@ while(True):
     mid_pos = 2
     frame_count = 0
     # test code
-    #buffer_product = [[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]],[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]]]
+    #buffer_product = [[[7,3], [8,1], [4,2], [8,3], [8,2], [6,3], [7,1], [7,2]],[[7,2], [7,1], [6,3], [8,2], [8,3], [4,2], [8,1], [7,3]]]
 
     viewer_frame = mdw.OBS_frame(OBS_window)
 
@@ -206,12 +206,12 @@ while(True):
                 mid_pos = current_product[0][1]
                 mx.xml_generate(current_product)
             
-            if(len(current_product)):
-                # a product? update viewer
-                viewer_frame = mdw.OBS_frame(OBS_window)
-            else:
+            if(not len(current_product)):
                 # no product? clear viewer
                 mx.xml_generate(())
+                
+            # a product? update viewer
+            viewer_frame = mdw.OBS_frame(OBS_window)
 
         # display viewer frame
         mf.overlay_image(window_vision, viewer_frame, cfg.pos_viewer)

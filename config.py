@@ -88,10 +88,10 @@ window_green = np.full((1080,1920,3), (0,50,0), np.uint8)
 
 """ ----- recept result ----- """
 font_size_rr = 1
-spacing = 100*font_size_rr
+spacing = 85*font_size_rr
 colom1 = 10
 colom2 = 150
-window_size = (1000, 250,3)
+window_size = (950, 250,3)
 
 """ ----- calibration ----- """
 calibration_search_height = 80
