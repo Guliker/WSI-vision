@@ -1,6 +1,8 @@
 @startuml vision
 start
 :Configure camera;
+while (esc not pressed?)
+partition "Callibration"{
 while (more colors?)
   :Read frame;
   note right: <img:img/cal_read.png>
@@ -13,18 +15,22 @@ while (more colors?)
   endif
 endwhile
 ->no;
-
+}
 :Print: four found colors;
 
-while (esc not pressed?)
+partition "In Use"{
+while (space not pressed?)
 :Create blank window
 (1920x1080);
 if (Recipe) then (available)
     :Get recipe;
     :Convert to .XML;
 endif
+:Read OBS frame;
+note right: <img:img/viewer.png>
 :Read frame;
 note right: <img:img/fin_read.png>
+:Convert to LAB;
 :Create mask of every color;
 note right: <img:img/fin_product.png>
 :Find the biggest contour in mask,
@@ -43,12 +49,15 @@ if (Biggest contour) then (not empty)
   :Convert all contours to (block, position);
   :Compare list with recipe;
   note right: <img:img/fin_rr.png>
-  :Overlay workspace, masks op blank;
+  :Overlay workspace, masks;
 endif
-:Overlay raw image, recept/result op blank;
+:Overlay raw image, recept/result;
 :Display window;
+note right: <img:img/Full Setup.png>
+endwhile
+}
+->pressed;
 endwhile
 ->pressed;
-
 end
 @enduml
