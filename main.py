@@ -186,11 +186,7 @@ while(True):
 
     while(1):
         frame_count += 1
-        
-        if(completed_flag):
-            window_vision = cfg.window_green.copy()
-        else:
-            window_vision = cfg.window_blank.copy()
+        window_vision = cfg.window_blank.copy()
         color_pos = []
         
         # get product to be checked
@@ -344,6 +340,10 @@ while(True):
             completed_flag = 1
 
         if(completed_flag):
+            # draw check mark
+            cv2.putText(window_vision, '✔', (10,10), cfg.font, 100, (255, 255, 255))
+
+            # go to next product
             if(progress == 0 and not len(color_pos)):
                 current_product = []
                 # no product? clear viewer
