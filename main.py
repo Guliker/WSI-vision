@@ -340,7 +340,7 @@ while(True):
             completed_flag = 1
 
         if(completed_flag):
-            # draw check mark
+            # draw completed mark on screen
             cv2.putText(window_vision, '>>', (30,900), cfg.font, 40, (0, 200, 0), 80)
 
             # go to next product
