@@ -329,7 +329,7 @@ while(True):
               
         # create raw image and recipe overlays
         mf.overlay_image(window_vision, frame, cfg.pos_raw_image)
-        rr_frame, progress = mrr.draw_recept_result(current_product, color_pos, completed_flag)
+        rr_frame, progress = mrr.draw_recept_result(current_product, color_pos, 0)
         mf.overlay_image(window_vision, rr_frame, cfg.pos_recept_result)
         
         # quick debug to show variables
@@ -341,7 +341,7 @@ while(True):
 
         if(completed_flag):
             # draw check mark
-            cv2.putText(window_vision, '✔', (10,10), cfg.font, 100, (255, 255, 255))
+            cv2.putText(window_vision, '>>', (30,900), cfg.font, 40, (0, 200, 0), 80)
 
             # go to next product
             if(progress == 0 and not len(color_pos)):
