@@ -39,12 +39,12 @@ camera = device_manager.open_device_by_index(1) ## device opened on index one, t
 cam_resolution = (904,1600)
 cam_offset_resolution = (1096, 0)
 
-cam_gain_rgb = (1.4 , 1.0, 2.6)
+cam_gain_rgb = (1.4 , 1.0, 2.2)
 # good values for 50hz lighting
 # 25; 20; 16.67; 12.5
 cam_frame_rate = 10
 
-cam_exposure = 8000
+cam_exposure = 24000
 cam_gain = 8
 
 cam_scale = 0.5     ## scaling of the camera image to the filters
@@ -55,7 +55,7 @@ mask_scale_rotation = float(1)/1     ## scaling for the rotation mask
 # 0 = lum
 # 1 = a; green - magenta
 # 2 = b; blue - yellow
-lab_offset_table = [80,10,10]
+lab_offset_table = [10,8,8]
 ## type of color space used, many possibilities
 # https://learnopencv.com/color-spaces-in-opencv-cpp-python/
 # COLOR_BGR2RGB, COLOR_BGR2LAB, COLOR_BGR2YCrCb, COLOR_BGR2HSV, COLOR_BGR2HSL
