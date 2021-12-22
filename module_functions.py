@@ -26,13 +26,15 @@ def draw_calibration_box(image, x, y, w, h, text, color):
     :param      text:   Text above the square
     :param      color:  Color of the text and square
     """
-    line_width = 2  # change if resolution changes
-    # draw square
+    line_width = 6  # change if resolution changes
+    # draw white outline
+    cv2.rectangle(image, (x - line_width, y - line_width), (x + w  + line_width, y + h + line_width), (255,255,255), line_width)
+    # draw coloured inside
     cv2.rectangle(image, (x, y), (x + w, y + h), color, line_width)
     # write text above square
-    cv2.putText(image, text, (x, y - 2 * line_width),
+    cv2.putText(image, text, (x, y - 4 * line_width),
                 cv2.FONT_HERSHEY_SIMPLEX, line_width/4, 
-                color)  
+                color,2)  
 
 def find_min_max_array(value, offset=0):
     """

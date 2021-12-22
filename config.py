@@ -9,7 +9,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 
 """ ----- window positions ----- """
 pos_raw_image = (1380,250)
-pos_img_crop = (1300,280)
+pos_img_crop = (1380,100)
 pos_four_filters = (1380,0)
 pos_corrected_image = (880,110)
 pos_recept_result = (600,0)
@@ -45,7 +45,7 @@ cam_gain_rgb = (1.4 , 1.0, 2.2)
 cam_frame_rate = 10
 
 cam_exposure = 24000
-cam_gain = 8
+cam_gain = 6
 
 cam_scale = 0.5     ## scaling of the camera image to the filters
 
@@ -55,7 +55,7 @@ mask_scale_rotation = float(1)/1     ## scaling for the rotation mask
 # 0 = lum
 # 1 = a; green - magenta
 # 2 = b; blue - yellow
-lab_offset_table = [10,8,8]
+lab_offset_table = [8,4,4]
 ## type of color space used, many possibilities
 # https://learnopencv.com/color-spaces-in-opencv-cpp-python/
 # COLOR_BGR2RGB, COLOR_BGR2LAB, COLOR_BGR2YCrCb, COLOR_BGR2HSV, COLOR_BGR2HSL
@@ -63,7 +63,7 @@ color_space = cv2.COLOR_BGR2LAB
 #color_space = cv2.COLOR_BGR2YCrCb
 
 block_split_cut_size = 4    ## line size to split blocks
-erode_dilate = 2            ## ammount of erosion and dilation applied to the color masks
+erode_dilate = 3            ## ammount of erosion and dilation applied to the color masks
 kernal = np.array([ [1,1,1],
                     [1,1,1],
                     [1,1,1]     ], "uint8")     ## kernal used for dilation and erosion
@@ -94,9 +94,9 @@ colom2 = 150
 window_size = (950, 250,3)
 
 """ ----- calibration ----- """
-calibration_search_height = 80
-calibration_serach_height_offset = 70
-calibration_search_width = 80
+calibration_search_height = 110
+calibration_serach_height_offset = 0
+calibration_search_width = 280
 
 """ ----- socket ----- """
 # IJsel laptop

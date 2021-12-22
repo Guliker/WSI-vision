@@ -74,10 +74,10 @@ def get_time(name, start):
 """ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- """
 #(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[])
 mc.init(cfg.camera, cfg.device_manager)
+print("complete")
 while(True):
     mc.auto_calibrate(cfg.camera)
     step_index = 0
-    print("complete")
 
     while(step_index < len(cfg.color_name_table)):
         window_vision = cfg.window_blank.copy()
@@ -130,14 +130,17 @@ while(True):
         
         # show operator instructions
         cv2.putText(window_vision, "Calibration mode", (50,450),
-                    cfg.font, 4,
-                    (255,255,255))
+                    cfg.font, 5,
+                    (255,255,255),4)
         cv2.putText(window_vision, "press space", (50,700),
                     cfg.font, 5,
-                    (255,255,255))
+                    (255,255,255),4)
         cv2.putText(window_vision, "to save", (50,900),
                     cfg.font, 5,
-                    (255,255,255))
+                    (255,255,255),4)
+        cv2.putText(window_vision, str(cfg.color_name_table[step_index]), (700,900),
+                    cfg.font, 5,
+                    cfg.color_bgr_table[step_index],4)
 
         # show the video with the calibration box
         
@@ -167,12 +170,14 @@ while(True):
 
     # print all the saved LAB min and max values
     # cv2.destroyAllWindows()
-    print("\n-----values saved: ")
+    print("----- values saved: ")
     if(debug):
         cv2.destroyWindow("img_crop")
     for i,name in enumerate(cfg.color_name_table):
-        print(name + ":")
+        print(name + ":	"),
         print(cfg.lab_min_max_table[i])
+    mc.check_auto_calibrate(cfg.camera)
+    print("")
 
     """ ----- ----- ----- """
 

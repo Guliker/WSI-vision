@@ -45,7 +45,25 @@ def auto_calibrate(cam):
     """
     cam.ExposureAuto.set(gx.GxAutoEntry.ONCE)
     cam.BalanceWhiteAuto.set(gx.GxAutoEntry.ONCE)
-    print("exp:" + str(cam.ExposureTime.get()))
+    
+def check_auto_calibrate(cam):
+    """
+    :brief      Prints the values that have been set by auto_calibrate(cam)
+    :param      cam:        Camera Device
+    """
+    exp = str(cam.ExposureTime.get())
+    
+    cam.BalanceRatioSelector.set(gx.GxBalanceRatioSelectorEntry.RED)
+    r = str(cam.BalanceRatio.get())
+    cam.BalanceRatioSelector.set(gx.GxBalanceRatioSelectorEntry.GREEN)
+    g = str(cam.BalanceRatio.get())
+    cam.BalanceRatioSelector.set(gx.GxBalanceRatioSelectorEntry.BLUE)
+    b = str(cam.BalanceRatio.get())
+    print("----- camera:")
+    print("e: " + exp)
+    print("r: " + r)
+    print("g: " + g)
+    print("b: " + b)
     
 def config(cam,exp, res, res_o, fps, gain, gain_rgb):
     """
