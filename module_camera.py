@@ -37,6 +37,16 @@ def init(cam, dev):
     # start data acquisition
     cam.stream_on()
 
+
+def auto_calibrate(cam):
+    """
+    :brief      Automatically sets the exposure and white balance
+    :param      cam:        Camera Device
+    """
+    cam.ExposureAuto.set(gx.GxAutoEntry.ONCE)
+    cam.BalanceWhiteAuto.set(gx.GxAutoEntry.ONCE)
+    print("exp:" + str(cam.ExposureTime.get()))
+    
 def config(cam,exp, res, res_o, fps, gain, gain_rgb):
     """
     :brief      Changing settings of the camera
@@ -51,7 +61,7 @@ def config(cam,exp, res, res_o, fps, gain, gain_rgb):
     """
     # set default values
     cam.TriggerMode.set(gx.GxSwitchEntry.OFF)
-    cam.ExposureTime.set(exp)
+    #cam.ExposureTime.set(exp)
     # reset offsets
     cam.OffsetX.set(0)
     cam.OffsetY.set(0)
@@ -64,14 +74,16 @@ def config(cam,exp, res, res_o, fps, gain, gain_rgb):
     cam.AcquisitionFrameRateMode.set(gx.GxSwitchEntry.ON)
     cam.AcquisitionFrameRate.set(fps)
     # set gain/balance for all channels and then for red green and blue
-    cam.BalanceWhiteAuto.set(gx.GxSwitchEntry.OFF)
     cam.Gain.set(gain)
+    '''
     cam.BalanceRatioSelector.set(gx.GxBalanceRatioSelectorEntry.RED)
     cam.BalanceRatio.set(gain_rgb[0])
     cam.BalanceRatioSelector.set(gx.GxBalanceRatioSelectorEntry.GREEN)
     cam.BalanceRatio.set(gain_rgb[1])
     cam.BalanceRatioSelector.set(gx.GxBalanceRatioSelectorEntry.BLUE)
     cam.BalanceRatio.set(gain_rgb[2])
+    '''
+    
     
 def read(cam, scale):
     """

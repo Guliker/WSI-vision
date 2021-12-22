@@ -74,8 +74,8 @@ def get_time(name, start):
 """ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- """
 #(cam, dev, exp, res[], res_o[], fps, gain, gain_rgb[])
 mc.init(cfg.camera, cfg.device_manager)
-
 while(True):
+    mc.auto_calibrate(cfg.camera)
     step_index = 0
     print("complete")
 
