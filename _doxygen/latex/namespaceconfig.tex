@@ -10,7 +10,7 @@
 tuple {\bfseries pos\+\_\+raw\+\_\+image} = (1380,250)
 \item 
 \mbox{\Hypertarget{namespaceconfig_a4f3db93bff7f0383c2ad7b40937130a8}\label{namespaceconfig_a4f3db93bff7f0383c2ad7b40937130a8}} 
-tuple {\bfseries pos\+\_\+img\+\_\+crop} = (1300,280)
+tuple {\bfseries pos\+\_\+img\+\_\+crop} = (1380,100)
 \item 
 \mbox{\Hypertarget{namespaceconfig_a34dba91c88b9d37f1dd95e296a24a93e}\label{namespaceconfig_a34dba91c88b9d37f1dd95e296a24a93e}} 
 tuple {\bfseries pos\+\_\+four\+\_\+filters} = (1380,0)
@@ -55,16 +55,16 @@ tuple {\bfseries cam\+\_\+resolution} = (904,1600)
 tuple {\bfseries cam\+\_\+offset\+\_\+resolution} = (1096, 0)
 \item 
 \mbox{\Hypertarget{namespaceconfig_a7cf26883e696bbbda1a0aeb89e9698aa}\label{namespaceconfig_a7cf26883e696bbbda1a0aeb89e9698aa}} 
-tuple {\bfseries cam\+\_\+gain\+\_\+rgb} = (1.\+4 , 1.\+0, 2.\+6)
+tuple {\bfseries cam\+\_\+gain\+\_\+rgb} = (1.\+4 , 1.\+0, 2.\+2)
 \item 
 \mbox{\Hypertarget{namespaceconfig_a764091d515fd518419a6721d383de62e}\label{namespaceconfig_a764091d515fd518419a6721d383de62e}} 
 int {\bfseries cam\+\_\+frame\+\_\+rate} = 10
 \item 
 \mbox{\Hypertarget{namespaceconfig_ad817510c7a4a4d710d44bc21b606cf7d}\label{namespaceconfig_ad817510c7a4a4d710d44bc21b606cf7d}} 
-int {\bfseries cam\+\_\+exposure} = 8000
+int {\bfseries cam\+\_\+exposure} = 24000
 \item 
 \mbox{\Hypertarget{namespaceconfig_a19b6c47ff4014b5f920acd372939e23f}\label{namespaceconfig_a19b6c47ff4014b5f920acd372939e23f}} 
-int {\bfseries cam\+\_\+gain} = 8
+int {\bfseries cam\+\_\+gain} = 6
 \item 
 \mbox{\Hypertarget{namespaceconfig_ab0699411048973016527aaaaf18c0baf}\label{namespaceconfig_ab0699411048973016527aaaaf18c0baf}} 
 float {\bfseries cam\+\_\+scale} = 0.\+5
@@ -73,7 +73,7 @@ float {\bfseries cam\+\_\+scale} = 0.\+5
 int {\bfseries mask\+\_\+scale\+\_\+rotation} = float(1)/1
 \item 
 \mbox{\Hypertarget{namespaceconfig_a1aea4f6fdf0121f3ad733c271fb00c2e}\label{namespaceconfig_a1aea4f6fdf0121f3ad733c271fb00c2e}} 
-list {\bfseries lab\+\_\+offset\+\_\+table} = \mbox{[}80,10,10\mbox{]}
+list {\bfseries lab\+\_\+offset\+\_\+table} = \mbox{[}8,4,4\mbox{]}
 \begin{DoxyCompactList}\small\item\em lab offsets for the color finder, each value is an hard value, order is\+: 0 = lum 1 = a; green -\/ magenta 2 = b; blue -\/ yellow \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceconfig_a36c31592af2f9e5719bc2d79804bc984}\label{namespaceconfig_a36c31592af2f9e5719bc2d79804bc984}} 
 {\bfseries color\+\_\+space} = cv2.\+COLOR\+\_\+\+BGR2\+LAB
@@ -82,7 +82,7 @@ list {\bfseries lab\+\_\+offset\+\_\+table} = \mbox{[}80,10,10\mbox{]}
 int {\bfseries block\+\_\+split\+\_\+cut\+\_\+size} = 4
 \item 
 \mbox{\Hypertarget{namespaceconfig_a4321b1378e241f0736d021f25b9e0c2c}\label{namespaceconfig_a4321b1378e241f0736d021f25b9e0c2c}} 
-int {\bfseries erode\+\_\+dilate} = 2
+int {\bfseries erode\+\_\+dilate} = 3
 \item 
 \mbox{\hyperlink{namespaceconfig_a0191d9140edf9ac74898a5fb9503abcc}{kernal}}
 \item 
@@ -123,13 +123,13 @@ int {\bfseries colom2} = 150
 tuple {\bfseries window\+\_\+size} = (950, 250,3)
 \item 
 \mbox{\Hypertarget{namespaceconfig_ab0669c16e78def4e7afd7f389654944a}\label{namespaceconfig_ab0669c16e78def4e7afd7f389654944a}} 
-int {\bfseries calibration\+\_\+search\+\_\+height} = 80
+int {\bfseries calibration\+\_\+search\+\_\+height} = 110
 \item 
 \mbox{\Hypertarget{namespaceconfig_aaee863a9131510a741491442b63a6bc0}\label{namespaceconfig_aaee863a9131510a741491442b63a6bc0}} 
-int {\bfseries calibration\+\_\+serach\+\_\+height\+\_\+offset} = 70
+int {\bfseries calibration\+\_\+serach\+\_\+height\+\_\+offset} = 0
 \item 
 \mbox{\Hypertarget{namespaceconfig_ac195e897022e9abb1f464a6c595565ad}\label{namespaceconfig_ac195e897022e9abb1f464a6c595565ad}} 
-int {\bfseries calibration\+\_\+search\+\_\+width} = 80
+int {\bfseries calibration\+\_\+search\+\_\+width} = 280
 \item 
 \mbox{\Hypertarget{namespaceconfig_a6190eb3cd371fc4846f41a5f6cf475b1}\label{namespaceconfig_a6190eb3cd371fc4846f41a5f6cf475b1}} 
 string {\bfseries HOST} = \textquotesingle{}\textquotesingle{}
